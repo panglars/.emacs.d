@@ -1,6 +1,6 @@
 (use-package org
   :straight (:type built-in)
-  :bind (("C-c A" . org-agenda)
+  :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
   :config
   (setq org-modules nil                 ; Faster loading

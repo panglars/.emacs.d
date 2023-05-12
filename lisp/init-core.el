@@ -34,8 +34,8 @@
   :config
 
   (if (daemonp)
-      (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'doom-solarized-light t)))
-    (load-theme 'doom-solarized-light t))
+      (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'doom-solarized-dark t)))
+    (load-theme 'doom-solarized-dark t))
 
 
   (defun font-installed-p (font-name)
