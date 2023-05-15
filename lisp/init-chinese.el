@@ -6,7 +6,8 @@
           meow-keypad-mode-p))
   (setq rime-posframe-properties
         (list :font "LXGW WenKai Screen"
-              :internal-border-width 10))
+              :internal-border-width 10
+              :font-height 180))
   :custom
   (default-input-method "rime")
   (rime-show-candidate 'posframe)
