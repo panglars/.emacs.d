@@ -43,7 +43,7 @@
     (find-font (font-spec :name font-name)))
 
   ;; Specify default font
-  (cl-loop for font in '("MonoLisa Nasy Medium" "Fira Code")
+  (cl-loop for font in '("MonoLisa Nasy Medium" "Fira Code Nerd Font")
            when (font-installed-p font)
            return (set-face-attribute 'default nil
                                       :font font

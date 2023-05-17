@@ -1,2 +1,9 @@
 PangLAN's .emacs.d
 
+** Install
+You may install some extenal programs before you use this dotfiles
+*** Format programs
+See [[https://github.com/lassik/emacs-format-all-the-code][Format-all-the-code]]
+*** Commadline Tools
++ ripgrep
+*** Language runtime and translater
