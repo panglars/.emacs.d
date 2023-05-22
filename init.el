@@ -79,6 +79,7 @@
 (require 'init-cxx)
 (require 'init-golang)
 (require 'init-prog)
+(require 'init-rust)
 
 ;; IDE
 (require 'init-project)
