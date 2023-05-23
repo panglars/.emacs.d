@@ -12,6 +12,15 @@
      (setq lsp-keymap-prefix "C-c l")
      (setq lsp-signature-auto-activate nil
            lsp-headerline-breadcrumb-enable nil
+           lsp-eldoc-render-all nil
+           lsp-signature-render-documentation nil
+           ;; rust
+           lsp-rust-server 'rust-analyzer
+           lsp-rust-analyzer-cargo-watch-enable nil
+           ;; go
+           lsp-gopls-hover-kind "NoDocumentation"
+           lsp-gopls-use-placeholders t
+
            lsp-semantic-tokens-enable t
            lsp-progress-spinner-type 'progress-bar-filled
            lsp-enable-folding nil
