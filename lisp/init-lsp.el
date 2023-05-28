@@ -29,7 +29,7 @@
            lsp-enable-on-type-formatting nil)
      :hook (
             (prog-mode . (lambda ()
-                           (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'makefile-mode)
+                           (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'sh-mode 'makefile-mode)
                              (lsp-deferred))))
             (lsp-completion-mode . my/lsp-mode-setup-completion)
             (lsp-mode . lsp-enable-which-key-integration))
