@@ -8,23 +8,26 @@
   :bind (("<f2>" . dashboard-open)
          :map dashboard-mode-map
          )
-  ;; TODO add load-session
+
   :init
   (setq
    dashboard-center-content t
-   dashboard-page-separator "\n\f\n"
    dashboard-set-file-icons t
    dashboard-set-heading-icons t
    dashboard-set-footer t
    dashboard-set-navigator t
-   dashboard-show-shortcuts nil
+   dashboard-page-separator "\n\f\n"
    dashboard-set-init-info t
+   dashboard-startup-banner "~/.emacs.d/logo.svg"
    dashboard-projects-backend 'projectile
    dashboard-items '((recents  . 12)
                      (bookmarks . 3)
                      (projects . 5)
                      (agenda . 5)))
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  )
+
+;; TODO add load-session
 
 (use-package doom-modeline
   :init

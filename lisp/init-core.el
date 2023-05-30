@@ -24,7 +24,7 @@
   :straight (:type built-in)
   :hook (after-init . global-display-line-numbers-mode)
   :init
-  (setq display-line-numbers-width 2
+  (setq display-line-numbers-width 3
         display-line-numbers-widen t
         ;; display-line-numbers-type 'relative
         display-line-numbers-current-absolute t))

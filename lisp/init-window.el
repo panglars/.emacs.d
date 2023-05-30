@@ -76,7 +76,7 @@
           "\\*prolog\\*" inferior-python-mode inf-ruby-mode swift-repl-mode
           "\\*rustfmt\\*$" rustic-compilation-mode rustic-cargo-clippy-mode
           rustic-cargo-outdated-mode rustic-cargo-run-mode rustic-cargo-test-mode))
-(with-eval-after-load 'projectile
+  (with-eval-after-load 'projectile
     (setq popper-group-function #'popper-group-by-projectile))
 
   (when (display-grayscale-p)
@@ -87,5 +87,7 @@
   :config
   (popper-echo-mode 1))                ; For echo area hints
 
+
+(use-package ibuffer)
 
 (provide 'init-window)

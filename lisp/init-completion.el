@@ -95,6 +95,7 @@
     :config
     (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)))
 
+
 (use-package savehist
   :init
   (savehist-mode))
