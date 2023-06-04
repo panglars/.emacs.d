@@ -15,10 +15,10 @@
         no-littering-var-directory (expand-file-name "var/" my-cache-dir))
   (setq custom-file (no-littering-expand-etc-file-name "custom.el")))
 
-(use-package hydra)
 (use-package popup)
 (use-package posframe)
 (use-package diminish)
+(use-package pdf-tools)
 
 (use-package display-line-numbers
   :straight (:type built-in)
@@ -30,6 +30,7 @@
         display-line-numbers-current-absolute t))
 
 (use-package solaire-mode)
+
 (use-package doom-themes
   :config
 

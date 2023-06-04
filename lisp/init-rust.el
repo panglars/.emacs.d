@@ -1,4 +1,4 @@
-(use-package rust-mode
+(use-package rustic
   :hook ((rust-mode . my/rust-lsp))
   :config
   (setq rust-format-on-save t)
