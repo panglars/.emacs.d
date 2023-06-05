@@ -34,6 +34,8 @@
 ;; Remove scroll bar
 (scroll-bar-mode -1)
 
+(global-visual-line-mode 1)
+
 (setq mouse-yank-at-point t)
 
 ;; Suppress GUI features and more

@@ -89,5 +89,5 @@
 
 ;; Misc
 (require 'init-shell)
-
+(require 'init-copilot)
 ;;
