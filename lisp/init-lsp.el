@@ -15,8 +15,9 @@
            lsp-eldoc-render-all nil
            lsp-signature-render-documentation nil
            ;; rust
-           lsp-rust-server 'rust-analyzer
-           lsp-rust-analyzer-cargo-watch-enable nil
+                                        ;lsp-rust-server 'rust-analyzer
+                                        ;lsp-rust-analyzer-cargo-watch-enable nil
+           rustic-lsp-server 'rust-analyzer
            ;; go
            lsp-gopls-hover-kind "NoDocumentation"
            lsp-gopls-use-placeholders t

@@ -1,11 +1,7 @@
 (use-package rustic
-  :hook ((rust-mode . my/rust-lsp))
   :config
   (setq rust-format-on-save t)
-  (defun my/rust-lsp ()
-    (setq-local lsp-completion-enable nil
-                compile-command "cargo build")
-    ))
+  )
 
 (cl-defmethod lsp-clients-extract-signature-on-hover (contents (_server-id (eql rust-analyzer)))
   (-let* (((&hash "value") contents)

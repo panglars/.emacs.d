@@ -8,8 +8,8 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
         aw-scope 'frame
         aw-background t))
+
 (use-package popper
-  :ensure t ; or :straight t
   :defines popper-echo-dispatch-actions
   :autoload popper-group-by-projectile
   :bind (("C-h z"   . popper-toggle-latest)
