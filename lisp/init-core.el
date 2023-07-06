@@ -173,4 +173,7 @@
   :config
   (setq electric-pair-inhibit-predicate (lambda (char) (minibufferp))))
 
+(use-package treesit
+  :straight (:type built-in))
+
 (provide 'init-core)

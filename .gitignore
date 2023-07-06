@@ -32,3 +32,4 @@ custom.el
 .mc-lists.el
 *~
 /.wakatime-project
+/tree-sitter/

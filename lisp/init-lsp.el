@@ -50,6 +50,8 @@
                                    ,(face-foreground 'font-lock-string-face)
                                    ,(face-foreground 'font-lock-constant-face)
                                    ,(face-foreground 'font-lock-variable-name-face))))
+     (use-package lsp-tailwindcss)
+
      (use-package dap-mode
 
        :bind (:map lsp-mode-map
