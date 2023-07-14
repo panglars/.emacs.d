@@ -38,6 +38,8 @@
 
 (setq mouse-yank-at-point t)
 
+(setq ring-bell-function 'ignore)
+
 ;; Suppress GUI features and more
 (setq inhibit-startup-screen t
       inhibit-startup-message t
