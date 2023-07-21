@@ -70,8 +70,6 @@
           "^\\*elfeed-entry\\*$"
           "^\\*macro expansion\\**"
 
-          "\\*gptel-quick\\*"
-
           "\\*Agenda Commands\\*" "\\*Org Select\\*" "\\*Capture\\*" "^CAPTURE-.*\\.org*"
           "\\*Gofmt Errors\\*$" "\\*Go Test\\*$" godoc-mode
           "\\*docker-.+\\*"

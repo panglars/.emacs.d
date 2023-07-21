@@ -57,8 +57,8 @@
 ;; Editor
 (require 'init-meow)
 (require 'init-format)
-
 (require 'init-chinese)
+
 ;; UI
 (require 'init-ui)
 (require 'init-highlight)
@@ -90,4 +90,5 @@
 ;; Misc
 (require 'init-shell)
 (require 'init-copilot)
+(require 'init-telega)
 ;;
