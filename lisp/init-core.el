@@ -24,7 +24,7 @@
   :straight (:type built-in)
   :hook (after-init . global-display-line-numbers-mode)
   :init
-  (setq display-line-numbers-width 3
+  (setq display-line-numbers-width 4
         display-line-numbers-widen t
         ;; display-line-numbers-type 'relative
         display-line-numbers-current-absolute t))
@@ -35,8 +35,8 @@
   :config
 
   (if (daemonp)
-      (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'doom-solarized-dark t)))
-    (load-theme 'doom-solarized-dark t))
+      (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'doom-solarized-light t)))
+    (load-theme 'doom-solarized-light t))
 
 
   (defun font-installed-p (font-name)
@@ -48,7 +48,7 @@
            when (font-installed-p font)
            return (set-face-attribute 'default nil
                                       :font font
-                                      :height 150))
+                                      :height 130))
   ;; Specify font for all unicode characters
   (cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
            when (font-installed-p font)
