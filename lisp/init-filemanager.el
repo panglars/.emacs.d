@@ -14,8 +14,8 @@
      ("P" "~/Pictures" "Pictures")
      ("r" "~/Repo" "Repo")
      ("t" "~/.local/share/Trash/files" "TrashCan")
-     ("o" "~/Org" "Org")
-     ("n" "~/Org/Notes" "Org/Notes")))
+     ("o" "~/Syncfile/Org/" "Org")
+     ("n" "~/Syncfile/Org/Notes" "Notes")))
   :config
   ;; (dirvish-peek-mode) ; Preview files in minibuffer
   ;; (dirvish-side-follow-mode) ; similar to `treemacs-follow-mode'
