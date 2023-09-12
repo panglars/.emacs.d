@@ -5,13 +5,12 @@
           meow-motion-mode-p
           meow-keypad-mode-p))
   (setq rime-posframe-properties
-        (list :font "LXGW WenKai Screen"
+        (list :font "LXGW WenKai Screen-14"
               :internal-border-width 10
-              :font-height 180))
+              ))
   :bind
   (:map rime-mode-map
         ("C-`" . 'rime-send-keybinding))
-
   :custom
   (default-input-method "rime")
   (rime-show-candidate 'posframe)
