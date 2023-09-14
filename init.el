@@ -73,6 +73,7 @@
 
 ;; Lang
 (require 'init-org)
+(require 'init-treesit)
 (require 'init-python)
 (require 'init-web)
 (require 'init-javascript)

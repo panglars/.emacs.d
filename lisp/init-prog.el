@@ -30,6 +30,8 @@
   :config
   (setq yas-inhibit-overlay-modification-protection t)
   (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
-  (use-package yasnippet-snippets))
+  )
+
+(use-package yasnippet-snippets)
 
 (provide 'init-prog)

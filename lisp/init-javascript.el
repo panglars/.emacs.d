@@ -25,12 +25,6 @@
 ;; (use-package typescript-mode
 ;;   :mode ("\\.ts[x]\\'" . typescript-mode))
 
-(use-package treesit
-  :straight (:type built-in)
-  :mode (("\\.js\\'" . js-ts-mode)
-         ("\\.ts\\'" . typescript-ts-mode)
-         ("\\.tsx\\'" . tsx-ts-mode))
-  )
 
 
 (use-package tide
