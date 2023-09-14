@@ -20,9 +20,9 @@
    dashboard-set-init-info t
    dashboard-startup-banner "~/.emacs.d/logo.svg"
    dashboard-projects-backend 'projectile
-   dashboard-items '((recents  . 12)
+   dashboard-items '((recents  . 15)
                      (bookmarks . 3)
-                     (projects . 5)
+                     (projects . 8)
                      (agenda . 5)))
   (dashboard-setup-startup-hook)
   )
