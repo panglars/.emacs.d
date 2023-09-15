@@ -22,8 +22,9 @@
 
 (use-package display-line-numbers
   :straight (:type built-in)
-  :hook (after-init . global-display-line-numbers-mode)
   :init
+  (add-hook 'text-mode-hook #'display-line-numbers-mode)
+  (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (setq display-line-numbers-width 4
         display-line-numbers-widen t
         ;; display-line-numbers-type 'relative
@@ -173,7 +174,8 @@
   :config
   (setq electric-pair-inhibit-predicate (lambda (char) (minibufferp))))
 
-(use-package treesit
-  :straight (:type built-in))
+
+(use-package sudo-edit)
+
 
 (provide 'init-core)

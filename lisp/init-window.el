@@ -88,6 +88,5 @@
   (popper-echo-mode 1))                ; For echo area hints
 
 
-(use-package ibuffer)
 
 (provide 'init-window)

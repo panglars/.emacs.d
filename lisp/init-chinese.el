@@ -23,4 +23,9 @@
             #'(lambda ()
                 (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))
 
+(use-package immersive-translate
+  :init
+  (setq immersive-translate-backend 'trans)
+  )
+
 (provide 'init-chinese)

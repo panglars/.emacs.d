@@ -62,6 +62,8 @@
 ;; UI
 (require 'init-ui)
 (require 'init-highlight)
+(require 'init-window)
+(require 'init-buffer)
 
 ;; Completion
 (require 'init-completion)
@@ -84,7 +86,6 @@
 
 ;; IDE
 (require 'init-project)
-(require 'init-window)
 (require 'init-flycheck)
 (require 'init-filemanager)
 

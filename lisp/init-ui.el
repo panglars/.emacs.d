@@ -1,4 +1,5 @@
 (use-package dashboard
+  :diminish (dashboard-mode page-break-lines-mode)
   :hook (dashboard-mode . (lambda ()
                             ;; No title
                             (setq-local frame-title-format nil)
@@ -7,8 +8,10 @@
                               (page-break-lines-mode 1))))
   :bind (("<f2>" . dashboard-open)
          :map dashboard-mode-map
-         )
-
+         (("n" . dashboard-next-line)
+          ("p" . dashboard-previous-line)
+          ("N" . dashboard-next-section)
+          ("F" . dashboard-previous-section)))
   :init
   (setq
    dashboard-center-content t
@@ -24,8 +27,7 @@
                      (bookmarks . 3)
                      (projects . 8)
                      (agenda . 5)))
-  (dashboard-setup-startup-hook)
-  )
+  (dashboard-setup-startup-hook))
 
 ;; TODO add load-session
 
