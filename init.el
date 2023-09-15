@@ -1,8 +1,17 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
+;;
+;; Filename: init.el
+;; Description:
+;; Author: PangLAN
+;; Maintainer:
+;; Copyright (C) 2023 PangLAN
+;; Created: Fri Sep 15 16:32:05 2023 (+0800)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;;; Commentary:
-
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
+
 
 (let ((minver "28.2"))
   (when (version< emacs-version minver)
@@ -94,3 +103,6 @@
 (require 'init-copilot)
 (require 'init-telega)
 ;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; init.el ends here

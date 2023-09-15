@@ -24,7 +24,9 @@
 
 (use-package yasnippet
   :diminish yas-minor-mode
-  :hook (prog-mode . yas-minor-mode)
+  :hook ((prog-mode org-mode markdown-mode) . yas-minor-mode)
+  :bind
+  (:map yas-minor-mode-map ("C-c N" . yas-expand-from-trigger-key))
   :custom
   (yas-use-menu nil)
   :config
@@ -33,5 +35,13 @@
   )
 
 (use-package yasnippet-snippets)
+
+(use-package quickrun
+  :custom
+  (quickrun-timeout-seconds 60)
+  :bind
+  (("<f5>" . quickrun)
+   ("M-<f5>" . quickrun-shell)
+   ("C-c e" . quickrun)))
 
 (provide 'init-prog)
