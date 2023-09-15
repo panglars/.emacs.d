@@ -56,9 +56,12 @@
        (setq lsp-tailwindcss-add-on-mode t))
 
      (use-package dap-mode
-
-       :bind (:map lsp-mode-map
-                   ("<f5>" . dap-debug))
+       :bind
+       (:map dap-mode-map
+             (("<f12>" . dap-debug)
+              ("<f8>" . dap-continue)
+              ("<f6>" . dap-next)
+              ("<f7>" . dap-breakpoint-toggle)))
        :config
        ;; Enabling only some features
        (setq dap-auto-configure-features '(sessions locals controls tooltip))
