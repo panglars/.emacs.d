@@ -1,4 +1,8 @@
 PangLAN's .emacs.d
+
+#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
+[[/logo.svg]]
+
 ** Feature
 
 ** Install
@@ -8,3 +12,8 @@ See [[https://github.com/lassik/emacs-format-all-the-code][Format-all-the-code]]
 *** Commadline Tools
 + ripgrep
 *** Language runtime and translater
+
+*** Treesit
+
+** Function
+
