@@ -21,7 +21,7 @@
               ("C-c T n" . hl-todo-next)
               ("C-c T o" . hl-todo-occur)
               ("C-c T i" . hl-todo-insert))
-  :hook (after-init . global-hl-todo-mode)
+  :hook ((prog-mode text-mode) . hl-todo-mode)
   :init (setq hl-todo-require-punctuation t
               hl-todo-highlight-punctuation ":")
   :config
