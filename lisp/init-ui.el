@@ -11,7 +11,8 @@
          (("n" . dashboard-next-line)
           ("p" . dashboard-previous-line)
           ("N" . dashboard-next-section)
-          ("F" . dashboard-previous-section)))
+          ("F" . dashboard-previous-section)
+          ("o" . dashboard-jump-to-projects)))
   :init
   (setq
    dashboard-center-content t
