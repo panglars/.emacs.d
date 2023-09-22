@@ -37,5 +37,7 @@
          ("\\.tsx\\'" . tsx-ts-mode))
   )
 
+(use-package fingertip
+  :straight (:host github :repo "manateelazycat/fingertip"))
 
 (provide 'init-treesit)

@@ -4,12 +4,15 @@
      :defer t
      :custom
      (lsp-completion-provider :none)
+     ;; TODO add lsp-mode-map
+     :bind (:map lsp-mode-map
+                 ("C-c l R"  . lsp-rename))
      :init
+     (setq lsp-keymap-prefix "C-c l")
      (defun my/lsp-mode-setup-completion ()
        (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
              '(orderless))) ;; Configure orderless
      (setq read-process-output-max (* 1024 1024)) ;; 1MB
-     (setq lsp-keymap-prefix "C-c l")
      (setq lsp-signature-auto-activate nil
            lsp-headerline-breadcrumb-enable nil
            lsp-eldoc-render-all nil

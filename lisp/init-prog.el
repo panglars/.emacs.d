@@ -41,7 +41,5 @@
   (quickrun-timeout-seconds 60)
   :bind
   (("<f5>" . quickrun)
-   ("M-<f5>" . quickrun-shell)
-   ("C-c e" . quickrun)))
-
+   ("M-<f5>" . quickrun-shell)))
 (provide 'init-prog)
