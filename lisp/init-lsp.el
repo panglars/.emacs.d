@@ -6,9 +6,18 @@
      (lsp-completion-provider :none)
      ;; TODO add lsp-mode-map
      :bind (:map lsp-mode-map
-                 ("C-c l R"  . lsp-rename))
+                 ("C-c l n" . lsp-rename)
+                 ("C-c l D"	. lsp-ui-peek-find-definitions)
+                 ("C-c l I"	. lsp-ui-peek-find-implementation)
+                 ("C-c l R"	. lsp-ui-peek-find-references)
+                 ("C-c l s"	. lsp-ui-peek-find-workspace-symbol)
+                 ("C-c l d"	.	lsp-find-definition)
+                 ("C-c l i"	.	lsp-find-implementation)
+                 ("C-c l r"	.	lsp-find-references)
+                 ("C-c l t"	.	lsp-find-type-definition)
+                 )
      :init
-     (setq lsp-keymap-prefix "C-c l")
+     (setq lsp-keymap-prefix "C-c e")
      (defun my/lsp-mode-setup-completion ()
        (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
              '(orderless))) ;; Configure orderless
