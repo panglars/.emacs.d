@@ -33,6 +33,7 @@
           "\\*Finder\\*"
           "\\*Kill Ring\\*"
           "\\*Go-Translate\\*"
+          "\\*xref\\*"
 
           bookmark-bmenu-mode
           comint-mode
