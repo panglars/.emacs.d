@@ -6,12 +6,10 @@
   (setq org-modules nil                 ; Faster loading
         org-directory my-org-directory
         org-capture-templates
-        `(("a" "Appointment" entry (file+headline ,(concat org-directory "/task.org") "Appointment")
+        `(("w" "Work" entry (file+headline ,(concat org-directory "/task.org") "Work")
            "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
           ("r" "Research" entry (file ,(concat org-directory "/research.org"))
            "* TODO %? %^C \n%U\n  " :empty-lines 1)
-          ("s" "School" entry (file+headline ,(concat org-directory "/school.org") "School")
-           "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
           ("t" "Task" entry (file+headline ,(concat org-directory "/task.org") "Task")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
           ("i" "Idea" entry (file ,(concat org-directory "/idea.org"))
