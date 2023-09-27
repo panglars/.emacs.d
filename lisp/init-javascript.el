@@ -26,14 +26,4 @@
 ;;   :mode ("\\.ts[x]\\'" . typescript-mode))
 
 
-
-(use-package tide
-  :after (typescript-mode flycheck)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
-
-;; Run and interact with an inferior JS via js-comint.el
-(use-package js-comint)
-
 (provide 'init-javascript)

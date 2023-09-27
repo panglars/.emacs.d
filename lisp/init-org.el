@@ -47,10 +47,14 @@
   ;; Add new template
   (add-to-list 'org-structure-template-alist '("n" . "note"))
 
+  ;; org-resume
+  (setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
+                                "xelatex -interaction nonstopmode %f"))
   ;; Add md/gfm backends
   (add-to-list 'org-export-backends 'md)
   (use-package ox-gfm
     :init (add-to-list 'org-export-backends 'gfm))
+
 
   ;; Prettify UI
   (use-package org-modern
