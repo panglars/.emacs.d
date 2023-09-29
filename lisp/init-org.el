@@ -13,9 +13,7 @@
           ("t" "Task" entry (file+headline ,(concat org-directory "/task.org") "Task")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
           ("i" "Idea" entry (file ,(concat org-directory "/idea.org"))
-           "* %?\n%t\n" :empty-lines 1)
-          ("n" "Note" entry (file ,(concat org-directory "/notes.org"))
-           "* %? \n%U\n" :empty-lines 1))
+           "* %?\n%t\n" :empty-lines 1))
         org-todo-keywords
         '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
           (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
@@ -144,16 +142,36 @@
   :custom
   (org-roam-directory (file-truename (concat my-org-directory "/main")))
   :config
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:15}" 'face 'org-tag)))
   (setq
    org-roam-dailies-capture-templates
    '(("d" "default" entry "** %?" :if-new
       (file+head+olp "%<%G-W%V>.org" "\n#+title: %<%G-W%V>\n"
                      ("%<%A %Y-%m-%d>")))))
   (setq org-roam-capture-templates
-        '(("d" "default" plain "%?"
+        '(
+          ("d" "Default" plain "%?"
            :target (file+head "%<%Y%m>-${slug}.org"
                               "#+title: ${title}\n")
-           :unnarrowed t)))
+           :unnarrowed t)
+          ("p" "Projects" plain "%?"
+           :target (file+head "projets/%<%Y%m>-${slug}.org"
+                              "#+title: ${title}\n")
+           :unnarrowed t)
+          ("a" "Area of Responsibility" plain "%?"
+           :target (file+head "area/%<%Y%m>-${slug}.org"
+                              "#+title: ${title}\n")
+           :unnarrowed t)
+          ("r" "Resource" plain "%?"
+           :target (file+head "resource/%<%Y%m>-${slug}.org"
+                              "#+title: ${title}\n")
+           :unnarrowed t)
+          ("c" "Archive" plain "%?"
+           :target (file+head "archive/%<%Y%m>-${slug}.org"
+                              "#+title: ${title}\n")
+           :unnarrowed t)
+
+          ))
   (org-roam-db-autosync-mode))
 
 (use-package org-roam-ui
