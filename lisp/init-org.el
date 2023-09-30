@@ -6,19 +6,17 @@
   (setq org-modules nil                 ; Faster loading
         org-directory my-org-directory
         org-capture-templates
-        `(("w" "Work" entry (file+headline ,(concat org-directory "/task.org") "Work")
+        `(("p" "Projects" entry (file+headline ,(concat org-directory "/todo.org") "Projects")
            "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
-          ("r" "Research" entry (file ,(concat org-directory "/research.org"))
-           "* TODO %? %^C \n%U\n  " :empty-lines 1)
-          ("t" "Task" entry (file+headline ,(concat org-directory "/task.org") "Task")
+          ("a" "Area of Responsibility" entry (file+headline ,(concat org-directory "/todo.org") "Area")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
-          ("i" "Idea" entry (file ,(concat org-directory "/idea.org"))
-           "* %?\n%t\n" :empty-lines 1))
+          ("r" "Resource" entry (file+headline ,(concat org-directory "/todo.org") "Resource")
+           "* TODO %?\n" :empty-lines 1)
+          ("m" "Misc" entry (file+headline ,(concat org-directory "/todo.org") "Misc")
+           "* TODO %?\n" :empty-lines 1))
         org-todo-keywords
-        '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
-          (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
-        org-todo-keyword-faces '(("HANGUP" . warning)
-                                 ("❓" . warning))
+        '((sequence "TODO(t)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
+        org-todo-keyword-faces '(("HANGUP" . warning))
         org-priority-faces '((?A . error)
                              (?B . warning)
                              (?C . success))
@@ -30,8 +28,7 @@
           (800 1000 1200 1400 1600 1800 2000)
           " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
         org-agenda-current-time-string
-        "⭠ now ─────────────────────────────────────────────────"
-
+        "⭠ now ───────────────────────────────────────────────"
         org-tags-column -80
         org-log-done 'time
         org-fold-catch-invisible-edits 'smart
@@ -75,15 +72,12 @@
 
   (defconst load-language-alist
     '((emacs-lisp . t)
-      (perl       . t)
       (python     . t)
       (ruby       . t)
       (js         . t)
       (css        . t)
-      (sass       . t)
       (C          . t)
-      (java       . t)
-      (plantuml   . t))
+      (java       . t))
     "Alist of org ob languages.")
 
   (org-babel-do-load-languages 'org-babel-load-languages
