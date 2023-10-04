@@ -3,7 +3,7 @@
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
   :config
-  (setq org-modules nil                 ; Faster loading
+  (setq org-modules '(org-habit)
         org-directory my-org-directory
         org-capture-templates
         `(("p" "Projects" entry (file+headline ,(concat org-directory "/todo.org") "Projects")

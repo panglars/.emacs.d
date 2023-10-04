@@ -36,8 +36,8 @@
   :config
 
   (if (daemonp)
-      (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'doom-one t)))
-    (load-theme 'doom-one t))
+      (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
+    (load-theme 'modus-operandi-tinted t))
 
 
   (defun font-installed-p (font-name)

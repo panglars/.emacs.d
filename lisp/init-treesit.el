@@ -30,12 +30,17 @@
         (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))
         (zig . ("https://github.com/GrayJack/tree-sitter-zig"))))
 
+
 (use-package treesit
   :straight (:type built-in)
   :mode (("\\.js\\'" . js-ts-mode)
          ("\\.ts\\'" . typescript-ts-mode)
-         ("\\.tsx\\'" . tsx-ts-mode))
-  )
+         ("\\.tsx\\'" . tsx-ts-mode)))
+
+(use-package typst-ts-mode
+  :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")
+  :custom
+  (typst-ts-mode-watch-options "--open"))
 
 (use-package fingertip
   :straight (:host github :repo "manateelazycat/fingertip"))
