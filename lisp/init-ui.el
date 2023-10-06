@@ -33,9 +33,9 @@
 ;; TODO add load-session
 
 (use-package doom-modeline
+  :hook (after-init . doom-modeline-mode)
   :init
-  (doom-modeline-mode 1)
-  (setq doom-modeline-height 1
+  (setq doom-modeline-height 25
         doom-modeline-window-width-limit 100
         doom-modeline-minor-modes nil))
 

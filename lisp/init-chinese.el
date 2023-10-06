@@ -1,12 +1,13 @@
 (use-package rime
   :config
+  ;; meow-mode hook
   (setq rime-disable-predicates
         '(meow-normal-mode-p
           meow-motion-mode-p
           meow-keypad-mode-p))
   (setq rime-posframe-properties
         (list :font "LXGW WenKai Screen-14"
-              :internal-border-width 10
+              ;;  :internal-border-width 10
               ))
   :bind
   (:map rime-mode-map

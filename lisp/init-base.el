@@ -36,6 +36,8 @@
 
 (global-visual-line-mode 1)
 
+(setq column-number-mode t)
+
 (setq mouse-yank-at-point t)
 
 (setq ring-bell-function 'ignore)

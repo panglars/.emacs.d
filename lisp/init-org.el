@@ -171,12 +171,12 @@
 (use-package org-roam-ui
   :bind ("C-c n u" . org-roam-ui-mode))
 
-(use-package org-noter
-  :straight
-  (:repo "org-noter/org-noter"
-         :host github
-         :type git
-         :files ("*.el" "modules/*.el")))
+;; (use-package org-noter
+;;   :straight
+;;   (:repo "org-noter/org-noter"
+;;          :host github
+;;          :type git
+;;          :files ("*.el" "modules/*.el")))
 
 
 (provide 'init-org)

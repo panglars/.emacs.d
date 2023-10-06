@@ -102,6 +102,7 @@
 (require 'init-shell)
 (require 'init-copilot)
 (require 'init-telega)
+(require 'init-reader)
 ;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

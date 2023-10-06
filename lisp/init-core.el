@@ -18,7 +18,6 @@
 (use-package popup)
 (use-package posframe)
 (use-package diminish)
-(use-package pdf-tools)
 
 (use-package display-line-numbers
   :straight (:type built-in)
