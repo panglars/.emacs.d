@@ -3,6 +3,7 @@
         ("C-c M-x" . consult-mode-command)
         ("C-c b"   . consult-buffer)
         ("C-c r" . consult-ripgrep)
+        ("C-c F" . consult-fd)
         ("C-c R" . consult-bookmark)            ;; orig. bookmark-jump
         ("C-x b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
         ("C-x C-r" . consult-recent-file)
@@ -16,5 +17,12 @@
         )
   )
 
+;; [consult-dir] Insert path quickly in minibuffer
+(use-package consult-dir
+  :bind (("C-x C-d" . consult-dir)
+         :map minibuffer-local-completion-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file))
+  )
 
 (provide 'init-consult)

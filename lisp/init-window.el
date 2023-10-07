@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package ace-window
   :defer t
   :bind ([remap other-window] . ace-window)
@@ -8,6 +10,19 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
         aw-scope 'frame
         aw-background t))
+
+;; [winner] Restore old window configurations
+(use-package winner
+  :straight (:type built-in)
+  :commands (winner-undo winner-redo)
+  :init
+  (setq winner-dont-bind-my-keys t)
+  :hook (after-init . winner-mode)
+  :config
+  (setq winner-boring-buffers
+        '("*Completions*" "*Compile-Log*" "*inferior-lisp*" "*Fuzzy Completions*"
+          "*Apropos*" "*Help*" "*cvs*" "*Buffer List*" "*Ibuffer*"
+          "*esh command on file*")))
 
 (use-package popper
   :defines popper-echo-dispatch-actions
@@ -86,7 +101,19 @@
             (format " %s " (all-the-icons-octicon "pin" :height 0.9 :v-adjust 0.0 :face 'mode-line-emphasis)))))
   (setq popper-echo-dispatch-actions t)
   :config
-  (popper-echo-mode 1))                ; For echo area hints
+  (popper-echo-mode 1)
+
+  ;; HACK: close popper with `C-g'
+  (defun +popper-close-window-hack (&rest _)
+    "Close popper window via `C-g'."
+    (when (and (called-interactively-p 'interactive)
+               (not (region-active-p))
+               popper-open-popup-alist)
+      (let ((window (caar popper-open-popup-alist)))
+        (when (window-live-p window)
+          (delete-window window)))))
+  (advice-add #'keyboard-quit :before #'+popper-close-window-hack)
+  )
 
 
 

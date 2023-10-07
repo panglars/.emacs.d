@@ -31,36 +31,36 @@
 
 (use-package solaire-mode)
 
-(use-package doom-themes
-  :config
+(use-package doom-themes)
+(use-package modus-themes)
 
-  (if (daemonp)
-      (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
-    (load-theme 'modus-operandi-tinted t))
+(if (daemonp)
+    (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
+  (load-theme 'modus-operandi-tinted t))
 
 
-  (defun font-installed-p (font-name)
-    "Check if font with FONT-NAME is available."
-    (find-font (font-spec :name font-name)))
+(defun font-installed-p (font-name)
+  "Check if font with FONT-NAME is available."
+  (find-font (font-spec :name font-name)))
 
-  ;; Specify default font
-  (cl-loop for font in '("MonoLisa Nasy Medium" "Fira Code Nerd Font")
-           when (font-installed-p font)
-           return (set-face-attribute 'default nil
-                                      :font font
-                                      :height 130))
-  ;; Specify font for all unicode characters
-  (cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
-           when (font-installed-p font)
-           return(set-fontset-font t 'unicode font nil 'prepend))
-  ;; Specify font for Chinese characters
-  (cl-loop for font in '("LXGW WenKai Screen" "WenQuanYi Micro Hei" "Microsoft Yahei")
-           when (font-installed-p font)
-           return (set-fontset-font t '(#x4e00 . #x9fff) font))
-  (when (display-graphic-p)
-    ;; Frame maximized
-    (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-    (add-to-list 'default-frame-alist '(fullscreen . maximized))))
+;; Specify default font
+(cl-loop for font in '("MonoLisa Nasy Medium" "Fira Code Nerd Font")
+         when (font-installed-p font)
+         return (set-face-attribute 'default nil
+                                    :font font
+                                    :height 130))
+;; Specify font for all unicode characters
+(cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
+         when (font-installed-p font)
+         return(set-fontset-font t 'unicode font nil 'prepend))
+;; Specify font for Chinese characters
+(cl-loop for font in '("LXGW WenKai Screen" "WenQuanYi Micro Hei" "Microsoft Yahei")
+         when (font-installed-p font)
+         return (set-fontset-font t '(#x4e00 . #x9fff) font))
+(when (display-graphic-p)
+  ;; Frame maximized
+  (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 
 
 (use-package all-the-icons

@@ -31,7 +31,7 @@
   (define-key dirvish-mode-map (kbd "<mouse-2>") 'dired-mouse-find-file-other-window)
   (define-key dirvish-mode-map (kbd "<mouse-3>") 'dired-mouse-find-file)
   :bind ; Bind `dirvish|dirvish-side|dirvish-dwim' as you see fit
-  (("C-x C-d" . dirvish)
+  (("C-c d" . dirvish)
    ("C-c D" . dirvish-side)
    :map dirvish-mode-map ; Dirvish inherits `dired-mode-map'
    ("b"   . dirvish-quick-access)
