@@ -22,8 +22,8 @@
 (use-package display-line-numbers
   :straight (:type built-in)
   :init
-  (add-hook 'text-mode-hook #'display-line-numbers-mode)
-  (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+  ;; (add-hook 'text-mode-hook #'display-line-numbers-mode)
+  ;; (add-hook 'prog-mode-hook #'display-line-numbers-mode)
   (setq display-line-numbers-width 4
         display-line-numbers-widen t
         ;; display-line-numbers-type 'relative

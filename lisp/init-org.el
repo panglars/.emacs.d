@@ -17,9 +17,10 @@
         org-todo-keywords
         '((sequence "TODO(t)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
         org-todo-keyword-faces '(("HANGUP" . warning))
-        org-priority-faces '((?A . error)
-                             (?B . warning)
-                             (?C . success))
+        org-priority-faces '((?A . 'all-the-icons-red)
+                             (?B . 'all-the-icons-yellow)
+                             (?C . 'all-the-icons-green)
+                             (?D . 'all-the-icons-blue))
         ;; Agenda styling
         org-agenda-files (list my-org-directory)
         org-agenda-block-separator ?─
@@ -61,9 +62,7 @@
   (use-package org-fancy-priorities
     :hook (org-mode . org-fancy-priorities-mode)
     :init (setq org-fancy-priorities-list
-                (if (and (display-graphic-p) (char-displayable-p ?🅐))
-                    '("🅐" "🅑" "🅒" "🅓")
-                  '("HIGH" "MEDIUM" "LOW" "OPTIONAL"))))
+                '("HIGH" "MEDIUM" "LOW" "OPTIONAL")))
 
   ;; Babel
   (setq org-confirm-babel-evaluate nil
