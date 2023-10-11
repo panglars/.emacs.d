@@ -41,7 +41,7 @@
 
 (use-package hide-mode-line
   :hook (((eshell-mode shell-mode
-                       term-mode vterm-mode
+                       term-mode
                        lsp-ui-imenu-mode
                        pdf-annot-list-mode) . hide-mode-line-mode)))
 

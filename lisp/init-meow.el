@@ -2,6 +2,11 @@
   :init (meow-global-mode 1)
   :demand nil
   :config
+  ;;   (defun my-disable-meow-mode-in-vterm ()
+  ;;     "Disable meow-mode in vterm-mode."
+  ;;     (when (derived-mode-p 'vterm-mode)
+  ;;       (meow-mode -1)))
+  ;;   (add-hook 'after-change-major-mode-hook #'my-disable-meow-mode-in-vterm)
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-colemak)
   (meow-motion-overwrite-define-key
    '("n" . meow-next)

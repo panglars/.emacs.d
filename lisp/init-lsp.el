@@ -4,7 +4,6 @@
      :defer t
      :custom
      (lsp-completion-provider :none)
-     ;; TODO add lsp-mode-map
      :bind (:map lsp-mode-map
                  ("C-c C-l n" . lsp-rename)
                  ("C-c C-l D"	. lsp-ui-peek-find-definitions)
