@@ -15,7 +15,8 @@
   :custom
   (default-input-method "rime")
   (rime-show-candidate 'posframe)
-  (rime-user-data-dir "~/.local/share/fcitx5/rime"))
+  (rime-user-data-dir "~/.local/share/fcitx5/rime")
+  )
 
 (use-package pangu-spacing
   :init

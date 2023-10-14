@@ -1,20 +1,19 @@
 (pcase my-lsp-backend
   ('lsp-mode
    (use-package lsp-mode
-     :defer t
+     ;;     :defer t
      :custom
      (lsp-completion-provider :none)
-     :bind (:map lsp-mode-map
-                 ("C-c C-l n" . lsp-rename)
-                 ("C-c C-l D"	. lsp-ui-peek-find-definitions)
-                 ("C-c C-l I"	. lsp-ui-peek-find-implementation)
-                 ("C-c C-l R"	. lsp-ui-peek-find-references)
-                 ("C-c C-l s"	. lsp-ui-peek-find-workspace-symbol)
-                 ("C-c C-l d"	. lsp-find-definition)
-                 ("C-c C-l i"	. lsp-find-implementation)
-                 ("C-c C-l r"	. lsp-find-references)
-                 ("C-c C-l t"	. lsp-find-type-definition)
-                 )
+     :bind
+     ("C-c l n" . lsp-rename)
+     ("C-c l D"	. lsp-ui-peek-find-definitions)
+     ("C-c l I"	. lsp-ui-peek-find-implementation)
+     ("C-c l R"	. lsp-ui-peek-find-references)
+     ("C-c l s"	. lsp-ui-peek-find-workspace-symbol)
+     ("C-c l d"	. lsp-find-definition)
+     ("C-c l i"	. lsp-find-implementation)
+     ("C-c l r"	. lsp-find-references)
+     ("C-c l t"	. lsp-find-type-definition)
      :init
      (setq lsp-keymap-prefix "C-c e")
      (defun my/lsp-mode-setup-completion ()
@@ -25,11 +24,10 @@
            lsp-headerline-breadcrumb-enable nil
            lsp-eldoc-render-all nil
            lsp-signature-render-documentation nil
-           ;; rust
-                                        ;lsp-rust-server 'rust-analyzer
-                                        ;lsp-rust-analyzer-cargo-watch-enable nil
+           ;; Rust
+           ;;lsp-rust-analyzer-cargo-watch-enable nil
            rustic-lsp-server 'rust-analyzer
-           ;; go
+           ;; Go
            lsp-gopls-hover-kind "NoDocumentation"
            lsp-gopls-use-placeholders t
 

@@ -12,8 +12,8 @@
       read-char-choice-use-read-key t)
 
 ;; Cutting and pasting use primary/clipboard
-(setq select-enable-primary t
-      select-enable-clipboard t)
+(setq select-enable-clipboard t)
+(setq select-active-regions 'only)
 
 ;; No backup files
 (setq make-backup-files nil

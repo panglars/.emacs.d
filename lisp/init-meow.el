@@ -2,12 +2,9 @@
   :init (meow-global-mode 1)
   :demand nil
   :config
-  ;;   (defun my-disable-meow-mode-in-vterm ()
-  ;;     "Disable meow-mode in vterm-mode."
-  ;;     (when (derived-mode-p 'vterm-mode)
-  ;;       (meow-mode -1)))
-  ;;   (add-hook 'after-change-major-mode-hook #'my-disable-meow-mode-in-vterm)
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-colemak)
+  (setq meow-expand-hint-remove-delay 3)
+  (setq meow-use-clipboard t)
   (meow-motion-overwrite-define-key
    '("n" . meow-next)
    '("p" . meow-prev)
@@ -25,17 +22,15 @@
    '("8" . meow-digit-argument)
    '("9" . bury-buffer)
    '("0" . unbury-buffer)
-   ;;'("b" . consult-buffer)
    '("B" . ibuffer)
    '("C" . org-capture)
    '("G" . magit)
    '("o" . ace-window)
    '("p" . projectile-command-map)
-   ;;'("r" . consult-ripgrep)
    '("S" . save-buffer)
    '("z" . popper-toggle-latest)
-   '("[" . parrot-rotate-prev-word-at-point)
-   '("]" . parrot-rotate-next-word-at-point)
+   '("[" . flycheck-previous-error)
+   '("]" . flycheck-next-error)
    )
   (meow-normal-define-key
    '("0" . meow-expand-0)
