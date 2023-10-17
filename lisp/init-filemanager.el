@@ -3,19 +3,25 @@
   (dirvish-override-dired-mode)
   :custom
   (dirvish-quick-access-entries ; It's a custom option, `setq' won't work
-   '(("h" "~/" "Home")
-     ("c" "~/Projects/Codes" "Codes")
+   '(
+     ("h" "~/" "Home")
      ("d" "~/Downloads" "Downloads")
      ("D" "~/Documents" "Documents")
+     ("P" "~/Pictures" "Pictures")
+
+     ("c" "~/Codes" "Codes")
+     ("p" "~/Codes/Projects/" "Project")
+     ("r" "~/Codes/Resources/" "Resource")
+     ("a" "~/Codes/Areas/" "Areas of responsibility")
+     ("A" "~/Codes/Archives/" "Archive")
+
+     ("t" "~/.local/share/Trash/files" "TrashCan")
      ("e" "~/.emacs.d" ".emacs.d")
      ("f" "~/.config" ".config")
      ("l" "~/.local/share" ".local/share")
-     ("p" "~/Projects" "Projects")
-     ("P" "~/Pictures" "Pictures")
-     ("r" "~/Repo" "Repo")
-     ("t" "~/.local/share/Trash/files" "TrashCan")
      ("o" "~/Syncfile/Org/" "Org")
-     ("n" "~/Syncfile/Org/Notes" "Notes")))
+     ("n" "~/Syncfile/Org/Notes" "Notes")
+     ))
   :config
   ;; (dirvish-peek-mode) ; Preview files in minibuffer
   ;; (dirvish-side-follow-mode) ; similar to `treemacs-follow-mode'

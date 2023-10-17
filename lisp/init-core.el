@@ -57,6 +57,10 @@
 (cl-loop for font in '("LXGW WenKai Screen" "WenQuanYi Micro Hei" "Microsoft Yahei")
          when (font-installed-p font)
          return (set-fontset-font t '(#x4e00 . #x9fff) font))
+
+(setq default-frame-alist '((width . 120)
+                            (height . 80)
+                            (alpha-background . 90)))
 (when (display-graphic-p)
   ;; Frame maximized
   (set-frame-parameter (selected-frame) 'fullscreen 'maximized)

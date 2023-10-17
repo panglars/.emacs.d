@@ -7,9 +7,10 @@
   (aw-leading-char-face ((t (:inherit font-lock-keyword-face :bold t :height 3.0))))
   (aw-mode-line-face ((t (:inherit mode-line-emphasis :bold t))))
   :config
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
-        aw-scope 'frame
-        aw-background t))
+  (setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o)
+        aw-scope 'global
+        aw-background t
+        aw-minibuffer-flag t))
 
 ;; [winner] Restore old window configurations
 (use-package winner
@@ -22,7 +23,7 @@
   (setq winner-boring-buffers
         '("*Completions*" "*Compile-Log*" "*inferior-lisp*" "*Fuzzy Completions*"
           "*Apropos*" "*Help*" "*cvs*" "*Buffer List*" "*Ibuffer*"
-          "*esh command on file*")))
+          "*esh command on file*" "*which-key*")))
 
 (use-package popper
   :defines popper-echo-dispatch-actions
