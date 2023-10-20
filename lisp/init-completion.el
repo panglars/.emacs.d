@@ -1,14 +1,8 @@
-(use-package orderless
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
-
 (use-package corfu
   :straight (corfu :includes (corfu-indexed corfu-quick) :files (:defaults "extensions/corfu-*.el"))
   :custom
   (corfu-auto t)
   (corfu-cycle t)
-  (corfu-count 15)
   (corfu-bar-width 0.5)
   (corfu-quit-at-boundary t)
   (corfu-quit-no-match t)
@@ -21,7 +15,8 @@
               ("C-p" . corfu-previous)
               ("C-j" . corfu-reset)
               ("M-h" . corfu-info-documentation)
-              ("C-g" . corfu-quit))
+              ("C-g" . corfu-quit)
+              ("M-n" . corfu-insert-separator))
   :init
   (global-corfu-mode 1)
   :config
@@ -50,6 +45,9 @@
   (use-package corfu-popupinfo
     :straight nil
     :after corfu
+    :bind (:map corfu-map(("M-p" . corfu-popupinfo-scroll-down)
+                          ("M-n" . corfu-popupinfo-scroll-up)
+                          ("M-d" . corfu-popupinfo-toggle)))
     :config
     (setq corfu-popupinfo-delay '(0.5 . 0.2)
           corfu-popupinfo-max-width 60)
@@ -78,8 +76,14 @@
                                                 'equal))))
 
   ;; (add-hook 'lsp-bridge-mode-hook #'my/set-mixed-capf)
-  (add-hook 'eglot-managed-mode-hook #'my/set-mixed-capf)
   (add-hook 'lsp-completion-mode-hook #'my/set-mixed-capf))
+
+(use-package orderless
+  :init
+  (setq completion-styles '(orderless flex)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+
 
 (use-package vertico
   :straight (vertico :includes (vertico-repeat)
