@@ -2,6 +2,7 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
+
 (use-package corfu
   :straight (corfu :includes (corfu-indexed corfu-quick) :files (:defaults "extensions/corfu-*.el"))
   :custom
@@ -11,8 +12,8 @@
   (corfu-bar-width 0.5)
   (corfu-quit-at-boundary t)
   (corfu-quit-no-match t)
-  (corfu-max-width 100)
-  (corfu-auto-delay 0.1)
+  (corfu-max-width 60)
+  (corfu-auto-delay 0.2)
   (corfu-auto-prefix 2)
   (corfu-preview-current nil)
   :bind (:map corfu-map
@@ -33,6 +34,10 @@
                                text-mode
                                minibuffer-inactive-mode))
   ;; extensions
+  (use-package nerd-icons-corfu
+    :config
+    (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+  ;; Commands to select using Avy-style quick keys.
   (use-package corfu-quick
     :straight nil
     :after corfu
@@ -46,6 +51,8 @@
     :straight nil
     :after corfu
     :config
+    (setq corfu-popupinfo-delay '(0.5 . 0.2)
+          corfu-popupinfo-max-width 60)
     (corfu-popupinfo-mode 1))
   ;; A bunch of completion at point extensions
   (use-package cape
