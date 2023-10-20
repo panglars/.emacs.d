@@ -21,7 +21,7 @@
     :diminish
     :hook (restclient-mode . restclient-test-mode)))
 
-;; Tailwindcss
+(use-package rainbow-mode)
 
 
 (provide 'init-web)

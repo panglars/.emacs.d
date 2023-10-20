@@ -22,20 +22,6 @@
   :init
   (setq lua-indent-level 2))
 
-(use-package yasnippet
-  :diminish yas-minor-mode
-  :hook ((prog-mode org-mode markdown-mode) . yas-minor-mode)
-  :bind
-  (:map yas-minor-mode-map ("C-c N" . yas-expand-from-trigger-key))
-  :custom
-  (yas-use-menu nil)
-  :config
-  (setq yas-inhibit-overlay-modification-protection t)
-  (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
-  )
-
-(use-package yasnippet-snippets)
-
 (use-package quickrun
   :custom
   (quickrun-timeout-seconds 60)

@@ -24,10 +24,10 @@
    dashboard-set-init-info t
    dashboard-startup-banner "~/.emacs.d/logo.svg"
    dashboard-projects-backend 'projectile
-   dashboard-items '((recents  . 15)
+   dashboard-items '((recents  . 10)
                      (bookmarks . 3)
-                     (projects . 8)
-                     (agenda . 5)))
+                     (projects . 5)
+                     (agenda . 7)))
   (dashboard-setup-startup-hook))
 
 ;; TODO add load-session

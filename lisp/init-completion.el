@@ -19,10 +19,7 @@
               ("C-n" . corfu-next)
               ("C-p" . corfu-previous)
               ("C-j" . corfu-reset)
-              ("TAB" . corfu-insert)
-              ([tab] . corfu-insert)
               ("M-h" . corfu-info-documentation)
-              ("RET" . nil)
               ("C-g" . corfu-quit))
   :init
   (global-corfu-mode 1)
@@ -51,14 +48,11 @@
     :config
     (corfu-popupinfo-mode 1))
   ;; A bunch of completion at point extensions
-  (use-package yasnippet-capf
-    :straight (:host github :repo "elken/yasnippet-capf"))
   (use-package cape
     :after corfu
     :config
     (add-to-list 'completion-at-point-functions #'cape-file)
     (add-to-list 'completion-at-point-functions #'cape-keyword)
-    (add-to-list 'completion-at-point-functions #'yasnippet-capf)
     (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 
   (defun my/set-mixed-capf ()
