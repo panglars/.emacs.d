@@ -94,6 +94,7 @@
 
 (use-package yasnippet-snippets)
 
+(use-package consult-yasnippet)
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
