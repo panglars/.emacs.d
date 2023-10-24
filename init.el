@@ -103,6 +103,7 @@
 (require 'init-copilot)
 (require 'init-telega)
 (require 'init-reader)
+(require 'init-intergration)
 ;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

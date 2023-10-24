@@ -164,9 +164,6 @@
     (cl-pushnew item which-key-replacement-alist :test #'equal))
   (set-face-attribute 'which-key-local-map-description-face nil :weight 'bold))
 
-(use-package wakatime-mode
-  :init (global-wakatime-mode))
-
 (use-package bookmark
   :defer t
   :straight (:type built-in))
