@@ -84,13 +84,12 @@
 
 ;; Lang
 (require 'init-org)
-(require 'init-treesit)
+(require 'init-prog)
 (require 'init-python)
 (require 'init-web)
 (require 'init-javascript)
 (require 'init-cxx)
 (require 'init-golang)
-(require 'init-prog)
 (require 'init-rust)
 
 ;; IDE
