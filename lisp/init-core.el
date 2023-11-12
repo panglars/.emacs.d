@@ -58,9 +58,10 @@
          when (font-installed-p font)
          return (set-fontset-font t '(#x4e00 . #x9fff) font))
 
+;; transparent background
 (setq default-frame-alist '((width . 120)
                             (height . 80)
-                            (alpha-background . 90)))
+                            (alpha-background . 95)))
 (when (display-graphic-p)
   ;; Frame maximized
   (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
@@ -176,6 +177,5 @@
 
 
 (use-package sudo-edit)
-
 
 (provide 'init-core)

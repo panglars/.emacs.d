@@ -25,9 +25,9 @@
    dashboard-startup-banner "~/.emacs.d/logo.svg"
    dashboard-projects-backend 'projectile
    dashboard-items '((recents  . 10)
-                     (bookmarks . 3)
+                     (bookmarks . 5)
                      (projects . 5)
-                     (agenda . 7)))
+                     (agenda . 5)))
   (dashboard-setup-startup-hook))
 
 ;; TODO add load-session
@@ -48,10 +48,10 @@
 (use-package page-break-lines
   :hook (after-init . global-page-break-lines-mode))
 
-(use-package parrot
-  :config
-  (parrot-mode)
-  (setq parrot-num-rotations nil))
+;; (use-package parrot
+;;   :config
+;;   (parrot-mode)
+;;   (setq parrot-num-rotations nil))
 
 
 (provide 'init-ui)
