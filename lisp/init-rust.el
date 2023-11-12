@@ -1,6 +1,8 @@
 (use-package rustic
   :config
-  (setq rust-format-on-save t)
+  (setq
+   rustic-indent-method-chain t
+   rust-prettify-symbols-alist nil)
   )
 
 (cl-defmethod lsp-clients-extract-signature-on-hover (contents (_server-id (eql rust-analyzer)))

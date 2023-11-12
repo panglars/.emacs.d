@@ -21,11 +21,6 @@
       :config
       (modern-c++-font-lock-global-mode t))
 
-    (use-package clang-format
-      :commands (clang-format-buffer clang-format-region)
-      :init
-      (setq clang-format-style-option "google"))
-
     (setq c-default-style "horstmann")
     ;; add horstmann style - copy bsd style
     (c-add-style "horstmann"
@@ -49,14 +44,10 @@
     ;; don't change indent of java 'throws' statement in method declaration
     ;;     and other items after the function argument list
     (c-set-offset 'func-decl-cont 'c-lineup-dont-change)
-    ;; always unindent C++ class access labels
-    (c-set-offset  'access-label -4)
     ;; set to NOT Indent Namespaces
     (c-set-offset  'namespace-open 0)
     (c-set-offset  'namespace-close 0)
     (c-set-offset  'innamespace 0)
-    ;; auto format before save by clang-format
-    (add-hook 'before-save-hook #'my/clang-format-region-or-buffer nil t)
     ;; used by ff-find-other-file
     (setq cc-search-directories '("."
                                   "../include"
@@ -69,6 +60,7 @@
                                   "../../../src/*"
                                   "../../src/*/*"
                                   "../../../src/*/*/*"))))
+
 
 (use-package cmake-mode
   :straight (:host github :repo "emacsmirror/cmake-mode" :files (:defaults "*"))
