@@ -83,6 +83,7 @@
   )
 
 (use-package yasnippet
+  :defer t
   :diminish yas-minor-mode
   :hook ((prog-mode org-mode markdown-mode) . yas-minor-mode)
   :custom
@@ -90,9 +91,9 @@
   :config
   (setq yas-inhibit-overlay-modification-protection t)
   (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
+  (use-package yasnippet-snippets)
   )
 
-(use-package yasnippet-snippets)
 
 (use-package consult-yasnippet)
 

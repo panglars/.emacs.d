@@ -61,7 +61,8 @@
 ;; transparent background
 (setq default-frame-alist '((width . 120)
                             (height . 80)
-                            (alpha-background . 95)))
+                                        ; (alpha-background . 95)
+                            ))
 (when (display-graphic-p)
   ;; Frame maximized
   (set-frame-parameter (selected-frame) 'fullscreen 'maximized)

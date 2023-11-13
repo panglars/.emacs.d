@@ -5,6 +5,7 @@
 ;;          (prog-mode . (lambda ()
 ;;                         (unless (derived-mode-p 'text-mode)(format-all-mode) )))
 ;;          (format-all-mode  . format-all-ensure-formatter)))
+
 (use-package apheleia
   :config
   (apheleia-global-mode +1))
