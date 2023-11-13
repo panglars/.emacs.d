@@ -1,4 +1,5 @@
 (use-package rustic
+  :defer t
   :config
   (setq
    rustic-indent-method-chain t

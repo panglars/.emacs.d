@@ -84,7 +84,6 @@
 
 (use-package yasnippet
   :defer t
-  :diminish yas-minor-mode
   :hook ((prog-mode org-mode markdown-mode) . yas-minor-mode)
   :custom
   (yas-use-menu nil)
