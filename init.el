@@ -13,8 +13,8 @@
 ;; a number of other files.
 
 
-(let ((minver "28.2"))
-  (when (version< emacs-version minver)
+(let ((minver "29.1"))
+  (when (version < emacs-version minver)
     (error "Your Emacs is old -- this config requires v%s or higher" minver)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
