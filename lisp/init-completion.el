@@ -15,8 +15,7 @@
               ("C-p" . corfu-previous)
               ("C-j" . corfu-reset)
               ("M-h" . corfu-info-documentation)
-              ("C-g" . corfu-quit)
-              ("M-n" . corfu-insert-separator))
+              ("C-g" . corfu-quit))
   :init
   (global-corfu-mode 1)
   :config
@@ -45,38 +44,41 @@
   (use-package corfu-popupinfo
     :straight nil
     :after corfu
+    :hook (corfu-mode . corfu-popupinfo-mode)
     :bind (:map corfu-map(("M-p" . corfu-popupinfo-scroll-down)
                           ("M-n" . corfu-popupinfo-scroll-up)
                           ("M-d" . corfu-popupinfo-toggle)))
     :config
     (setq corfu-popupinfo-delay '(0.5 . 0.2)
-          corfu-popupinfo-max-width 60)
-    (corfu-popupinfo-mode 1))
-  ;; A bunch of completion at point extensions
-  (use-package cape
-    :after corfu
-    :config
-    (add-to-list 'completion-at-point-functions #'cape-file)
-    (add-to-list 'completion-at-point-functions #'cape-keyword)
-    (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+          corfu-popupinfo-max-width 60
+          corfu-popupinfo-min-height 10)))
 
-  (defun my/set-mixed-capf ()
-    (setq-local completion-category-defaults nil)
-    (setq-local completion-at-point-functions (list
-		                                       (cape-capf-buster
-                                                (cape-super-capf
-                                                 (pcase my-lsp-backend
-                                                   ('lsp-bridge #'lsp-bridge-capf)
-                                                   ('eglot #'eglot-completion-at-point)
-                                                   ('lsp-mode #'lsp-completion-at-point)
-                                                   (_ #'lsp-completion-at-point))
-                                                 #'cape-file
-                                                 #'cape-keyword
-                                                 #'cape-dabbrev)
-                                                'equal))))
+;; A bunch of completion at point extensions
+(use-package cape
+  :after corfu
+  :config
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 
-  ;; (add-hook 'lsp-bridge-mode-hook #'my/set-mixed-capf)
-  (add-hook 'lsp-completion-mode-hook #'my/set-mixed-capf))
+(defun my/set-mixed-capf ()
+  (setq-local completion-category-defaults nil)
+  (setq-local completion-at-point-functions (list
+		                                     (cape-capf-buster
+                                              (cape-super-capf
+                                               (pcase my-lsp-backend
+                                                 ('lsp-bridge #'lsp-bridge-capf)
+                                                 ('eglot #'eglot-completion-at-point)
+                                                 ('lsp-mode #'lsp-completion-at-point)
+                                                 (_ #'lsp-completion-at-point))
+                                               #'cape-file
+                                               #'cape-keyword
+                                               #'cape-dabbrev)
+                                              'equal))))
+
+;; (add-hook 'lsp-bridge-mode-hook #'my/set-mixed-capf)
+(add-hook 'lsp-completion-mode-hook #'my/set-mixed-capf)
+
 
 (use-package orderless
   :init

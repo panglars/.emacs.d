@@ -26,16 +26,21 @@
 
 ;; (use-package yasnippet
 ;;   :defer t
-;;   :hook ((prog-mode org-mode markdown-mode) . yas-minor-mode)
 ;;   :custom
 ;;   (yas-use-menu nil)
 ;;   :config
 ;;   (setq yas-inhibit-overlay-modification-protection t)
 ;;   (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
 ;;   (use-package yasnippet-snippets)
+;;   (use-package consult-yasnippet)
 ;;   )
 ;; 
-;; (use-package consult-yasnippet)
+;; 
+;; (use-package yasnippet-capf
+;;   :load-path "site-lisp"
+;;   :after cape
+;;   :config
+;;   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 ;; Templ.el
 (use-package tempel
@@ -59,7 +64,6 @@
   (add-hook 'text-mode-hook 'tempel-setup-capf))
 
 (use-package tempel-collection)
-
 
 (use-package quickrun
   :custom
