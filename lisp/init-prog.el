@@ -1,41 +1,20 @@
-(setq treesit-language-source-alist
-      '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
-        (c . ("https://github.com/tree-sitter/tree-sitter-c"))
-        (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
-        (css . ("https://github.com/tree-sitter/tree-sitter-css"))
-        (cmake . ("https://github.com/uyha/tree-sitter-cmake"))
-        (csharp     . ("https://github.com/tree-sitter/tree-sitter-c-sharp.git"))
-        (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
-        (elisp . ("https://github.com/Wilfred/tree-sitter-elisp"))
-        (go . ("https://github.com/tree-sitter/tree-sitter-go"))
-        (gomod      . ("https://github.com/camdencheek/tree-sitter-go-mod.git"))
-        (html . ("https://github.com/tree-sitter/tree-sitter-html"))
-        (java       . ("https://github.com/tree-sitter/tree-sitter-java.git"))
-        (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
-        (json . ("https://github.com/tree-sitter/tree-sitter-json"))
-        (lua . ("https://github.com/Azganoth/tree-sitter-lua"))
-        (make . ("https://github.com/alemuller/tree-sitter-make"))
-        (markdown . ("https://github.com/MDeiml/tree-sitter-markdown" nil "tree-sitter-markdown/src"))
-        (ocaml . ("https://github.com/tree-sitter/tree-sitter-ocaml" nil "ocaml/src"))
-        (org . ("https://github.com/milisims/tree-sitter-org"))
-        (python . ("https://github.com/tree-sitter/tree-sitter-python"))
-        (php . ("https://github.com/tree-sitter/tree-sitter-php"))
-        (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src"))
-        (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src"))
-        (ruby . ("https://github.com/tree-sitter/tree-sitter-ruby"))
-        (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
-        (sql . ("https://github.com/m-novikov/tree-sitter-sql"))
-        (vue . ("https://github.com/merico-dev/tree-sitter-vue"))
-        (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))
-        (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))
-        (zig . ("https://github.com/GrayJack/tree-sitter-zig"))))
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 
-
-(use-package treesit
-  :straight (:type built-in)
-  :mode (("\\.js\\'" . js-ts-mode)
-         ("\\.ts\\'" . typescript-ts-mode)
-         ("\\.tsx\\'" . tsx-ts-mode)))
+;; (use-package treesit
+;;   :straight (:type built-in)
+;;   :mode (("\\.js\\'" . js-ts-mode)
+;;          ("\\.ts\\'" . typescript-ts-mode)
+;;          ("\\.tsx\\'" . tsx-ts-mode)))
+;; (setq major-mode-remap-alist
+;;       '((yaml-mode . yaml-ts-mode)
+;;         (bash-mode . bash-ts-mode)
+;;         (json-mode . json-ts-mode)
+;;         (css-mode . css-ts-mode)))
 
 (use-package typst-ts-mode
   :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")
@@ -45,11 +24,42 @@
 (use-package fingertip
   :straight (:host github :repo "manateelazycat/fingertip"))
 
-(setq major-mode-remap-alist
-      '((yaml-mode . yaml-ts-mode)
-        (bash-mode . bash-ts-mode)
-        (json-mode . json-ts-mode)
-        (css-mode . css-ts-mode)))
+;; (use-package yasnippet
+;;   :defer t
+;;   :hook ((prog-mode org-mode markdown-mode) . yas-minor-mode)
+;;   :custom
+;;   (yas-use-menu nil)
+;;   :config
+;;   (setq yas-inhibit-overlay-modification-protection t)
+;;   (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
+;;   (use-package yasnippet-snippets)
+;;   )
+;; 
+;; (use-package consult-yasnippet)
+
+;; Templ.el
+(use-package tempel
+  :init
+
+  ;; Setup completion at point
+  (defun tempel-setup-capf ()
+    ;; Add the Tempel Capf to `completion-at-point-functions'.
+    ;; `tempel-expand' only triggers on exact matches. Alternatively use
+    ;; `tempel-complete' if you want to see all matches, but then you
+    ;; should also configure `tempel-trigger-prefix', such that Tempel
+    ;; does not trigger too often when you don't expect it. NOTE: We add
+    ;; `tempel-expand' *before* the main programming mode Capf, such
+    ;; that it will be tried first.
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions)))
+
+  (add-hook 'conf-mode-hook 'tempel-setup-capf)
+  (add-hook 'prog-mode-hook 'tempel-setup-capf)
+  (add-hook 'text-mode-hook 'tempel-setup-capf))
+
+(use-package tempel-collection)
+
 
 (use-package quickrun
   :custom

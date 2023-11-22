@@ -82,19 +82,5 @@
    )
   )
 
-(use-package yasnippet
-  :defer t
-  :hook ((prog-mode org-mode markdown-mode) . yas-minor-mode)
-  :custom
-  (yas-use-menu nil)
-  :config
-  (setq yas-inhibit-overlay-modification-protection t)
-  (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
-  (use-package yasnippet-snippets)
-  )
-
-
-(use-package consult-yasnippet)
-
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
