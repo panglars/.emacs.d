@@ -43,7 +43,7 @@
   "Check if font with FONT-NAME is available."
   (find-font (font-spec :name font-name)))
 
-;; Specify default font
+;; Specify default Font
 (cl-loop for font in '("Latin Modern Mono" "MonoLisa Nasy" "Source Code Pro" "Courier New" "DejaVu Mono")
          when (font-installed-p font)
          return (set-face-attribute 'default nil

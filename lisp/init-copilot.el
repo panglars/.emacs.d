@@ -1,6 +1,8 @@
 (use-package gptel
   :config
-  (setq gptel-default-mode 'org-mode)
+  (setq gptel-default-mode 'org-mode
+        gptel-model "gpt-4-1106-preview"
+        gptel-stream t)
   (defvar gptel-quick--history nil)
   (defun gptel-quick (prompt)
     (interactive (list (read-string "Ask ChatGPT: " nil gptel-quick--history)))
@@ -55,8 +57,8 @@
                (set-marker end nil)
                (message "Rewrote line. Original line saved to kill-ring."))))))))
   :bind (
+         ("C-c I" . gptel-quick)
          ("C-c i s" . gptel-send)
-         ("C-c i q" . gptel-quick)
          ("C-c i r" . gptel-rewrite-and-replace)
          ("C-c i b" . gptel))
   )
