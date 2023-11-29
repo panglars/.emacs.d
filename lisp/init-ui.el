@@ -1,11 +1,16 @@
+(use-package page-break-lines
+  :init
+  (set-fontset-font "fontset-default"
+                    (cons page-break-lines-char page-break-lines-char)
+                    "CMU Typewriter Text"))
+
 (use-package dashboard
   :diminish (dashboard-mode page-break-lines-mode)
   :hook (dashboard-mode . (lambda ()
                             ;; No title
                             (setq-local frame-title-format nil)
-                            ;; Enable `page-break-lines-mode'
-                            (when (fboundp 'page-break-lines-mode)
-                              (page-break-lines-mode 1))))
+                            (when (fboundp 'page-break-lines-mode)(page-break-lines-mode 1))
+                            ))
   :bind (("<f2>" . dashboard-open)
          :map dashboard-mode-map
          (("n" . dashboard-next-line)
@@ -22,7 +27,8 @@
    dashboard-set-navigator t
    dashboard-page-separator "\n\f\n"
    dashboard-set-init-info t
-   dashboard-startup-banner "~/.emacs.d/logo.svg"
+   ;; dashboard-startup-banner "~/.emacs.d/logo.svg"
+   dashboard-startup-banner 'logo
    dashboard-projects-backend 'projectile
    dashboard-items '((recents  . 10)
                      (bookmarks . 5)
@@ -45,8 +51,6 @@
                        lsp-ui-imenu-mode
                        pdf-annot-list-mode) . hide-mode-line-mode)))
 
-(use-package page-break-lines
-  :hook (after-init . global-page-break-lines-mode))
 
 ;; (use-package parrot
 ;;   :config
