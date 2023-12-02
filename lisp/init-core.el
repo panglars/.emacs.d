@@ -50,7 +50,7 @@
                                     :font font
                                     :height 140))
 ;; Specify font for all unicode characters
-(cl-loop for font in '("Iosevka Nerd Font Mono" "Apple Color Emoji" "Symbola")
+(cl-loop for font in '("FiraCode Nerd Font Mono" "Apple Color Emoji" "Symbola")
          when (font-installed-p font)
          return(set-fontset-font t 'unicode font nil 'prepend))
 ;; Specify font for Chinese characters

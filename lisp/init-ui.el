@@ -1,8 +1,9 @@
 (use-package page-break-lines
   :init
-  (set-fontset-font "fontset-default"
-                    (cons page-break-lines-char page-break-lines-char)
-                    "CMU Typewriter Text"))
+;;   (set-fontset-font "fontset-default"
+;;                     (cons page-break-lines-char page-break-lines-char)
+;;                     "CMU Typewriter Text")
+  )
 
 (use-package dashboard
   :diminish (dashboard-mode page-break-lines-mode)
