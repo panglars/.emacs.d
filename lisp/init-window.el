@@ -83,6 +83,7 @@
           "\\*lsp-help\\*$" "\\*lsp session\\*$"
           "\\*quickrun\\*$"
           "\\*gptel-quick\\*$"
+          "\\*apheleia-apheleia-npx-log\\*$"
           "\\*tldr\\*$"
           "\\*vc-.*\\*$"
           "^\\*elfeed-entry\\*$"

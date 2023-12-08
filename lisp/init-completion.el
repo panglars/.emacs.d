@@ -61,25 +61,6 @@
   (add-to-list 'completion-at-point-functions #'cape-keyword)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 
-(defun my/set-mixed-capf ()
-  (setq-local completion-category-defaults nil)
-  (setq-local completion-at-point-functions (list
-		                                     (cape-capf-buster
-                                              (cape-super-capf
-                                               (pcase my-lsp-backend
-                                                 ('lsp-bridge #'lsp-bridge-capf)
-                                                 ('eglot #'eglot-completion-at-point)
-                                                 ('lsp-mode #'lsp-completion-at-point)
-                                                 (_ #'lsp-completion-at-point))
-                                               #'cape-file
-                                               #'cape-keyword
-                                               #'cape-dabbrev)
-                                              'equal))))
-
-;; (add-hook 'lsp-bridge-mode-hook #'my/set-mixed-capf)
-(add-hook 'lsp-completion-mode-hook #'my/set-mixed-capf)
-
-
 (use-package orderless
   :init
   (setq completion-styles '(orderless flex)

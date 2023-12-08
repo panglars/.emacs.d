@@ -10,17 +10,19 @@
      ("P" "~/Pictures" "Pictures")
 
      ("c" "~/Codes" "Codes")
-     ("p" "~/Codes/Projects/" "Project")
-     ("r" "~/Codes/Resources/" "Resource")
-     ("a" "~/Codes/Areas/" "Areas of responsibility")
-     ("A" "~/Codes/Archives/" "Archive")
+     ("p" "~/Codes/Project/" "Project")
+     ("r" "~/Codes/Repo/" "Repo")
+     ("o" "~/Documents/Org/" "Org")
+     ("n" "~/Documents/Notes/" "Notes")
 
+     ("e" "/etc/" "etc")
+     ("u" "/usr/" "usr")
+     ("v" "/var/" "var")
+     
      ("t" "~/.local/share/Trash/files" "TrashCan")
      ("e" "~/.emacs.d" ".emacs.d")
      ("f" "~/.config" ".config")
      ("l" "~/.local/share" ".local/share")
-     ("o" "~/Syncfile/Org/" "Org")
-     ("n" "~/Syncfile/Org/Notes" "Notes")
      ))
   :config
   ;; (dirvish-peek-mode) ; Preview files in minibuffer

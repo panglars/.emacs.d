@@ -147,7 +147,7 @@
          ("C-c n t" . org-roam-tag-add)
          ("C-c n y" . org-roam-dailies-capture-yesterday))
   :custom
-  (org-roam-directory (file-truename (concat my-org-directory "/main")))
+  (org-roam-directory (file-truename my-org-roam-directory))
   :config
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:15}" 'face 'org-tag)))
   (setq
@@ -161,23 +161,6 @@
            :target (file+head "%<%Y%m>-${slug}.org"
                               "#+title: ${title}\n")
            :unnarrowed t)
-          ("p" "Projects" plain "%?"
-           :target (file+head "projets/%<%Y%m>-${slug}.org"
-                              "#+title: ${title}\n")
-           :unnarrowed t)
-          ("a" "Area of Responsibility" plain "%?"
-           :target (file+head "area/%<%Y%m>-${slug}.org"
-                              "#+title: ${title}\n")
-           :unnarrowed t)
-          ("r" "Resource" plain "%?"
-           :target (file+head "resource/%<%Y%m>-${slug}.org"
-                              "#+title: ${title}\n")
-           :unnarrowed t)
-          ("c" "Archive" plain "%?"
-           :target (file+head "archive/%<%Y%m>-${slug}.org"
-                              "#+title: ${title}\n")
-           :unnarrowed t)
-
           ))
   (org-roam-db-autosync-mode))
 
