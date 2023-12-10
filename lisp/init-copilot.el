@@ -1,4 +1,5 @@
 (use-package copilot
+  :defer t
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-completion-map

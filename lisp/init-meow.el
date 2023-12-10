@@ -85,6 +85,7 @@
    '("R" . meow-swap-grab)
    '("S" . save-buffer)
    '("t" . meow-till)
+   '("T" . dirvish-side)
    '("u" . undo-only)
    '("U" . undo-redo)
    '("v" . meow-search)

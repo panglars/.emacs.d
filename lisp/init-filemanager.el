@@ -1,3 +1,4 @@
+
 (use-package dirvish
   :init
   (dirvish-override-dired-mode)
@@ -40,7 +41,7 @@
   (define-key dirvish-mode-map (kbd "<mouse-3>") 'dired-mouse-find-file)
   :bind ; Bind `dirvish|dirvish-side|dirvish-dwim' as you see fit
   (("C-c d" . dirvish)
-   ("C-c D" . dirvish-side)
+   ("C-c D" . dirvish-fd)
    :map dirvish-mode-map ; Dirvish inherits `dired-mode-map'
    ("b"   . dirvish-quick-access)
    ("f"   . dirvish-file-info-menu)
@@ -52,6 +53,7 @@
    ("h"   . dirvish-history-jump) ; remapped `describe-mode'
    ("s"   . dirvish-quicksort)    ; remapped `dired-sort-toggle-or-edit'
    ("v"   . dirvish-vc-menu)      ; remapped `dired-view-file'
+   ("T"   . dirvish-side)
    ("TAB" . dirvish-subtree-toggle)
    ("M-f" . dirvish-history-go-forward)
    ("M-b" . dirvish-history-go-backward)
