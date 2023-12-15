@@ -87,10 +87,10 @@
 (require 'init-prog)
 (require 'init-python)
 (require 'init-web)
-(require 'init-javascript)
+;; (require 'init-javascript)
 (require 'init-cxx)
 (require 'init-golang)
-(require 'init-rust)
+;; (require 'init-rust)
 
 ;; IDE
 (require 'init-project)

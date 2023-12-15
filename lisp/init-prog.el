@@ -10,6 +10,10 @@
   :custom
   (typst-ts-mode-watch-options "--open"))
 
+;; CSV highlight
+(use-package rainbow-csv
+  :straight (:host github :repo "emacs-vs/rainbow-csv"))
+
 (use-package fingertip
   :straight (:host github :repo "manateelazycat/fingertip"))
 
@@ -36,6 +40,7 @@
   (setq yas-inhibit-overlay-modification-protection t)
   (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
   )
+
 
 ;; (use-package yasnippet-capf
 ;;   :load-path "site-lisp"

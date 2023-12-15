@@ -1,6 +1,6 @@
 ;; CSS
-(use-package css-mode
-  :init (setq css-indent-offset 2))
+;; (use-package css-mode
+;;   :init (setq css-indent-offset 2))
 
 ;; Major mode for editing web templates
 (use-package web-mode
