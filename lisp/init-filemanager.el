@@ -34,6 +34,7 @@
         '(all-the-icons file-size subtree-state vc-state git-msg))
   ;;   '(all-the-icons file-time file-size subtree-state vc-state git-msg))
   (setq delete-by-moving-to-trash t)
+  (setq dirvish-default-layout '(0 0.4 0.6))
   (setq dired-listing-switches
         "-l --almost-all --human-readable --group-directories-first --no-group")
   (define-key dirvish-mode-map (kbd "<mouse-1>") 'dirvish-subtree-toggle-or-open)
