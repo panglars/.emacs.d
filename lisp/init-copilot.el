@@ -13,9 +13,13 @@
 
 (use-package gptel
   :config
-  (setq gptel-default-mode 'org-mode
-        gptel-model "gpt-4-1106-preview"
-        gptel-stream t)
+  (setq gptel-default-mode 'org-mode)
+  (setq-default gptel-backend(gptel-make-openai
+                              "GPTAPI.US"
+                              :host "api.gptapi.us"
+                              :models '("gpt-4-1106-preview")
+                              :stream t
+                              ))
   (defvar gptel-quick--history nil)
   (defun gptel-quick (prompt)
     (interactive (list (read-string "Ask ChatGPT: " nil gptel-quick--history)))
