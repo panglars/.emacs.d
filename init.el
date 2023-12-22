@@ -58,6 +58,12 @@
 (setq byte-compile-warnings '(cl-functions))
 (straight-use-package 'use-package)
 
+
+;; Load custom file
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 ;; Load core config
 (require 'init-const)
 (require 'init-base)

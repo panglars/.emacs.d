@@ -8,12 +8,12 @@
   (require 'benchmark-init-modes)
   (add-hook 'after-init-hook #'benchmark-init/deactivate))
 
+
 ;; Don't litter emacs directory
 (use-package no-littering
   :init
   (setq no-littering-etc-directory (expand-file-name "etc/" my-cache-dir)
-        no-littering-var-directory (expand-file-name "var/" my-cache-dir))
-  (setq custom-file (no-littering-expand-etc-file-name "custom.el")))
+        no-littering-var-directory (expand-file-name "var/" my-cache-dir)))
 
 (use-package popup)
 (use-package posframe)

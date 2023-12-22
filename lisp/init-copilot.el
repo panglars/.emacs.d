@@ -7,7 +7,10 @@
               ("M-j" . copilot-clear-overlay)
               ("C-c j n" . copilot-next-completion)
               ("C-c j p" . copilot-previous-completion))
+  :init
+  (setq copilot--indent-warning-printed-p t)
   )
+
 (use-package gptel
   :config
   (setq gptel-default-mode 'org-mode
