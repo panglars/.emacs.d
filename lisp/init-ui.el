@@ -33,8 +33,7 @@
    dashboard-projects-backend 'projectile
    dashboard-items '((recents  . 10)
                      (bookmarks . 5)
-                     (projects . 5)
-                     (agenda . 5)))
+                     (projects . 8)))
   (dashboard-setup-startup-hook))
 
 ;; TODO add load-session

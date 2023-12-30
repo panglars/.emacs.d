@@ -7,14 +7,17 @@
   (setq org-modules '(org-habit)
         org-directory my-org-directory
         org-capture-templates
-        `(("p" "Projects" entry (file+headline ,(concat org-directory "/todo.org") "Projects")
-           "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
-          ("a" "Area of Responsibility" entry (file+headline ,(concat org-directory "/todo.org") "Area")
+        `(("t" "Task" entry (file+headline ,(concat org-directory "/todo.org") "Task")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
-          ("r" "Resource" entry (file+headline ,(concat org-directory "/todo.org") "Resource")
-           "* TODO %?\n" :empty-lines 1)
+          ("w" "Work" entry (file+headline ,(concat org-directory "/todo.org") "Task")
+           "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
           ("m" "Misc" entry (file+headline ,(concat org-directory "/todo.org") "Misc")
-           "* TODO %?\n" :empty-lines 1))
+           "* TODO %?\n" :empty-lines 1)
+          ("r" "Resource" entry (file+headline ,(concat org-directory "/inbox.org") "Resource")
+           "* TODO %?\n" :empty-lines 1)
+          ("n" "Note" entry (file+headline ,(concat org-directory "/inbox.org") "Note")
+           "* %? %^G\n%U" :empty-lines 1)
+          )
         org-todo-keywords
         '((sequence "TODO(t)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
         org-todo-keyword-faces '(("HANGUP" . warning))
@@ -167,13 +170,6 @@
 
 (use-package org-roam-ui
   :bind ("C-c n u" . org-roam-ui-mode))
-
-;; (use-package org-noter
-;;   :straight
-;;   (:repo "org-noter/org-noter"
-;;          :host github
-;;          :type git
-;;          :files ("*.el" "modules/*.el")))
 
 (defun my/remap-mode (mode)
   "make org-src-get-lang-mode respect major-mode-remap-alist"

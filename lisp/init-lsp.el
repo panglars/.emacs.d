@@ -4,27 +4,32 @@
   (lsp-completion-provider :none)
   :bind
   ("C-c l n" . lsp-rename)
-  ("C-c l D"	. lsp-ui-peek-find-definitions)
-  ("C-c l I"	. lsp-ui-peek-find-implementation)
-  ("C-c l R"	. lsp-ui-peek-find-references)
   ("C-c l s"	. lsp-ui-peek-find-workspace-symbol)
   ("C-c l d"	. lsp-find-definition)
   ("C-c l i"	. lsp-find-implementation)
   ("C-c l r"	. lsp-find-references)
+  ("C-c l h"    . lsp-describe-thing-at-point)
+  ("C-c l f"	. lsp-format-buffer)
+  ("C-c l F"	. lsp-organize-imports)
+  ("C-c l a"	. lsp-execute-code-action)
+  ("C-c l m"	. lsp-ui-imenu)
+  ("C-c l M"	. lsp-ui-imenu--kill)
+  ("C-c l S"	. lsp-ui-sideline-mode)
   ("C-c l t"	. lsp-find-type-definition)
+  ("C-c l D"	. lsp-ui-peek-find-definitions)
+  ("C-c l I"	. lsp-ui-peek-find-implementation)
+  ("C-c l R"	. lsp-ui-peek-find-references)
+
   :init
   (setq lsp-keymap-prefix "C-c e")
   (defun my/lsp-mode-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(orderless))) ;; Configure orderless
-  (setq read-process-output-max (* 4 1024 1024)) ;; 1MB
   (setq lsp-signature-auto-activate nil
         lsp-headerline-breadcrumb-enable nil
         lsp-eldoc-render-all nil
         lsp-signature-render-documentation nil
-        ;; Rust
-        ;;lsp-rust-analyzer-cargo-watch-enable nil
-        rustic-lsp-server 'rust-analyzer
+        
         ;; Go
         lsp-gopls-hover-kind "NoDocumentation"
         lsp-gopls-use-placeholders t

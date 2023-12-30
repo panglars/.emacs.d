@@ -1,3 +1,5 @@
+(setq read-process-output-max (* 4 1024 1024)) 
+
 ;; Transparent title bar
 (when (featurep 'ns)
   (push '(ns-transparent-titlebar . t) default-frame-alist))
