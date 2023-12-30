@@ -1,6 +1,3 @@
-(setq user-full-name "PangLAN"
-      user-mail-address "i@yinn.party")
-
 ;; Transparent title bar
 (when (featurep 'ns)
   (push '(ns-transparent-titlebar . t) default-frame-alist))
@@ -17,10 +14,13 @@
 
 ;; No backup files
 (setq make-backup-files nil
-      auto-save-default t)
+      auto-save-default nil)
 
 ;; No Lock files
 (setq create-lockfiles nil)
+
+;; Always load the newest file
+(setq load-prefer-newer t)
 
 ;; Move to trash when delete file
 (setq-default  delete-by-moving-to-trash t)
@@ -40,15 +40,23 @@
 
 (setq mouse-yank-at-point t)
 
+;; No gc for font caches
+(setq inhibit-compacting-font-caches t)
+
+;; No annoying bell
 (setq ring-bell-function 'ignore)
 
+;; No eyes distraction
+(setq blink-cursor-mode nil)
+
 ;; Suppress GUI features and more
-(setq inhibit-startup-screen t
-      inhibit-startup-message t
-      inhibit-startup-buffer-menu t
-      inhibit-startup-echo-area-message t
+(setq use-file-dialog nil
+      use-dialog-box nil
+      inhibit-x-resources t
       inhibit-default-init t
-      inhibit-x-resources t)
+      inhibit-startup-screen t
+      inhibit-startup-message t
+      inhibit-startup-buffer-menu t)
 
 ;; Optimize for very long lines
 (setq bidi-paragraph-direction 'left-to-right
