@@ -14,6 +14,10 @@
 (use-package rainbow-csv
   :straight (:host github :repo "emacs-vs/rainbow-csv"))
 
+(use-package devdocs
+  :bind
+  ("C-c S" . devdocs-lookup))
+
 (use-package fingertip
   :straight (:host github :repo "manateelazycat/fingertip"))
 
