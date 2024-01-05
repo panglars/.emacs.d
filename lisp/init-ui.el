@@ -31,7 +31,7 @@
    ;; dashboard-startup-banner "~/.emacs.d/logo.svg"
    dashboard-startup-banner 'logo
    dashboard-projects-backend 'projectile
-   dashboard-items '((recents  . 10)
+   dashboard-items '((recents  . 12)
                      (bookmarks . 5)
                      (projects . 8)))
   (dashboard-setup-startup-hook))
