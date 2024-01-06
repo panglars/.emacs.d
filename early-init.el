@@ -1,12 +1,3 @@
-;;; early-init.el --- Emacs 27+ pre-initialisation config -*- lexical-binding: t; -*-
-
-;;; Commentary:
-
-;; Emacs 27+ loads this file before (normally) calling
-;; `package-initialize'.  We use this file to suppress that automatic
-;; behaviour so that startup is consistent across Emacs versions.
-
-;;; Code:
 
 ;; No need of package-quickstart since we are using straight.el as package manager
 (setq package-quickstart nil)
@@ -31,4 +22,12 @@
 
 ;; Make UTF-8 the default coding system:
 (set-language-environment "UTF-8")
+
+;; Adjust garbage collection thresholds during startup, and thereafter
+(let ((normal-gc-cons-threshold (* 20 1024 1024))
+      (init-gc-cons-threshold (* 256 1024 1024)))
+  (setq gc-cons-threshold init-gc-cons-threshold)
+  (add-hook 'emacs-startup-hook
+            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+
 

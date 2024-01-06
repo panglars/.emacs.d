@@ -14,27 +14,19 @@
 (setq select-enable-clipboard t)
 (setq select-active-regions 'only)
 
-;; No backup files
+;; No backup files,No lock files 
 (setq make-backup-files nil
-      auto-save-default nil)
+      auto-save-default nil
+      create-lockfiles nil)
 
-;; No Lock files
-(setq create-lockfiles nil)
+;; Make native compilation silent
+(setq native-compile-prune-cache t)
 
 ;; Always load the newest file
 (setq load-prefer-newer t)
 
 ;; Move to trash when delete file
 (setq-default  delete-by-moving-to-trash t)
-
-;; Remove tool bar
-(tool-bar-mode -1)
-
-;; Remove menu bar
-(menu-bar-mode -1)
-
-;; Remove scroll bar
-(scroll-bar-mode -1)
 
 (global-visual-line-mode 1)
 

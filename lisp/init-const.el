@@ -12,4 +12,8 @@
   "Org roam file"
   :type '(string))
 
+(defcustom my-emacs-load-icons t
+  "user must do this manually with M-x nerd-icons-install-fonts."
+  :type 'boolean)
+
 (provide 'init-const)

@@ -8,8 +8,7 @@
   (require 'benchmark-init-modes)
   (add-hook 'after-init-hook #'benchmark-init/deactivate))
 
-
-;; Don't litter emacs directory
+                                        ; Don't litter emacs directory
 (use-package no-littering
   :init
   (setq no-littering-etc-directory (expand-file-name "etc/" my-cache-dir)
@@ -31,12 +30,13 @@
 
 (use-package solaire-mode)
 
-(use-package doom-themes)
+;; (use-package doom-themes)
 (use-package modus-themes)
+(use-package ef-themes)
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
-  (load-theme 'modus-operandi-tinted t))
+  (load-theme 'ef-spring t))
 
 
 (defun font-installed-p (font-name)
