@@ -45,7 +45,8 @@
    ("C-c D" . dirvish-fd)
    :map dirvish-mode-map ; Dirvish inherits `dired-mode-map'
    ("b"   . dirvish-quick-access)
-   ("f"   . dirvish-file-info-menu)
+   ("f"   . dired-isearch-filenames)
+   ("F"   . dirvish-file-info-menu)
    ("y"   . dirvish-yank-menu)
    ("N"   . dirvish-narrow)
    ("e"   . dired-up-directory)

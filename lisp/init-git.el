@@ -27,5 +27,13 @@
 ;; Git modes
 (use-package git-modes)
 
+(use-package blamer
+  :straight (:host github :repo "artawower/blamer.el")
+  :bind (("C-c l g" . blamer-show-posframe-commit-info))
+  :custom
+  (blamer-idle-time 0.1)
+  (blamer-min-offset 40)
+  (blamer-author-formatter "  ✎ %s ")
+  )
 
 (provide 'init-git)
