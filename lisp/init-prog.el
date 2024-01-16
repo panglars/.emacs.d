@@ -2,6 +2,7 @@
   :custom
   (treesit-auto-install 'prompt)
   :config
+  (delete '(c cpp csharp) treesit-auto-langs)
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
@@ -9,6 +10,8 @@
   :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")
   :custom
   (typst-ts-mode-watch-options "--open"))
+
+(use-package lua-mode)
 
 ;; CSV highlight
 (use-package rainbow-csv
@@ -34,8 +37,11 @@
   (yas-use-menu nil)
   :config
   (add-hook 'prog-mode-hook #'yas-minor-mode)
-  (add-hook 'conf-mode-hook #'yas-minor-mode)
-
+  (add-hook 'yas-keymap-disable-hook
+            (lambda ()
+              (and (frame-live-p corfu--frame)
+                   (frame-visible-p corfu--frame))))
+  
   (use-package yasnippet-snippets)
   (use-package consult-yasnippet
     :bind

@@ -33,4 +33,12 @@
     :unless (display-graphic-p)
     :hook (flycheck-mode . flycheck-popup-tip-mode)))
 
+(use-package xref
+  :straight (:type built-in)
+  :hook ((xref-after-return xref-after-jump) . recenter)
+  :custom
+  (xref-search-program (cond ((executable-find "rg") 'ripgrep)
+                             ((executable-find "ugrep") 'ugrep)
+                             (t 'grep)))
+  )
 (provide 'init-flycheck)

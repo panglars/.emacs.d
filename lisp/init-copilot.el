@@ -17,7 +17,10 @@
   (setq-default gptel-backend(gptel-make-openai
                               "GPTAPI.US"
                               :host "api.gptapi.us"
+                              :protocol "https"
                               :models '("gpt-4-1106-preview")
+                              :endpoint "/v1/chat/completions"
+                              :key #'gptel-api-key 
                               :stream t
                               ))
   (defvar gptel-quick--history nil)

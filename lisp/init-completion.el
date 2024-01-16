@@ -6,7 +6,7 @@
   (corfu-bar-width 0.5)
   (corfu-quit-at-boundary t)
   (corfu-quit-no-match t)
-  (corfu-max-width 60)
+  (corfu-max-width 100)
   (corfu-auto-delay 0.2)
   (corfu-auto-prefix 2)
   (corfu-preview-current nil)
