@@ -20,18 +20,16 @@
 
   (use-package flycheck-posframe
     :if (display-graphic-p)
-    :custom-face
-    (flycheck-posframe-face ((t (:foreground ,(face-foreground 'success)))))
-    (flycheck-posframe-info-face ((t (:foreground ,(face-foreground 'success)))))
-    (flycheck-posframe-background-face ((t (:inherit tooltip))))
-    (flycheck-posframe-border-face ((t (:inherit font-lock-comment-face))))
+    ;;     :custom-face
+    ;;     (flycheck-posframe-face ((t (:foreground ,(face-foreground 'success)))))
+    ;;     (flycheck-posframe-info-face ((t (:foreground ,(face-foreground 'success)))))
+    ;;     (flycheck-posframe-background-face ((t (:inherit tooltip))))
+    ;;     (flycheck-posframe-border-face ((t (:inherit font-lock-comment-face))))
     :hook (flycheck-mode . flycheck-posframe-mode)
     :init
-    (setq flycheck-posframe-border-width 3))
-
-  (use-package flycheck-popup-tip
-    :unless (display-graphic-p)
-    :hook (flycheck-mode . flycheck-popup-tip-mode)))
+    (setq flycheck-posframe-border-width 1)
+    (setq flycheck-posframe-position 'window-bottom-left-corner)
+    ))
 
 (use-package xref
   :straight (:type built-in)
