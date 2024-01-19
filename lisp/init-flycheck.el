@@ -31,6 +31,8 @@
     (setq flycheck-posframe-position 'window-bottom-left-corner)
     ))
 
+
+
 (use-package xref
   :straight (:type built-in)
   :hook ((xref-after-return xref-after-jump) . recenter)
