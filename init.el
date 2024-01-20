@@ -84,7 +84,7 @@
 (require 'init-prog)
 (require 'init-python)
 (require 'init-web)
-;; (require 'init-javascript)
+(require 'init-fontend)
 (require 'init-cxx)
 (require 'init-golang)
 ;; (require 'init-rust)

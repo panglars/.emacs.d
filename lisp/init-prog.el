@@ -2,9 +2,8 @@
   :custom
   (treesit-auto-install 'prompt)
   :config
-  (delete '(c cpp csharp) treesit-auto-langs)
-  (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+
 
 (use-package typst-ts-mode
   :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")
@@ -50,7 +49,6 @@
   (setq yas-inhibit-overlay-modification-protection t)
   (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
   )
-
 
 ;; (use-package yasnippet-capf
 ;;   :load-path "site-lisp"

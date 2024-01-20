@@ -36,7 +36,7 @@
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
-  (load-theme 'ef-spring t))
+  (load-theme 'ef-maris-dark t))
 
 
 (defun font-installed-p (font-name)

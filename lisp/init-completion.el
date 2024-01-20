@@ -50,7 +50,6 @@
                           ("M-d" . corfu-popupinfo-toggle)))
     :config
     (setq corfu-popupinfo-delay '(0.5 . 0.2)
-          corfu-popupinfo-max-width 60
           corfu-popupinfo-min-height 10)))
 
 ;; A bunch of completion at point extensions
@@ -67,7 +66,7 @@
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
-
+;;vertical interactive completion 
 (use-package vertico
   :straight (vertico :includes (vertico-repeat)
                      :files (:defaults "extensions/vertico-*.el"))
