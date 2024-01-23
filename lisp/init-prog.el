@@ -1,9 +1,11 @@
+(use-package vlf)
+
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
   :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
-
 
 (use-package typst-ts-mode
   :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")

@@ -44,11 +44,11 @@
   (find-font (font-spec :name font-name)))
 
 ;; Specify default Font
-(cl-loop for font in '("Latin Modern Mono" "MonoLisa Nasy" "Source Code Pro" "Courier New" "DejaVu Mono")
+(cl-loop for font in '("Iosevka Nerd Font Light" "Latin Modern Mono" "MonoLisa Nasy" "Source Code Pro" "Courier New" "DejaVu Mono")
          when (font-installed-p font)
          return (set-face-attribute 'default nil
                                     :font font
-                                    :height 140))
+                                    :height 150))
 ;; Specify font for all unicode characters
 (cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
          when (font-installed-p font)
