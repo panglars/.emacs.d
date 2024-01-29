@@ -1,5 +1,5 @@
 (use-package lsp-mode
-  ;;     :defer t
+  :defer t
   :custom
   (lsp-completion-provider :none)
   :bind
@@ -69,20 +69,20 @@
     :init
     (setq lsp-tailwindcss-add-on-mode t))
 
-  (use-package dap-mode
-    :bind
-    (:map dap-mode-map
-          (("<f12>" . dap-debug)
-           ("<f8>" . dap-continue)
-           ("<f6>" . dap-next)
-           ("<f7>" . dap-breakpoint-toggle)))
-    :config
-    ;; Enabling only some features
-    (setq dap-auto-configure-features '(sessions locals controls tooltip))
-    (require 'dap-node)
-    (dap-node-setup) ;; Automatically installs Node debug adapter if needed
-    (require 'dap-chrome)
-    (dap-chrome-setup))
+  ;;   (use-package dap-mode
+  ;;     :bind
+  ;;     (:map dap-mode-map
+  ;;           (("<f12>" . dap-debug)
+  ;;            ("<f8>" . dap-continue)
+  ;;            ("<f6>" . dap-next)
+  ;;            ("<f7>" . dap-breakpoint-toggle)))
+  ;;     :config
+  ;;     ;; Enabling only some features
+  ;;     (setq dap-auto-configure-features '(sessions locals controls tooltip))
+  ;;     (require 'dap-node)
+  ;;     (dap-node-setup) ;; Automatically installs Node debug adapter if needed
+  ;;     (require 'dap-chrome)
+  ;;     (dap-chrome-setup))
   )
 
 (provide 'init-lsp)
