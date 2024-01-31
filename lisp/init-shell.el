@@ -6,15 +6,9 @@
   (use-package vterm
     :init (setq vterm-always-compile-module t)
     :bind (:map vterm-mode-map
-                ("<f10>" . multi-vterm-dedicated-toggle)
-                ("<f9>" . multi-vterm-project)))
-
-  (use-package multi-vterm
-    :init
-    (setq multi-vterm-dedicated-window-height-percent 40)
-    :bind (("<f10>" . multi-vterm-dedicated-toggle)
-           ("<f9>" . multi-vterm-project))
-    :custom (multi-vterm-buffer-name "vterm")
-    ))
+                ("<f10>" . vterm-toggle)
+                ([(control return)] . vterm-toggle-insert-cd)))
+  (use-package vterm-toggle
+    :bind (("<f10>" . vterm-toggle))))
 
 (provide 'init-shell)
