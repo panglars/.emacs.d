@@ -25,6 +25,8 @@
 (use-package fingertip
   :straight (:host github :repo "manateelazycat/fingertip"))
 
+(use-package rmsbolt)
+
 (use-package quickrun
   :custom
   (quickrun-timeout-seconds 60)

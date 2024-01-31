@@ -43,14 +43,19 @@
   :init
   (setq doom-modeline-height 25
         doom-modeline-window-width-limit 100
-        doom-modeline-minor-modes nil))
 
+        doom-modeline-minor-modes nil))
 (use-package hide-mode-line
   :hook (((eshell-mode shell-mode
                        term-mode
                        lsp-ui-imenu-mode
                        pdf-annot-list-mode) . hide-mode-line-mode)))
 
+(use-package tab-bar
+  :straight (:type built-in)
+  :hook (after-init . tab-bar-mode)
+  :custom
+  (tab-bar-history-buttons-show nil))
 
 ;; (use-package parrot
 ;;   :config

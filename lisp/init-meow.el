@@ -4,7 +4,7 @@
   :config
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-colemak)
   (setq meow-expand-hint-remove-delay 3)
-  (setq meow-use-clipboard t)
+  (setq meow-use-clipboard nil)
   (meow-motion-overwrite-define-key
    '("n" . meow-next)
    '("p" . meow-prev)
@@ -22,7 +22,7 @@
    '("8" . pop-to-buffer)
    '("9" . bury-buffer)
    '("0" . unbury-buffer)
-   '("B" . ibuffer)
+   '("B" . consult-project-buffer)
    '("C" . org-capture)
    '("G" . magit)
    '("o" . ace-window)
