@@ -1,5 +1,5 @@
 (use-package telega
-  :straight (telega :type git :host github :repo "zevlg/telega.el" :branch "release-0.8.0")
+  :straight (telega :type git :host github :repo "zevlg/telega.el" :branch "master")
   :init
   (add-hook 'telega-load-hook
 	        (lambda ()
