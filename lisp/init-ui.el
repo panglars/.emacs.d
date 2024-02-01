@@ -55,7 +55,9 @@
   :straight (:type built-in)
   :hook (after-init . tab-bar-mode)
   :custom
-  (tab-bar-history-buttons-show nil))
+  (tab-bar-history-buttons-show nil)
+  :bind (("C-c {" . tab-bar-switch-to-prev-tab)
+         ("C-c }" . tab-bar-switch-to-next-tab)))
 
 ;; (use-package parrot
 ;;   :config
