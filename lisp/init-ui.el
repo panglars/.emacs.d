@@ -15,8 +15,8 @@
   :bind (("<f2>" . dashboard-open)
          :map dashboard-mode-map
          (("n" . dashboard-next-line)
-          ("p" . dashboard-previous-line)
           ("N" . dashboard-next-section)
+          ("p" . dashboard-previous-line)
           ("F" . dashboard-previous-section)
           ("o" . dashboard-jump-to-projects)))
   :init
@@ -56,8 +56,29 @@
   :hook (after-init . tab-bar-mode)
   :custom
   (tab-bar-history-buttons-show nil)
-  :bind (("C-c {" . tab-bar-switch-to-prev-tab)
-         ("C-c }" . tab-bar-switch-to-next-tab)))
+  :bind (("C-c n n" . tab-new)
+         ("C-c n x" . tab-close))
+  :config
+  (setq tab-bar-separator ""
+        tab-bar-tab-name-truncated-max 20
+        tab-bar-auto-width nil
+        tab-bar-close-button-show nil
+        tab-bar-tab-hints t)
+  (setq tab-bar-tab-name-format-function
+        (lambda (tab i)
+          (let ((face (funcall tab-bar-tab-face-function tab)))
+            (concat
+             (propertize " " 'face face)
+             (propertize (number-to-string i) 'face `(:inherit ,face :weight ultra-bold :underline t))
+             (propertize (concat " " (alist-get 'name tab) " ") 'face face)))))
+  (defun lan/show-tab-bar ()
+    (interactive)
+    (setq tab-bar-format '(tab-bar-format-menu-bar
+                           ;;meow-indicator
+                           tab-bar-format-tabs tab-bar-separator))
+    (tab-bar--update-tab-bar-lines))
+  (lan/show-tab-bar)
+  )
 
 ;; (use-package parrot
 ;;   :config

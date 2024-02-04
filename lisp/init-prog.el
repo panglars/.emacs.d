@@ -14,6 +14,11 @@
 
 (use-package lua-mode)
 
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
 ;; CSV highlight
 (use-package rainbow-csv
   :straight (:host github :repo "emacs-vs/rainbow-csv"))

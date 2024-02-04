@@ -30,13 +30,13 @@
 
 (use-package solaire-mode)
 
-;; (use-package doom-themes)
+(use-package doom-themes)
 (use-package modus-themes)
 (use-package ef-themes)
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
-  (load-theme 'ef-bio t))
+  (load-theme 'doom-modeline t))
 
 
 (defun font-installed-p (font-name)

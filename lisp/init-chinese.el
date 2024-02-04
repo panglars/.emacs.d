@@ -30,6 +30,8 @@
   (setq immersive-translate-backend 'trans))
 
 (use-package fanyi
+  :config
+  (setq-default show-trailing-whitespace t)
   :custom
   (fanyi-providers '(;; 海词
                      ;;fanyi-haici-provider

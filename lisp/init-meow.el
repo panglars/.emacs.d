@@ -30,8 +30,10 @@
    '("o" . ace-window)
    '("p" . projectile-command-map)
    '("z" . popper-toggle-latest)
-   '("[" . flycheck-previous-error)
-   '("]" . flycheck-next-error)
+   '("[" . tab-previous)
+   '("]" . tab-next)
+   '("," . previous-buffer)
+   '("." . next-buffer)
    )
   (meow-normal-define-key
    '("0" . meow-expand-0)
