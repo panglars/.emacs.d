@@ -1,6 +1,6 @@
 (use-package cc-mode
   :mode ("\\.h|\\.cpp" . c++-mode)
-  :hook ((c-mode c++-mode) . my/cxx-mode-setup)
+  :hook ((c-mode c++-mode) . lan/cxx-mode-setup)
   :bind (:map c++-mode-map
               ("C-c C-o" . ff-find-other-file))
   :init
@@ -15,7 +15,7 @@
           ("\\.h\\'"   (".tpp" ".cpp" ".cxx" ".tcc" ".cc" ".C" ".c" ".hxx" ".hpp"))
           ("\\.hpp\\'" (".tpp" ".cpp" ".cxx" ".tcc" ".cc" ".C" ".c" ".h"))
           ("\\.hxx\\'" (".tpp" ".cpp" ".cxx" ".tcc" ".cc" ".C" ".c" ".h"))))
-  (defun my/cxx-mode-setup ()
+  (defun lan/cxx-mode-setup ()
     (use-package modern-cpp-font-lock
       :diminish modern-c++-font-lock-mode
       :config

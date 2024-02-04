@@ -22,7 +22,7 @@
 
   :init
   (setq lsp-keymap-prefix "C-c e")
-  (defun my/lsp-mode-setup-completion ()
+  (defun lan/lsp-mode-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(orderless))) ;; Configure orderless
   (setq lsp-signature-auto-activate nil
@@ -44,7 +44,7 @@
          (prog-mode . (lambda ()
                         (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'sh-mode 'makefile-mode)
                           (lsp-deferred))))
-         (lsp-completion-mode . my/lsp-mode-setup-completion)
+         (lsp-completion-mode . lan/lsp-mode-setup-completion)
          (lsp-mode . lsp-enable-which-key-integration))
   
   :config
