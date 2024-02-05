@@ -32,6 +32,7 @@
 (use-package fanyi
   :config
   (setq-default show-trailing-whitespace t)
+  :bind ("C-c K" . fanyi-dwim2)
   :custom
   (fanyi-providers '(;; 海词
                      ;;fanyi-haici-provider

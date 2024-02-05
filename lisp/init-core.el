@@ -36,7 +36,7 @@
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
-  (load-theme 'doom-modeline t))
+  (load-theme 'doom-moonlight t))
 
 
 (defun font-installed-p (font-name)
