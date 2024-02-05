@@ -12,7 +12,7 @@
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
 
-;; (let ((minver "28.2"))
+;; (let ((minver "29.1"))
 ;;  (when (version < emacs-version minver)
 ;;     (error "Your Emacs is old -- this config requires v%s or higher" minver)))
 
@@ -100,6 +100,7 @@
 (require 'init-telega)
 (require 'init-reader)
 (require 'init-intergration)
+(require 'init-count)
 ;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

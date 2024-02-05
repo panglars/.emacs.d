@@ -1,7 +1,9 @@
 (use-package copilot
   :defer t
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :hook (prog-mode . copilot-mode)
+  :hook ((prog-mode . (lambda ()
+                        (unless (eq major-mode 'beancount-mode)
+                          (copilot-mode 1)))))
   :bind (:map copilot-completion-map
               ("C-j" . copilot-accept-completion)
               ("M-j" . copilot-clear-overlay)
