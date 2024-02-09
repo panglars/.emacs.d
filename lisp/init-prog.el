@@ -1,23 +1,15 @@
 (use-package vlf)
 
-(use-package treesit-auto
-  :custom
-  (treesit-auto-install 'prompt)
-  :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
-
-(use-package typst-ts-mode
-  :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")
-  :custom
-  (typst-ts-mode-watch-options "--open"))
-
+;; other language
 (use-package lua-mode)
+
+(use-package clojure-mode)
 
 (use-package markdown-mode
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
+
 
 ;; CSV highlight
 (use-package rainbow-csv
@@ -26,9 +18,6 @@
 (use-package devdocs
   :bind
   ("C-c S" . devdocs-lookup))
-
-(use-package fingertip
-  :straight (:host github :repo "manateelazycat/fingertip"))
 
 (use-package rmsbolt)
 
