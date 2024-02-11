@@ -31,15 +31,21 @@
   (setq dirvish-mode-line-format
         '(:left (sort symlink) :right (omit yank index)))
   (setq dirvish-attributes
-        '(all-the-icons file-size subtree-state vc-state git-msg))
-  ;;   '(all-the-icons file-time file-size subtree-state vc-state git-msg))
+        '(nerd-icons file-time file-size collapse subtree-state vc-state git-msg))
   (setq delete-by-moving-to-trash t)
+  (setq dirvish-subtree-state-style 'nerd)
   (setq dirvish-default-layout '(0 0.4 0.6))
   (setq dired-listing-switches
         "-l --almost-all --human-readable --group-directories-first --no-group")
+  (setq dirvish-path-separators (list
+                                 (format "  %s " (nerd-icons-codicon "nf-cod-home"))
+                                 (format "  %s " (nerd-icons-codicon "nf-cod-root_folder"))
+                                 (format " %s " (nerd-icons-faicon "nf-fa-angle_right"))))
+  ;; mouse support 
   (define-key dirvish-mode-map (kbd "<mouse-1>") 'dirvish-subtree-toggle-or-open)
   (define-key dirvish-mode-map (kbd "<mouse-2>") 'dired-mouse-find-file-other-window)
   (define-key dirvish-mode-map (kbd "<mouse-3>") 'dired-mouse-find-file)
+  
   :bind ; Bind `dirvish|dirvish-side|dirvish-dwim' as you see fit
   (("C-c d" . dirvish)
    ("C-c D" . dirvish-fd)
