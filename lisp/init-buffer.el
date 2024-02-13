@@ -1,3 +1,5 @@
+(use-package nerd-icons-ibuffer)
+
 (use-package ibuffer
   :init
   (use-package ibuffer-vc
