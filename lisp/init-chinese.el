@@ -25,23 +25,22 @@
             #'(lambda ()
                 (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))
 
-(use-package immersive-translate
-  :init
-  (setq immersive-translate-backend 'trans))
-
-(use-package fanyi
+(use-package go-translate
+  :bind ("C-c K" . lan/go-translate-at-point)
   :config
-  (setq-default show-trailing-whitespace t)
-  :bind ("C-c K" . fanyi-dwim2)
-  :custom
-  (fanyi-providers '(;; 海词
-                     ;;fanyi-haici-provider
-                     ;; 有道同义词词典
-                     fanyi-youdao-thesaurus-provider
-                     ;; Etymonline
-                     ;;fanyi-etymon-provider
-                     ;; Longman
-                     ;;fanyi-longman-provider
-                     )))
+  (setq gts-translate-list '(("en" "zh") ("zh" "en")))
+
+  (setq gts-default-translator
+        (gts-translator
+         :picker (gts-prompt-picker)
+         :engines (list (gts-google-rpc-engine) (gts-stardict-engine))
+         :render (gts-buffer-render)))
+  (defun lan/go-translate-at-point ()
+    (interactive)
+    (gts-translate (gts-translator
+                    :picker (gts-noprompt-picker)
+                    :engines (list (gts-google-rpc-engine) (gts-stardict-engine))
+                    :render (gts-posframe-pop-render))))
+  )
 
 (provide 'init-chinese)
