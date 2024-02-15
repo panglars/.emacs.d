@@ -33,7 +33,7 @@
   (setq gts-default-translator
         (gts-translator
          :picker (gts-prompt-picker)
-         :engines (list (gts-google-rpc-engine) (gts-stardict-engine))
+         :engines (list (gts-google-engine) (gts-stardict-engine))
          :render (gts-buffer-render)))
   (defun lan/go-translate-at-point ()
     (interactive)
