@@ -48,7 +48,7 @@
          when (font-installed-p font)
          return (set-face-attribute 'default nil
                                     :font font
-                                    :height 150))
+                                    :height 120))
 ;; Specify font for all unicode characters
 (cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
          when (font-installed-p font)
