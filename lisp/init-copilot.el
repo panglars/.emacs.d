@@ -1,4 +1,5 @@
 (use-package copilot
+  :disabled
   :defer t
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :hook ((prog-mode . (lambda ()
