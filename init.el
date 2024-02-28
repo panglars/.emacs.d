@@ -88,7 +88,7 @@
 (require 'init-fontend)
 (require 'init-cxx)
 (require 'init-golang)
-;; (require 'init-rust)
+(require 'init-rust)
 
 ;; IDE
 (require 'init-project)
