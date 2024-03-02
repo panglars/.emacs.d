@@ -24,6 +24,7 @@
 (use-package rainbow-mode)
 
 (use-package prisma-mode
+  :disabled
   :straight (:host github :repo "pimeys/emacs-prisma-mode"))
 
 (provide 'init-web)

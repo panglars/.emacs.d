@@ -38,26 +38,6 @@
     (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
   (load-theme 'doom-moonlight t))
 
-
-(defun font-installed-p (font-name)
-  "Check if font with FONT-NAME is available."
-  (find-font (font-spec :name font-name)))
-
-;; Specify default Font
-(cl-loop for font in '("Iosevka Nerd Font Light" "Latin Modern Mono" "MonoLisa Nasy" "Source Code Pro" "Courier New" "DejaVu Mono")
-         when (font-installed-p font)
-         return (set-face-attribute 'default nil
-                                    :font font
-                                    :height 130))
-;; Specify font for all unicode characters
-(cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
-         when (font-installed-p font)
-         return(set-fontset-font t 'unicode font nil 'prepend))
-;; Specify font for Chinese characters
-(cl-loop for font in '("LXGW WenKai Screen" "WenQuanYi Micro Hei" "Microsoft Yahei")
-         when (font-installed-p font)
-         return (set-fontset-font t '(#x4e00 . #x9fff) font))
-
 ;; transparent background
 (setq default-frame-alist '((width . 120)
                             (height . 80)
