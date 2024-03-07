@@ -9,7 +9,11 @@
         org-capture-templates
         `(("t" "Task" entry (file+headline ,(concat org-directory "/todo.org") "Task")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
-          ("w" "Work" entry (file+headline ,(concat org-directory "/todo.org") "Task")
+          ("s" "Schedule" entry (file+headline ,(concat org-directory "/todo.org") "Task")
+           "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
+          ("l" "Lesson" entry (file+headline ,(concat org-directory "/todo.org") "School")
+           "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
+          ("a" "Appointment" entry (file+headline ,(concat org-directory "/todo.org") "Appointment")
            "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
           ("m" "Misc" entry (file+headline ,(concat org-directory "/todo.org") "Misc")
            "* TODO %?\n" :empty-lines 1)
