@@ -28,10 +28,9 @@
 (use-package popper
   :defines popper-echo-dispatch-actions
   :autoload popper-group-by-projectile
-  :bind (("C-h z"   . popper-toggle-latest)
-         ("C-<tab>"   . popper-cycle)
-         ("C-M-<tab>" . popper-toggle-type))
-  :hook (emacs-startup . popper-mode)
+  :bind (("C-`"   . popper-toggle-latest)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
   :init
   (with-eval-after-load 'projectile
     (setq popper-group-function #'popper-group-by-projectile))
@@ -98,12 +97,13 @@
   (with-eval-after-load 'projectile
     (setq popper-group-function #'popper-group-by-projectile))
 
-  (when (display-grayscale-p)
-    (setq popper-mode-line
-          '(:eval
-            (format " %s " (all-the-icons-octicon "pin" :height 0.9 :v-adjust 0.0 :face 'mode-line-emphasis)))))
-  (setq popper-echo-dispatch-actions t)
+  ;;   (when (display-grayscale-p)
+  ;;     (setq popper-mode-line
+  ;;           '(:eval
+  ;;             (format " %s " (all-the-icons-octicon "pin" :height 0.9 :v-adjust 0.0 :face 'mode-line-emphasis)))))
+  ;; (setq popper-echo-dispatch-actions t)
   :config
+  (popper-mode 1)
   (popper-echo-mode 1)
 
   ;; HACK: close popper with `C-g'

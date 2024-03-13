@@ -14,7 +14,7 @@
         ("C-`" . 'rime-send-keybinding))
   :custom
   (default-input-method "rime")
-  (rime-show-candidate 'posframe)
+  (rime-show-candidate 'minibuffer)
   (rime-user-data-dir "~/.local/share/fcitx5/rime")
   )
 

@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package corfu
   :straight (corfu :includes (corfu-indexed corfu-quick) :files (:defaults "extensions/corfu-*.el"))
   :custom
@@ -64,7 +66,7 @@
   :init
   (setq completion-styles '(orderless flex)
         completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))))
+        completion-category-overrides '((file (styles basic partial-completion)))))
 
 ;;vertical interactive completion 
 (use-package vertico
@@ -84,10 +86,10 @@
     :config
     (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)))
 
-
+;; A very simple alternative to more involved SessionManagement solutions.
 (use-package savehist
-  :init
-  (savehist-mode))
+  :config
+  (savehist-mode 1))
 
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
