@@ -19,6 +19,14 @@
   :bind
   ("C-c S" . devdocs-lookup))
 
+(use-package shrface
+  :config
+  (shrface-basic)
+  (shrface-trial)
+  (shrface-default-keybindings)
+  (setq shrface-href-versatile t))
+
+
 (use-package rmsbolt)
 
 (use-package quickrun

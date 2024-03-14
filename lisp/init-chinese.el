@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package rime
   :config
   ;; meow-mode hook
@@ -26,7 +28,8 @@
                 (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))
 
 (use-package go-translate
-  :bind ("C-c K" . lan/go-translate-at-point)
+  :bind (("C-c k" . lan/go-translate-at-point)
+         ("C-c K" . lan/go-translate-dict))
   :config
   (setq gts-translate-list '(("en" "zh") ("zh" "en")))
 
@@ -41,6 +44,13 @@
                     :picker (gts-noprompt-picker)
                     :engines (list (gts-google-rpc-engine) (gts-stardict-engine))
                     :render (gts-posframe-pop-render))))
+  (defun lan/go-translate-dict ()
+    (interactive)
+    (gts-translate (gts-translator
+                    :picker (gts-prompt-picker)
+                    :engines (gts-stardict-engine)
+                    :render (gts-buffer-render))))
+
   )
 
 (provide 'init-chinese)

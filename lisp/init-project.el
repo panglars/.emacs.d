@@ -8,4 +8,8 @@
         projectile-use-git-grep t)
   )
 
+(use-package breadcrumb
+  :defer t)
+
+
 (provide 'init-project)
