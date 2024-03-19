@@ -3,6 +3,7 @@
         ("C-c M-x" . consult-mode-command)
         ("C-c b" . consult-buffer)
         ("C-c r" . consult-ripgrep)
+        ("C-c f" . consult-flycheck)
         ("C-c F" . consult-fd)
         ("C-c i" . consult-imenu)
         ("C-c R" . consult-bookmark)            ;; orig. bookmark-jump
@@ -20,6 +21,8 @@
   ;; Use Consult to select xref locations with preview
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref)
+  :config
+  (use-package consult-flycheck)
   )
 
 ;; [consult-dir] Insert path quickly in minibuffer

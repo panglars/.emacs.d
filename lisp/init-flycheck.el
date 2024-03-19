@@ -1,6 +1,5 @@
 (use-package flycheck
   :defer t
-  :diminish flycheck-mode "ⓕ"
   :commands flycheck-redefine-standard-error-levels
   :hook (after-init . global-flycheck-mode)
   :init
@@ -8,26 +7,26 @@
         flycheck-emacs-lisp-load-path 'inherit
         flycheck-display-errors-delay 0.25
         flycheck-highlighting-mode 'symbols
-        flycheck-indication-mode (if (display-graphic-p) 'right-fringe 'right-margin)
+        flycheck-indication-mode (if (display-graphic-p) 'left-fringe 'left-margin)
         ;; Only check while saving and opening files
         flycheck-check-syntax-automatically '(save mode-enabled))
   (setq-default flycheck-disabled-checkers '(emacs-lisp emacs-lisp-checkdoc))
-  :config
+  ;; :config
   ;; Prettify indication styles
-  (when (fboundp 'define-fringe-bitmap)
-    (define-fringe-bitmap 'flycheck-fringe-bitmap-arrow
-      [16 48 112 240 112 48 16] nil nil 'center))
+  ;;  (when (fboundp 'define-fringe-bitmap)
+  ;;    (define-fringe-bitmap 'flycheck-fringe-bitmap-arrow
+  ;;      [16 48 112 240 112 48 16] nil nil 'center))
 
   (use-package flycheck-posframe
     :if (display-graphic-p)
-    ;;     :custom-face
-    ;;     (flycheck-posframe-face ((t (:foreground ,(face-foreground 'success)))))
-    ;;     (flycheck-posframe-info-face ((t (:foreground ,(face-foreground 'success)))))
-    ;;     (flycheck-posframe-background-face ((t (:inherit tooltip))))
-    ;;     (flycheck-posframe-border-face ((t (:inherit font-lock-comment-face))))
+    :custom-face
+    (flycheck-posframe-face ((t (:foreground ,(face-foreground 'success)))))
+    (flycheck-posframe-info-face ((t (:foreground ,(face-foreground 'success)))))
+    (flycheck-posframe-background-face ((t (:inherit tooltip))))
+    (flycheck-posframe-border-face ((t (:inherit font-lock-comment-face))))
     :hook (flycheck-mode . flycheck-posframe-mode)
-    :init
-    (setq flycheck-posframe-border-width 1)
+    :config
+    ;;    (setq flycheck-posframe-border-width 1)
     (setq flycheck-posframe-position 'window-bottom-left-corner)
     ))
 

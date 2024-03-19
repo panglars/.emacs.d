@@ -7,6 +7,7 @@
   :hook (emacs-lisp-mode . aggressive-indent-mode))
 
 (use-package header2
+  :disabled
   :load-path (lambda () (expand-file-name "site-lisp/header2" user-emacs-directory))
   :custom
   (header-copyright-notice (concat "Copyright (C) 2023 " (user-full-name) "\n"))
