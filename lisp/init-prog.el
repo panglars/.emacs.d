@@ -5,11 +5,13 @@
 
 (use-package clojure-mode)
 
+(use-package just-mode
+  :disabled)
+
 (use-package markdown-mode
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
-
 
 ;; CSV highlight
 (use-package rainbow-csv
@@ -19,7 +21,9 @@
   :bind
   ("C-c S" . devdocs-lookup))
 
+;; to highlight dev docs
 (use-package shrface
+  :defer t
   :config
   (shrface-basic)
   (shrface-trial)
@@ -27,7 +31,8 @@
   (setq shrface-href-versatile t))
 
 
-(use-package rmsbolt)
+(use-package rmsbolt
+  :defer t)
 
 (use-package quickrun
   :custom
@@ -55,12 +60,6 @@
   (setq yas-inhibit-overlay-modification-protection t)
   (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
   )
-
-;; (use-package yasnippet-capf
-;;   :load-path "site-lisp"
-;;   :after cape
-;;   :config
-;;   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 
 (provide 'init-prog)
