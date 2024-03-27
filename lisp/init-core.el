@@ -163,4 +163,10 @@
 
 (use-package sudo-edit)
 
+(use-package eldoc
+  :straight (:type built-in)
+  :custom
+  (eldoc-documentation-strategy #'eldoc-documentation-compose))
+
+
 (provide 'init-core)

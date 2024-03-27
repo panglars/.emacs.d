@@ -1,3 +1,4 @@
+
 (use-package flycheck
   :defer t
   :commands flycheck-redefine-standard-error-levels
@@ -18,6 +19,7 @@
   ;;      [16 48 112 240 112 48 16] nil nil 'center))
 
   (use-package flycheck-posframe
+    :disabled
     :if (display-graphic-p)
     :custom-face
     (flycheck-posframe-face ((t (:foreground ,(face-foreground 'success)))))

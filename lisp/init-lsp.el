@@ -1,3 +1,4 @@
+
 (use-package lsp-mode
   :defer t
   :custom
@@ -46,7 +47,6 @@
                           (lsp-deferred))))
          (lsp-completion-mode . lan/lsp-mode-setup-completion)
          (lsp-mode . lsp-enable-which-key-integration))
-  
   :config
   
   (use-package lsp-ui
