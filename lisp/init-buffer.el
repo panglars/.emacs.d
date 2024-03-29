@@ -1,11 +1,13 @@
-(use-package nerd-icons-ibuffer)
 
 (use-package ibuffer
+  :disabled
   :init
+  (use-package nerd-icons-ibuffer)
   (use-package ibuffer-vc
     :commands (ibuffer-vc-set-filter-groups-by-vc-root)
     :custom
     (ibuffer-vc-skip-if-remote 'nil))
+  
   :custom
   (ibuffer-expert t)
   (ibuffer-movement-cycle nil)

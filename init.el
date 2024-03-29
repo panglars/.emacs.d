@@ -74,7 +74,6 @@
 ;; Completion
 (require 'init-completion)
 (require 'init-consult)
-(require 'init-lsp)
 
 ;; VCS
 (require 'init-git)
@@ -93,6 +92,7 @@
 ;; IDE
 (require 'init-project)
 (require 'init-flycheck)
+(require 'init-lsp)
 (require 'init-filemanager)
 
 ;; Misc

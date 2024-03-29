@@ -1,5 +1,51 @@
+(use-package eglot
+  :straight (:type built-in)
+  :hook ((prog-mode . (lambda ()
+                        (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'makefile-mode 'snippet-mode)
+                          (eglot-ensure))))
+         ((markdown-mode yaml-mode yaml-ts-mode) . eglot-ensure))
+  :init
+  (setq eglot-autoshutdown t
+        eglot-send-changes-idle-time 0.5)
+  
+  :config
+  ;; (add-to-list 'eglot-stay-out-of 'flymake)
+
+  ;; for rust-analyzer extensions 
+  (use-package eglot-x
+    :straight (:host github :repo "nemethf/eglot-x")
+    :config
+    (eglot-x-setup))
+  
+  (use-package consult-eglot
+    :bind (:map eglot-mode-map
+                ("C-M-." . consult-eglot-symbols)))
+  
+  (use-package eglot-booster
+    :disabled
+    :straight (:host github :repo "jdtsmith/eglot-booster")
+    :config	(eglot-booster-mode))
+  
+  (use-package flycheck-eglot
+    :disabled
+    :config
+    (global-flycheck-eglot-mode 1))
+  
+  (add-hook
+   'eglot-managed-mode-hook
+   (lambda ()
+     ;; we want eglot to setup callbacks from eldoc, but we don't want eldoc
+     ;; running after every command. As a workaround, we disable it after we just
+     ;; enabled it. Now calling `M-x eldoc` will put the help we want in the eldoc
+     ;; buffer. Alternatively we could tell eglot to stay out of eldoc, and add
+     ;; the hooks manually, but that seems fragile to updates in eglot.
+     (when (eglot-managed-p)(eldoc-mode -1) )
+     ))
+  )
+
 
 (use-package lsp-mode
+  :disabled
   :defer t
   :custom
   (lsp-completion-provider :none)
@@ -47,8 +93,8 @@
                           (lsp-deferred))))
          (lsp-completion-mode . lan/lsp-mode-setup-completion)
          (lsp-mode . lsp-enable-which-key-integration))
+
   :config
-  
   (use-package lsp-ui
     :bind(("C-c u" . lsp-ui-imenu)
           :map lsp-ui-mode-map
@@ -68,6 +114,12 @@
   (use-package lsp-tailwindcss
     :init
     (setq lsp-tailwindcss-add-on-mode t))
+
+  (use-package lsp-pyright
+    :hook (python-mode . (lambda ()
+                           (require 'lsp-pyright)
+                           (lsp-deferred))))
+
 
   ;; Enable LSP in org babel without checking centaur-lsp
   (cl-defmacro lsp-org-babel-enable (lang)
@@ -102,6 +154,9 @@
   (add-to-list 'org-babel-lang-list "shell")
   (dolist (lang org-babel-lang-list)
     (eval `(lsp-org-babel-enable ,lang)))
+
+  (use-package consult-lsp
+    :bind ("C-c l e" . consult-lsp-diagnostics))
 
   (use-package dap-mode
     :disabled

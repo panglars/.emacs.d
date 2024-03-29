@@ -165,8 +165,20 @@
 
 (use-package eldoc
   :straight (:type built-in)
+  :bind (("C-c e" . eldoc-print-current-symbol-info))
   :custom
-  (eldoc-documentation-strategy #'eldoc-documentation-compose))
+  (eldoc-documentation-strategy #'eldoc-documentation-compose)
+  :config
+  (setq eldoc-echo-area-display-truncation-message t
+        eldoc-echo-area-prefer-doc-buffer t
+        eldoc-echo-area-use-multiline-p nil
+        eglot-extend-to-xref t)
+  
+  ;;  displays ElDoc documentations in a childframe
+  (use-package eldoc-box)
+  )
+
+
 
 
 (provide 'init-core)
