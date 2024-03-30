@@ -1,5 +1,6 @@
 (use-package eglot
-  :straight (:type built-in)
+  :disabled
+  ;;  :straight (:type built-in)
   :hook ((prog-mode . (lambda ()
                         (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'makefile-mode 'snippet-mode)
                           (eglot-ensure))))
@@ -9,7 +10,7 @@
         eglot-send-changes-idle-time 0.5)
   
   :config
-  ;; (add-to-list 'eglot-stay-out-of 'flymake)
+  ;;  (add-to-list 'eglot-stay-out-of 'flymake)
 
   ;; for rust-analyzer extensions 
   (use-package eglot-x
@@ -25,27 +26,21 @@
     :disabled
     :straight (:host github :repo "jdtsmith/eglot-booster")
     :config	(eglot-booster-mode))
-  
+
   (use-package flycheck-eglot
-    :disabled
+    :after (flycheck)
     :config
     (global-flycheck-eglot-mode 1))
-  
-  (add-hook
-   'eglot-managed-mode-hook
-   (lambda ()
-     ;; we want eglot to setup callbacks from eldoc, but we don't want eldoc
-     ;; running after every command. As a workaround, we disable it after we just
-     ;; enabled it. Now calling `M-x eldoc` will put the help we want in the eldoc
-     ;; buffer. Alternatively we could tell eglot to stay out of eldoc, and add
-     ;; the hooks manually, but that seems fragile to updates in eglot.
-     (when (eglot-managed-p)(eldoc-mode -1) )
-     ))
+
+  ;;  (add-hook
+  ;;   'eglot-managed-mode-hook
+  ;;   (lambda ()
+  ;;     (when (eglot-managed-p)(eldoc-mode -1))
+  ;;     ))
   )
 
 
 (use-package lsp-mode
-  :disabled
   :defer t
   :custom
   (lsp-completion-provider :none)
@@ -68,24 +63,24 @@
   ("C-c l R"	. lsp-ui-peek-find-references)
 
   :init
-  (setq lsp-keymap-prefix "C-c e")
+  (setq lsp-keymap-prefix "C-c C-e")
   (defun lan/lsp-mode-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(orderless))) ;; Configure orderless
   (setq lsp-signature-auto-activate nil
         lsp-headerline-breadcrumb-enable nil
-        lsp-eldoc-render-all nil
+        lsp-eldoc-render-all t
         lsp-signature-render-documentation nil
         
-        ;; Go
-        lsp-gopls-hover-kind "NoDocumentation"
-        lsp-gopls-use-placeholders t
+        ;;        ;; Go
+        ;;        lsp-gopls-hover-kind "NoDocumentation"
+        ;;        lsp-gopls-use-placeholders t
 
         lsp-semantic-tokens-enable t
         lsp-progress-spinner-type 'progress-bar-filled
         lsp-enable-folding nil
         lsp-enable-symbol-highlighting nil
-        lsp-enable-text-document-color nil
+        lsp-enable-text-document-color t
         lsp-enable-on-type-formatting nil)
   :hook (
          (prog-mode . (lambda ()

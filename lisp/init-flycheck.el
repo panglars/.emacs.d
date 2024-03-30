@@ -1,6 +1,5 @@
 
 (use-package flycheck
-  :defer t
   :commands flycheck-redefine-standard-error-levels
   :hook (after-init . global-flycheck-mode)
   :init
