@@ -3,7 +3,7 @@
         ("C-c M-x" . consult-mode-command)
         ("C-c b" . consult-buffer)
         ("C-c r" . consult-ripgrep)
-        ("C-c f" . consult-flymake)
+        ("C-c f" . consult-flycheck)
         ("C-c F" . consult-fd)
         ("C-c i" . consult-imenu)
         ("C-c R" . consult-bookmark)            ;; orig. bookmark-jump
