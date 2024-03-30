@@ -33,7 +33,5 @@
          ("C-x C-j" . consult-dir-jump-file))
   )
 
-(use-package consult-lsp
-  :bind ("C-c l e" . consult-lsp-diagnostics))
 
 (provide 'init-consult)

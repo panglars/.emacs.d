@@ -51,7 +51,7 @@
                           ("M-n" . corfu-popupinfo-scroll-up)
                           ("M-d" . corfu-popupinfo-toggle)))
     :config
-    (setq corfu-popupinfo-delay '(0.5 . 0.2)
+    (setq corfu-popupinfo-delay '(0.5 . 0.5)
           corfu-popupinfo-min-height 10)))
 
 ;; A bunch of completion at point extensions
