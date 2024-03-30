@@ -36,9 +36,15 @@
 (use-package modus-themes)
 (use-package ef-themes)
 
-(if (daemonp)
-    (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
-  (load-theme 'doom-moonlight t))
+;; (if (daemonp)
+;;     (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
+;;   (load-theme 'doom-moonlight t))
+(use-package auto-dark
+  :config 
+  (setq auto-dark-dark-theme 'doom-moonlight)
+  (setq auto-dark-light-theme 'modus-operandi-tinted)
+  ;; (setq auto-dark-detection-method nil) ;; dangerous to be set manually
+  (auto-dark-mode t))
 
 ;; transparent background
 (setq default-frame-alist '((width . 120)
