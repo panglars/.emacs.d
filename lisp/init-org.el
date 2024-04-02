@@ -1,3 +1,5 @@
+;;; -*- lexical-binding:t; -*-
+
 (use-package org
   :straight (:type built-in)
   :bind (("C-c a" . org-agenda)
@@ -138,10 +140,8 @@
 (use-package valign
   :hook (org-mode . valign-mode))
 
-;; Roam
-;; (use-package epkg
-;;   :defer t
-;;   :custom (epkg-database-connector 'sqlite-builtin))
+;;; Roam
+
 (use-package org-roam
   :bind (
          ("C-c n a" . org-roam-alias-add)

@@ -127,7 +127,6 @@
 (use-package nerd-icons)
 
 (use-package which-key
-  :diminish which-key-mode "Ⓚ"
   :hook (after-init . which-key-mode)
   :config
   (setq which-key-idle-delay 0.2
@@ -136,8 +135,8 @@
         which-key-add-column-padding 1
         which-key-max-display-columns nil
         which-key-sort-uppercase-first nil
-        which-key-side-window-max-width 0.33
-        which-key-side-window-max-height 0.33
+        which-key-side-window-max-width 0.4
+        which-key-side-window-max-height 0.4
         which-key-sort-order #'which-key-prefix-then-key-order)
   (which-key-setup-side-window-bottom)
   (dolist (item '((("SPC" . nil) . ("␣" . nil))

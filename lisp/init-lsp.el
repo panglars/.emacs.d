@@ -71,7 +71,7 @@
         lsp-headerline-breadcrumb-enable nil
         lsp-eldoc-render-all t
         lsp-signature-render-documentation nil
-        
+        lsp-progress-prefix "󱦟"
         ;;        ;; Go
         ;;        lsp-gopls-hover-kind "NoDocumentation"
         ;;        lsp-gopls-use-placeholders t
