@@ -38,7 +38,7 @@
         '("\\*Messages\\*"
           "Output\\*$" "\\*Pp Eval Output\\*$"
           "\\*Compile-Log\\*"
-          "\\*Completions\\*"
+          ;; "\\*Completions\\*"
           "\\*Warnings\\*"
           "\\*Async Shell Command\\*"
           "\\*Apropos\\*"
