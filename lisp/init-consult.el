@@ -30,8 +30,24 @@
   :bind (("C-x C-d" . consult-dir)
          :map minibuffer-local-completion-map
          ("C-x C-d" . consult-dir)
-         ("C-x C-j" . consult-dir-jump-file))
-  )
+         ("C-x C-j" . consult-dir-jump-file)))
+
+(use-package consult-org-roam
+  :after (org-roam)
+  :custom
+  (consult-org-roam-grep-func #'consult-ripgrep)
+  (consult-org-roam-buffer-after-buffers t)
+  :bind
+  ;; Define some convenient keybindings as an addition
+  ("C-c n b" . consult-org-roam-backlinks)
+  ("C-c n B" . consult-org-roam-backlinks-recursive)
+  ("C-c n l" . consult-org-roam-forward-links)
+  ("C-c n r" . consult-org-roam-search)
+  :config
+  (consult-org-roam-mode 1)
+  (consult-customize
+   consult-org-roam-forward-links
+   :preview-key "M-."))
 
 
 (provide 'init-consult)

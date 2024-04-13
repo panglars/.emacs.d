@@ -5,7 +5,6 @@
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
   :config
-  
   (setq org-modules '(org-habit)
         org-directory my-org-directory
         org-capture-templates
