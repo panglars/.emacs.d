@@ -1,8 +1,8 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 
 
-;; (when (version < emacs-version "29.1")
-;;   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
+(when (version< emacs-version "29.1")
+  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -74,9 +74,6 @@
 (require 'init-completion)
 (require 'init-consult)
 
-;; VCS
-(require 'init-git)
-
 ;; Lang
 (require 'init-org)
 (require 'init-prog)
@@ -89,18 +86,18 @@
 (require 'init-rust)
 
 ;; IDE
+(require 'init-git)
+(require 'init-shell)
 (require 'init-project)
 (require 'init-flycheck)
 (require 'init-lsp)
 (require 'init-filemanager)
 
 ;; Misc
-(require 'init-shell)
 (require 'init-copilot)
 (require 'init-reader)
 (require 'init-intergration)
 (require 'init-count)
 ;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here

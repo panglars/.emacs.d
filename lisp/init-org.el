@@ -4,8 +4,8 @@
   :straight (:type built-in)
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
-  :config
   
+  :config
   (setq org-modules '(org-habit)
         org-directory my-org-directory
         org-capture-templates
@@ -31,16 +31,6 @@
                              (?B . 'all-the-icons-yellow)
                              (?C . 'all-the-icons-green)
                              (?D . 'all-the-icons-blue))
-        ;; Agenda styling
-        org-agenda-files (list my-org-directory)
-        org-agenda-tags-column 0
-        org-agenda-block-separator ?─
-        org-agenda-time-grid
-        '((daily today require-timed)
-          (800 1000 1200 1400 1600 1800 2000)
-          " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
-        org-agenda-current-time-string
-        "⭠ now ───────────────────────────────────────────────"
         org-tags-column -80
         org-log-done 'time
         org-fold-catch-invisible-edits 'smart
@@ -48,6 +38,20 @@
         org-ellipsis (if (char-displayable-p ?⏷) "\t⏷" nil)
         org-pretty-entities nil
         org-hide-emphasis-markers t)
+  
+;;; Agenda 
+  (setq
+   org-agenda-time-leading-zero t
+   org-agenda-files (list my-org-directory)
+   org-agenda-tags-column 0
+   org-agenda-block-separator ?─
+   org-agenda-time-grid
+   '((daily today require-timed)
+     (800 1000 1200 1400 1600 1800 2000)
+     " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+   org-agenda-current-time-string
+   "⭠ now ───────────────────────────────────────────────"
+   )
 
   ;; Add new template
   (add-to-list 'org-structure-template-alist '("n" . "note"))
@@ -59,7 +63,6 @@
   (add-to-list 'org-export-backends 'md)
   (use-package ox-gfm
     :init (add-to-list 'org-export-backends 'gfm))
-
 
   ;; Prettify UI
   (use-package org-modern
@@ -93,7 +96,6 @@
         org-src-fontify-natively t
         org-src-tab-acts-natively t)
   
-
   (defconst load-language-alist
     '((emacs-lisp . t)
       (python     . t)
@@ -162,7 +164,7 @@
   (setq
    org-roam-dailies-capture-templates
    '(("d" "default" entry "** %?" :if-new
-      (file+head+olp "%<%G-W%V>.org" "\n#+title: %<%G-W%V>\n"
+      (file+head+olp "%<%G-%m>.org" "\n#+title: %<%G-%m>\n"
                      ("%<%A %Y-%m-%d>")))))
   (setq org-roam-capture-templates
         '(
