@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding:t; -*-
 
 (use-package org
-  :straight (:type built-in)
+  ;; :straight (:type built-in)
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
   
@@ -142,8 +142,7 @@
 (use-package valign
   :hook (org-mode . valign-mode))
 
-;;; Roam
-
+;;; roam
 (use-package org-roam
   :bind (
          ("C-c n a" . org-roam-alias-add)

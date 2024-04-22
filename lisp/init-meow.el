@@ -4,7 +4,7 @@
   :config
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-colemak)
   (setq meow-expand-hint-remove-delay 3)
-  (setq meow-use-clipboard nil)
+  (setq meow-use-clipboard t)
   (meow-motion-overwrite-define-key
    '("n" . meow-next)
    '("p" . meow-prev)
