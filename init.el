@@ -54,6 +54,25 @@
   :config
   (setq gcmh-high-cons-threshold (* 128 1024 1024)))
 
+(defun font-installed-p (font-name)
+  "Check if font with FONT-NAME is available."
+  (find-font (font-spec :name font-name)))
+
+;; Specify default Font
+(cl-loop for font in '("Iosevka Nerd Font Light" "MonoLisa Nasy" "Source Code Pro" "Courier New" "DejaVu Mono")
+         when (font-installed-p font)
+         return (set-face-attribute 'default nil
+                                    :font font
+                                    :height 150))
+;; Specify font for all unicode characters
+(cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
+         when (font-installed-p font)
+         return(set-fontset-font t 'unicode font nil 'prepend))
+;; Specify font for Chinese characters
+(cl-loop for font in '("LXGW WenKai Screen" "WenQuanYi Micro Hei" "Microsoft Yahei")
+         when (font-installed-p font)
+         return (set-fontset-font t '(#x4e00 . #x9fff) font))
+
 ;; Load core config
 (require 'init-const)
 (require 'init-base)

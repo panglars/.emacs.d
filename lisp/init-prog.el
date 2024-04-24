@@ -5,6 +5,8 @@
 
 (use-package clojure-mode)
 
+(use-package fish-mode)
+
 (use-package just-mode
   :disabled)
 

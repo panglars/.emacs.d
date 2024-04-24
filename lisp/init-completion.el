@@ -131,6 +131,7 @@
   (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package all-the-icons-completion
+  :disabled
   :init
   (all-the-icons-completion-mode)
   (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup))

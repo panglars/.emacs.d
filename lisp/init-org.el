@@ -27,10 +27,6 @@
         org-todo-keywords
         '((sequence "TODO(t)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
         org-todo-keyword-faces '(("HANGUP" . warning))
-        org-priority-faces '((?A . 'all-the-icons-red)
-                             (?B . 'all-the-icons-yellow)
-                             (?C . 'all-the-icons-green)
-                             (?D . 'all-the-icons-blue))
         org-tags-column -80
         org-log-done 'time
         org-fold-catch-invisible-edits 'smart
@@ -144,6 +140,8 @@
 
 ;;; roam
 (use-package org-roam
+  ;;HACK: https://github.com/org-roam/org-roam/issues/2361
+  :straight (org-roam :type git :host github :repo "org-roam/org-roam" :commit "ca873f7")
   :bind (
          ("C-c n a" . org-roam-alias-add)
          ("C-c n c" . org-roam-capture)
