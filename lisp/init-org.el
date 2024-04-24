@@ -161,7 +161,7 @@
   (setq
    org-roam-dailies-capture-templates
    '(("d" "default" entry "** %?" :if-new
-      (file+head+olp "%<%G-%m>.org" "\n#+title: %<%G-%m>\n"
+      (file+head+olp "%<%G-%m>.org" "\n\n#+title: %<%G-%m>\n"
                      ("%<%Y.%m.%d %A>")))))
   (setq org-roam-capture-templates
         '(
