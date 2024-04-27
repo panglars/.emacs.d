@@ -1,7 +1,8 @@
 ;;; -*- lexical-binding:t; -*-
 
 (use-package org
-  ;; :straight (:type built-in)
+  ;; FIXME: pin to org-mode 9.6.6 
+  ;; https://github.com/org-roam/org-roam/issues/2361 
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
   
@@ -140,8 +141,7 @@
 
 ;;; roam
 (use-package org-roam
-  ;;HACK: https://github.com/org-roam/org-roam/issues/2361
-  :straight (org-roam :type git :host github :repo "org-roam/org-roam" :commit "ca873f7")
+  :straight (org-roam :type git :host github :repo "org-roam/org-roam")
   :bind (
          ("C-c n a" . org-roam-alias-add)
          ("C-c n c" . org-roam-capture)
