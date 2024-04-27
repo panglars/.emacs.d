@@ -1,4 +1,5 @@
-;;; init-treesitter.el --- 
+;;; init-treesitter.el ---
+;; FIXME: https://github.com/tree-sitter/tree-sitter/issues/3296
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
