@@ -31,7 +31,7 @@
   (setq dirvish-mode-line-format
         '(:left (sort symlink) :right (omit yank index)))
   (setq dirvish-attributes
-        '(nerd-icons file-time file-size collapse vc-state git-msg))
+        '(nerd-icons file-time file-size collapse git-msg))
   (setq delete-by-moving-to-trash t)
   (setq dirvish-subtree-state-style 'nerd)
   (setq dirvish-default-layout '(0 0.4 0.6))
@@ -41,13 +41,16 @@
                                  (format "  %s " (nerd-icons-codicon "nf-cod-home"))
                                  (format "  %s " (nerd-icons-codicon "nf-cod-root_folder"))
                                  (format " %s " (nerd-icons-faicon "nf-fa-angle_right"))))
+  (setq dirvish-preview-dispatchers
+        (cl-substitute 'pdf-preface 'pdf dirvish-preview-dispatchers))
+  
   ;; mouse support 
   (define-key dirvish-mode-map (kbd "<mouse-1>") 'dirvish-subtree-toggle-or-open)
   (define-key dirvish-mode-map (kbd "<mouse-2>") 'dired-mouse-find-file-other-window)
   (define-key dirvish-mode-map (kbd "<mouse-3>") 'dired-mouse-find-file)
   
   :bind ; Bind `dirvish|dirvish-side|dirvish-dwim' as you see fit
-  (("C-c d" . dirvish)
+  (("C-c d" . dirvish-dwim)
    ("C-c D" . dirvish-fd)
    :map dirvish-mode-map ; Dirvish inherits `dired-mode-map'
    ("b"   . dirvish-quick-access)
