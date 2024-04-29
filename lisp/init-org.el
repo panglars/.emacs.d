@@ -12,18 +12,20 @@
         org-capture-templates
         `(("t" "Task" entry (file+headline ,(concat org-directory "/todo.org") "Task")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
-          ("s" "Schedule" entry (file+headline ,(concat org-directory "/todo.org") "Task")
-           "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
           ("l" "Lesson" entry (file+headline ,(concat org-directory "/todo.org") "School")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
           ("a" "Appointment" entry (file+headline ,(concat org-directory "/todo.org") "Appointment")
            "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
           ("m" "Misc" entry (file+headline ,(concat org-directory "/todo.org") "Misc")
            "* TODO %?\n" :empty-lines 1)
-          ("f" "Flag" entry (file ,(concat org-directory "/flag.org"))
+          ("f" "Flag" entry (file+headline ,(concat org-directory "/todo.org") "Flag")
            "* TODO %?\n" :empty-lines 1)
           ("n" "Note" entry (file+headline ,(concat org-directory "/inbox.org") "Note")
            "* %? %^G\n%U" :empty-lines 1)
+          ("j" "Journal" entry(file+datetree ,(concat org-directory "/journal.org"))
+           "* %?" :empty-lines-after 1 :tree-type week)
+          ("J" "Journal other" entry(file+datetree ,(concat org-directory "/journal.org"))
+           "* %?" :empty-lines-after 1 :tree-type week :time-prompt t)
           )
         org-todo-keywords
         '((sequence "TODO(t)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
@@ -151,7 +153,7 @@
          ("C-c n i" . org-roam-node-insert)
          ("C-c n j" . org-roam-dailies-capture-date)
          ("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n r" . org-roam-tag-remove)
+         ("C-c n R" . org-roam-tag-remove)
          ("C-c n t" . org-roam-tag-add)
          ("C-c n y" . org-roam-dailies-capture-yesterday))
   :custom
@@ -161,7 +163,7 @@
   (setq
    org-roam-dailies-capture-templates
    '(("d" "default" entry "** %?" :if-new
-      (file+head+olp "%<%G-%m>.org" "\n\n#+title: %<%G-%m>\n"
+      (file+head+olp "%<%G-%m>.org" "\n#+title: %<%G-%m>\n"
                      ("%<%Y.%m.%d %A>")))))
   (setq org-roam-capture-templates
         '(
