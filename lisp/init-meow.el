@@ -24,6 +24,7 @@
    '("0" . meow-digit-argument)
    '("(" . bury-buffer)
    '(")" . unbury-buffer)
+   '("C" . org-capture)
    '("B" . consult-project-buffer)
    '("o" . ace-window)
    '("p" . projectile-command-map)
