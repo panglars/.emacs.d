@@ -23,9 +23,9 @@
           ("n" "Note" entry (file+headline ,(concat org-directory "/inbox.org") "Note")
            "* %? %^G\n%U" :empty-lines 1)
           ("j" "Journal" entry(file+datetree ,(concat org-directory "/journal.org"))
-           "* %?" :empty-lines-after 1 :tree-type week)
+           "* %<%R> %?" :empty-lines-after 1 :tree-type week)
           ("J" "Journal other" entry(file+datetree ,(concat org-directory "/journal.org"))
-           "* %?" :empty-lines-after 1 :tree-type week :time-prompt t)
+           "* %<%R> %?" :empty-lines-after 1 :tree-type week :time-prompt t)
           )
         org-todo-keywords
         '((sequence "TODO(t)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
@@ -147,15 +147,16 @@
   :bind (
          ("C-c n a" . org-roam-alias-add)
          ("C-c n c" . org-roam-capture)
-         ("C-c n d" . org-roam-dailies-capture-today)
+         ;; ("C-c n d" . org-roam-dailies-capture-today)
          ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-dailies-goto-date)
+         ;; ("C-c n g" . org-roam-dailies-goto-date)
          ("C-c n i" . org-roam-node-insert)
-         ("C-c n j" . org-roam-dailies-capture-date)
+         ;; ("C-c n j" . org-roam-dailies-capture-date)
          ("C-c n l" . org-roam-buffer-toggle)
          ("C-c n R" . org-roam-tag-remove)
          ("C-c n t" . org-roam-tag-add)
-         ("C-c n y" . org-roam-dailies-capture-yesterday))
+         ;; ("C-c n y" . org-roam-dailies-capture-yesterday)
+         )
   :custom
   (org-roam-directory (file-truename my-org-roam-directory))
   :config
