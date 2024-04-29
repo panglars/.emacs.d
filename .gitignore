@@ -17,6 +17,7 @@ straight/build-cache.el
 librime/
 quelpa/
 eln-cache/
+elpaca/
 
 places
 recentf
