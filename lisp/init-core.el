@@ -32,8 +32,10 @@
 ;; an aesthetic plugin designed to visually distinguish "real" buffers
 ;;(use-package solaire-mode)
 
-(use-package doom-themes)
+;;; theme
+;; (use-package doom-themes)
 (use-package modus-themes)
+(use-package kaolin-themes)
 ;; (use-package ef-themes)
 
 ;; (if (daemonp)
@@ -42,8 +44,8 @@
 
 (use-package auto-dark
   :config 
-  (setq auto-dark-dark-theme 'doom-one)
-  (setq auto-dark-light-theme 'modus-operandi-tinted)
+  (setq auto-dark-dark-theme 'modus-vivendi)
+  (setq auto-dark-light-theme 'modus-operandi)
   ;; (setq auto-dark-detection-method nil) ;; dangerous to be set manually
   (auto-dark-mode t))
 

@@ -26,6 +26,7 @@
    '(")" . unbury-buffer)
    '("C" . org-capture)
    '("B" . consult-project-buffer)
+   '("G" . magit)
    '("o" . ace-window)
    '("p" . projectile-command-map)
    '("z" . popper-toggle-latest)
@@ -96,7 +97,6 @@
    '("y" . meow-save)
    '("Y" . meow-yank-pop)
    '("z" . meow-pop-selection)
-   '("Z" . magit)
    '("'" . repeat)
    '("<escape>" . ignore))
   (dolist

@@ -23,9 +23,9 @@
           ("n" "Note" entry (file+headline ,(concat org-directory "/inbox.org") "Note")
            "* %? %^G\n%U" :empty-lines 1)
           ("j" "Journal" entry(file+datetree ,(concat org-directory "/journal.org"))
-           "* %<%R> %?" :empty-lines-after 1 :tree-type week)
+           "* %<%R> %?" :empty-lines 1 :tree-type week)
           ("J" "Journal other" entry(file+datetree ,(concat org-directory "/journal.org"))
-           "* %<%R> %?" :empty-lines-after 1 :tree-type week :time-prompt t)
+           "* %<%R> %?" :empty-lines 1 :tree-type week :time-prompt t)
           )
         org-todo-keywords
         '((sequence "TODO(t)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))

@@ -5,10 +5,8 @@
            (executable-find "make"))
   (use-package vterm
     :init (setq vterm-always-compile-module t)
-    :bind (:map vterm-mode-map
-                ("<f10>" . vterm-toggle)
-                ([(control return)] . vterm-toggle-insert-cd)))
-  (use-package vterm-toggle
-    :bind (("<f10>" . vterm-toggle))))
+    :config
+    (use-package vterm-toggle))
+  )
 
 (provide 'init-shell)

@@ -24,16 +24,24 @@
    dashboard-center-content t
    dashboard-set-file-icons t
    dashboard-set-heading-icons t
-   dashboard-set-footer t
+   ;; dashboard-set-footer t
    dashboard-set-navigator t
-   dashboard-page-separator "\n\f\n"
+   dashboard-page-separator "\n"
    dashboard-set-init-info t
-   ;; dashboard-startup-banner "~/.emacs.d/logo.svg"
-   dashboard-startup-banner 'logo
+   ;; dashboard-startup-banner "~/.emacs.d/logo_umu.svg"
+   ;; dashboard-startup-banner 'logo
    dashboard-projects-backend 'projectile
-   dashboard-items '((recents  . 12)
-                     (bookmarks . 5)
-                     (projects . 8)))
+   dashboard-items '((recents  . 10)
+                     (projects  . 5)))
+  (setq dashboard-startupify-list '(dashboard-insert-newline
+                                    dashboard-insert-banner-title
+                                    dashboard-insert-newline
+                                    dashboard-insert-navigator
+                                    dashboard-insert-newline
+                                    dashboard-insert-init-info
+                                    dashboard-insert-items
+                                    dashboard-insert-newline
+                                    dashboard-insert-footer))
   (dashboard-setup-startup-hook))
 
 ;; TODO add load-session
