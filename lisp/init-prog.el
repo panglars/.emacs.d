@@ -19,10 +19,10 @@
 (use-package rainbow-csv
   :straight (:host github :repo "emacs-vs/rainbow-csv"))
 
+;;; Devdocs
 (use-package devdocs
   :bind
   ("C-c S" . devdocs-lookup))
-
 ;; to highlight dev docs
 (use-package shrface
   :defer t
@@ -32,7 +32,7 @@
   (shrface-default-keybindings)
   (setq shrface-href-versatile t))
 
-
+;; show assembly
 (use-package rmsbolt
   :defer t)
 
@@ -44,11 +44,10 @@
    ("M-<f5>" . quickrun-shell)))
 
 (use-package yasnippet
-  :defer t
+  :hook (prog-mode . yas-minor-mode)
   :custom
   (yas-use-menu nil)
   :config
-  (add-hook 'prog-mode-hook #'yas-minor-mode)
   (add-hook 'yas-keymap-disable-hook
             (lambda ()
               (and (frame-live-p corfu--frame)
@@ -60,8 +59,7 @@
     ("C-c y" . consult-yasnippet))
 
   (setq yas-inhibit-overlay-modification-protection t)
-  (advice-add 'yas--on-protection-overlay-modification :override #'ignore)
-  )
+  (advice-add 'yas--on-protection-overlay-modification :override #'ignore))
 
 
 (provide 'init-prog)

@@ -8,11 +8,11 @@
   (treesit-auto-add-to-auto-mode-alist 'treesit-auto-langs)
   (global-treesit-auto-mode))
 
+;;; typst 
 (use-package typst-ts-mode
   :disabled
-  :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")
-  :custom
-  (typst-ts-mode-watch-options "--open"))
-
+  :straight (:host sourcehut :repo "meow_king/typst-ts-mode" :files (:defaults "*.el"))
+  ;; (optional) checking typst grammar version needs it
+  (typst-ts-mode-grammar-location (expand-file-name "tree-sitter/libtree-sitter-typst.so" user-emacs-directory)))
 
 (provide 'init-treesitter)
