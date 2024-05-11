@@ -23,7 +23,6 @@
 (use-package pangu-spacing
   :config
   (global-pangu-spacing-mode 1)
-  (pangu-spacing-real-insert-separtor t)
   (add-hook 'org-mode-hook
             #'(lambda ()
                 (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))
