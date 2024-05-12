@@ -21,7 +21,7 @@
   )
 
 (use-package pangu-spacing
-  :init
+  :config
   (global-pangu-spacing-mode 1)
   (add-hook 'org-mode-hook
             #'(lambda ()
