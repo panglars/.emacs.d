@@ -1,11 +1,16 @@
 (use-package vlf)
 
-;; other language
+;;; Other language
 (use-package lua-mode)
 
 (use-package clojure-mode)
 
-(use-package fish-mode)
+(use-package fish-mode
+  :disabled)
+
+(use-package scala-mode
+  :interpreter
+  ("scala" . scala-mode))
 
 (use-package just-mode
   :disabled)

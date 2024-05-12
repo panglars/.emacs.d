@@ -115,6 +115,9 @@
                            (require 'lsp-pyright)
                            (lsp-deferred))))
 
+  (use-package lsp-metals
+    :custom
+    (lsp-metals-enable-semantic-highlighting t))
 
   ;; Enable LSP in org babel without checking centaur-lsp
   (cl-defmacro lsp-org-babel-enable (lang)
