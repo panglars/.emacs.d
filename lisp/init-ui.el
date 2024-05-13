@@ -81,7 +81,7 @@
              (propertize (concat " " (alist-get 'name tab) " ") 'face face)))))
   (defun lan/show-tab-bar ()
     (interactive)
-    (setq tab-bar-format '(tab-bar-format-menu-bar
+    (setq tab-bar-format '(;;tab-bar-format-menu-bar
                            ;;meow-indicator
                            tab-bar-format-tabs tab-bar-separator))
     (tab-bar--update-tab-bar-lines))
