@@ -25,7 +25,7 @@
           ("j" "Journal" entry(file+datetree ,(concat org-directory "/journal.org"))
            "* %<%R> %?" :tree-type week)
           ("J" "Journal other day" entry(file+datetree ,(concat org-directory "/journal.org"))
-           "* %<%R> %?" :tree-type week :time-prompt t)
+           "* %?" :tree-type week :time-prompt t)
           )
         org-todo-keywords
         '((sequence "TODO(t)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
