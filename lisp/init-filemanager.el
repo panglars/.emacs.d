@@ -31,7 +31,7 @@
   (setq dirvish-mode-line-format
         '(:left (sort symlink) :right (omit yank index)))
   (setq dirvish-attributes
-        '(nerd-icons file-time collapse git-msg))
+        '(nerd-icons file-time file-size collapse git-msg))
   (setq delete-by-moving-to-trash t)
   (setq dirvish-subtree-state-style 'nerd)
   (setq dirvish-default-layout '(0 0.4 0.6))
