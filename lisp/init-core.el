@@ -61,6 +61,18 @@
 
 (use-package nerd-icons)
 
+(modify-all-frames-parameters
+ '((right-divider-width . 5)
+   (left-divider-width . 5)
+   (internal-border-width . 5)))
+(dolist (face '(window-divider
+                window-divider-first-pixel
+                window-divider-last-pixel))
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default :background)))
+(set-face-background 'fringe (face-attribute 'default :background))
+
+
 (use-package which-key
   :hook (after-init . which-key-mode)
   :config

@@ -31,15 +31,15 @@
   (setq dirvish-mode-line-format
         '(:left (sort symlink) :right (omit yank index)))
   (setq dirvish-attributes
-        '(nerd-icons file-time file-size collapse git-msg))
+        '(nerd-icons file-time collapse git-msg))
   (setq delete-by-moving-to-trash t)
   (setq dirvish-subtree-state-style 'nerd)
   (setq dirvish-default-layout '(0 0.4 0.6))
   (setq dired-listing-switches
         "-l --almost-all --human-readable --group-directories-first --no-group")
   (setq dirvish-path-separators (list
-                                 (format "  %s " (nerd-icons-codicon "nf-cod-home"))
-                                 (format "  %s " (nerd-icons-codicon "nf-cod-root_folder"))
+                                 (format " %s " (nerd-icons-codicon "nf-cod-home"))
+                                 (format " %s " (nerd-icons-codicon "nf-cod-root_folder"))
                                  (format " %s " (nerd-icons-faicon "nf-fa-angle_right"))))
   (setq dirvish-preview-dispatchers
         (cl-substitute 'pdf-preface 'pdf dirvish-preview-dispatchers))
