@@ -7,10 +7,9 @@
     :init (setq vterm-always-compile-module t)
     :bind (:map vterm-mode-map
                 ("<f10>" . vterm-toggle)
-                ([(control return)] . vterm-toggle-insert-cd))
-    :config
-    (use-package vterm-toggle
-      :bind (("<f10>" . vterm-toggle))))
+                ([(control return)] . vterm-toggle-insert-cd)))
+  (use-package vterm-toggle
+    :bind (("<f10>" . vterm-toggle)))
   )
 
 (provide 'init-shell)
