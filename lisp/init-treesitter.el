@@ -19,7 +19,8 @@
   (add-to-list 'treesit-auto-recipe-list my/tsauto-config)
   (global-treesit-auto-mode))
 
-;;; typst 
+;;; typst
+;; BUG: libgccjit error
 (use-package typst-ts-mode
   :no-require
   :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode" :files (:defaults "*.el") :no-byte-compile t))
