@@ -1,6 +1,8 @@
+;;; -*- lexical-binding:t; -*-
+
 (use-package eglot
   :disabled
-  ;;  :straight (:type built-in)
+  :straight (:type built-in)
   :hook ((prog-mode . (lambda ()
                         (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'makefile-mode 'snippet-mode 'fish-mode)
                           (eglot-ensure))))
@@ -30,14 +32,7 @@
   (use-package flycheck-eglot
     :after (flycheck)
     :config
-    (global-flycheck-eglot-mode 1))
-
-  ;;  (add-hook
-  ;;   'eglot-managed-mode-hook
-  ;;   (lambda ()
-  ;;     (when (eglot-managed-p)(eldoc-mode -1))
-  ;;     ))
-  )
+    (global-flycheck-eglot-mode 1)))
 
 
 (use-package lsp-mode
@@ -114,12 +109,22 @@
     :hook (python-mode . (lambda ()
                            (require 'lsp-pyright)
                            (lsp-deferred))))
-
+  ;;scala lsp 
   (use-package lsp-metals
+    :disabled
     :custom
     (lsp-metals-enable-semantic-highlighting t))
+  ;; typst lsp
+  (add-to-list 'lsp-language-id-configuration
+               '("\\.typ$" . "typst"))
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection (lambda () (executable-find "tinymist")))
+    :major-modes '(typst-mode typst-ts-mode)
+    :server-id 'tinymist))
 
-  ;; Enable LSP in org babel without checking centaur-lsp
+
+  ;; Enable LSP in org babel 
   (cl-defmacro lsp-org-babel-enable (lang)
     "Support LANG in org source code block."
     (cl-check-type lang string)
