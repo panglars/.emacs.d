@@ -89,7 +89,6 @@
 
 ;; Editor
 (require 'init-meow)
-(require 'init-format)
 (require 'init-chinese)
 
 ;; UI
@@ -101,17 +100,18 @@
 ;; Completion
 (require 'init-completion)
 (require 'init-consult)
+(require 'init-format)
 
 ;; Lang
 (require 'init-org)
-(require 'init-prog)
 (require 'init-treesitter)
 (require 'init-python)
 (require 'init-web)
-(require 'init-fontend)
 (require 'init-cxx)
 (require 'init-golang)
 (require 'init-rust)
+(require 'init-prog)
+
 
 ;; IDE
 (require 'init-git)

@@ -72,26 +72,22 @@
         tab-bar-auto-width nil
         tab-bar-close-button-show nil
         tab-bar-tab-hints t)
-  (setq tab-bar-tab-name-format-function
-        (lambda (tab i)
-          (let ((face (funcall tab-bar-tab-face-function tab)))
-            (concat
-             (propertize " " 'face face)
-             (propertize (number-to-string i) 'face `(:inherit ,face :weight ultra-bold :underline t))
-             (propertize (concat " " (alist-get 'name tab) " ") 'face face)))))
-  (defun lan/show-tab-bar ()
-    (interactive)
-    (setq tab-bar-format '(;;tab-bar-format-menu-bar
-                           ;;meow-indicator
-                           tab-bar-format-tabs tab-bar-separator))
-    (tab-bar--update-tab-bar-lines))
-  (lan/show-tab-bar)
+  (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+  ;; (setq tab-bar-tab-name-format-function
+  ;;       (lambda (tab i)
+  ;;         (let ((face (funcall tab-bar-tab-face-function tab)))
+  ;;           (concat
+  ;;            (propertize " " 'face face)
+  ;;            (propertize (number-to-string i) 'face `(:inherit ,face :weight ultra-bold :underline t))
+  ;;            (propertize (concat " " (alist-get 'name tab) " ") 'face face)))))
+  
   )
 
-;; (use-package parrot
-;;   :config
-;;   (parrot-mode)
-;;   (setq parrot-num-rotations nil))
+(use-package parrot
+  :disabled
+  :config
+  (parrot-mode)
+  (setq parrot-num-rotations nil))
 
 
 (provide 'init-ui)

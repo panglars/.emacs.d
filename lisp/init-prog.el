@@ -28,6 +28,7 @@
 (use-package devdocs
   :bind
   ("C-c S" . devdocs-lookup))
+
 ;; to highlight dev docs
 (use-package shrface
   :defer t

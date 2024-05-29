@@ -35,8 +35,8 @@
 ;;; theme
 ;; (use-package doom-themes)
 (use-package modus-themes)
-(use-package kaolin-themes)
-;; (use-package ef-themes)
+;; (use-package kaolin-themes)
+(use-package ef-themes)
 
 ;; (if (daemonp)
 ;;     (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
