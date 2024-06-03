@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding:t; -*-
 
 (use-package org
-  ;; FIXME: pin to org-mode 9.6.6 
   ;; https://github.com/org-roam/org-roam/issues/2361 
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))

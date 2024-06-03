@@ -44,8 +44,8 @@
 
 (use-package auto-dark
   :config 
-  (setq auto-dark-dark-theme 'modus-vivendi)
-  (setq auto-dark-light-theme 'modus-operandi)
+  (setq auto-dark-dark-theme 'ef-dream)
+  (setq auto-dark-light-theme 'ef-reverie)
   ;; (setq auto-dark-detection-method nil) ;; dangerous to be set manually
   (auto-dark-mode t))
 
