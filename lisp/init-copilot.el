@@ -32,10 +32,6 @@
 
 (use-package gptel
   :config
-  (gptel-make-openai "GPTAPI.US" 
-    :host "api.gptapi.us"
-    :stream t
-    :models '("gpt-4-turbo-preview" "gpt-3.5-turbo"))
   (defun lan/gptel-commit-summary ()
     "Summarize current git commit."
     (interactive)
