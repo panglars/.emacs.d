@@ -44,15 +44,15 @@
 
 (use-package auto-dark
   :config 
-  (setq auto-dark-dark-theme 'ef-dream)
-  (setq auto-dark-light-theme 'ef-reverie)
+  (setq auto-dark-dark-theme my-dark-theme)
+  (setq auto-dark-light-theme my-light-theme)
   ;; (setq auto-dark-detection-method nil) ;; dangerous to be set manually
   (auto-dark-mode t))
 
 ;; transparent background
 (setq default-frame-alist '((width . 120)
                             (height . 80)
-                            (alpha-background . 99)
+                            (alpha-background . 90)
                             ))
 (when (display-graphic-p)
   ;; Frame maximized
@@ -112,7 +112,6 @@
   :config
   (setq electric-pair-inhibit-predicate (lambda (char) (minibufferp))))
 
-
 (use-package sudo-edit)
 
 (use-package eldoc
@@ -127,10 +126,6 @@
         eglot-extend-to-xref t)
   
   ;;  displays ElDoc documentations in a childframe
-  (use-package eldoc-box)
-  )
-
-
-
+  (use-package eldoc-box))
 
 (provide 'init-core)

@@ -16,4 +16,13 @@
   "user must do this manually with M-x nerd-icons-install-fonts."
   :type 'boolean)
 
+(defcustom my-light-theme 'ef-reverie
+  "The theme to use when in light mode."
+  :type 'symbol)
+
+(defcustom my-dark-theme 'ef-dream
+  "The theme to use when in dark mode."
+  :type 'symbol)
+
+
 (provide 'init-const)

@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding:t; -*-
 
 (use-package org
-  ;; https://github.com/org-roam/org-roam/issues/2361 
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
   
