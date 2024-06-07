@@ -28,29 +28,14 @@
                 (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))
 
 (use-package go-translate
-  :bind (("C-c k" . lan/go-translate-at-point)
-         ("C-c K" . lan/go-translate-dict))
+  :bind (("C-c k" . gt-do-translate))
   :config
-  (setq gts-translate-list '(("en" "zh") ("zh" "en")))
-
-  (setq gts-default-translator
-        (gts-translator
-         :picker (gts-prompt-picker)
-         :engines (list (gts-google-engine) (gts-stardict-engine))
-         :render (gts-buffer-render)))
-  (defun lan/go-translate-at-point ()
-    (interactive)
-    (gts-translate (gts-translator
-                    :picker (gts-noprompt-picker)
-                    :engines (list (gts-google-rpc-engine) (gts-stardict-engine))
-                    :render (gts-posframe-pop-render))))
-  (defun lan/go-translate-dict ()
-    (interactive)
-    (gts-translate (gts-translator
-                    :picker (gts-prompt-picker)
-                    :engines (gts-stardict-engine)
-                    :render (gts-buffer-render))))
-
+  (setq gt-langs '(en zh))
+  (setq gt-default-translator
+        (gt-translator
+         :taker   (gt-taker :text 'word :pick 'paragraph)       
+         :engines (gt-google-engine)
+         :render  (gt-posframe-pop-render)))
   )
 
 (provide 'init-chinese)

@@ -52,7 +52,7 @@
 ;; transparent background
 (setq default-frame-alist '((width . 120)
                             (height . 80)
-                            (alpha-background . 90)
+                            ;; (alpha-background . 90)
                             ))
 (when (display-graphic-p)
   ;; Frame maximized
@@ -127,5 +127,8 @@
   
   ;;  displays ElDoc documentations in a childframe
   (use-package eldoc-box))
+
+;; use curl insted built-in url 
+(use-package plz)
 
 (provide 'init-core)
