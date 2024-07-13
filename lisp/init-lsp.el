@@ -1,5 +1,9 @@
 ;;; -*- lexical-binding:t; -*-
 
+;;; lsp-bridge
+
+
+;;; eglot 
 (use-package eglot
   :disabled
   :straight (:type built-in)
@@ -34,7 +38,7 @@
     :config
     (global-flycheck-eglot-mode 1)))
 
-
+;;; lsp-mode
 (use-package lsp-mode
   :defer t
   :custom
