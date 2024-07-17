@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding:t; -*-
 
-;; FIXME: https://github.com/tree-sitter/tree-sitter/issues/3296
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
@@ -20,9 +19,7 @@
   (global-treesit-auto-mode))
 
 ;;; typst
-;; BUG: libgccjit error
 (use-package typst-ts-mode
-  :no-require
-  :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode" :files (:defaults "*.el") :no-byte-compile t))
+  :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode" :files (:defaults "*.el") :build (:not compile)))
 
 (provide 'init-treesitter)
