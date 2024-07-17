@@ -2,6 +2,9 @@
 (use-package flycheck
   :commands flycheck-redefine-standard-error-levels
   :hook (after-init . global-flycheck-mode)
+  :bind (:map flycheck-mode-map
+              ("M-n" . flycheck-next-error) ; optional but recommended error navigation
+              ("M-p" . flycheck-previous-error))
   :init
   (setq flycheck-global-modes '(not outline-mode fundamental-mode lisp-interaction-mode diff-mode shell-mode eshell-mode term-mode vterm-mode)
         flycheck-emacs-lisp-load-path 'inherit
@@ -17,19 +20,7 @@
   ;;    (define-fringe-bitmap 'flycheck-fringe-bitmap-arrow
   ;;      [16 48 112 240 112 48 16] nil nil 'center))
 
-  (use-package flycheck-posframe
-    :disabled
-    :if (display-graphic-p)
-    :custom-face
-    (flycheck-posframe-face ((t (:foreground ,(face-foreground 'success)))))
-    (flycheck-posframe-info-face ((t (:foreground ,(face-foreground 'success)))))
-    (flycheck-posframe-background-face ((t (:inherit tooltip))))
-    (flycheck-posframe-border-face ((t (:inherit font-lock-comment-face))))
-    :hook (flycheck-mode . flycheck-posframe-mode)
-    :config
-    ;;    (setq flycheck-posframe-border-width 1)
-    (setq flycheck-posframe-position 'window-bottom-left-corner)
-    ))
+  )
 
 (use-package xref
   :straight (:type built-in)
@@ -39,4 +30,5 @@
                              ((executable-find "ugrep") 'ugrep)
                              (t 'grep)))
   )
+
 (provide 'init-flycheck)

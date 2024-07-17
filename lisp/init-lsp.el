@@ -3,41 +3,6 @@
 ;;; lsp-bridge
 
 
-;;; eglot 
-(use-package eglot
-  :disabled
-  :straight (:type built-in)
-  :hook ((prog-mode . (lambda ()
-                        (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'makefile-mode 'snippet-mode 'fish-mode)
-                          (eglot-ensure))))
-         ((markdown-mode yaml-mode yaml-ts-mode) . eglot-ensure))
-  :init
-  (setq eglot-autoshutdown t
-        eglot-send-changes-idle-time 0.5)
-  
-  :config
-  ;;  (add-to-list 'eglot-stay-out-of 'flymake)
-
-  ;; for rust-analyzer extensions 
-  (use-package eglot-x
-    :straight (:host github :repo "nemethf/eglot-x")
-    :config
-    (eglot-x-setup))
-  
-  (use-package consult-eglot
-    :bind (:map eglot-mode-map
-                ("C-M-." . consult-eglot-symbols)))
-  
-  (use-package eglot-booster
-    :disabled
-    :straight (:host github :repo "jdtsmith/eglot-booster")
-    :config	(eglot-booster-mode))
-
-  (use-package flycheck-eglot
-    :after (flycheck)
-    :config
-    (global-flycheck-eglot-mode 1)))
-
 ;;; lsp-mode
 (use-package lsp-mode
   :defer t
@@ -77,8 +42,9 @@
    lsp-semantic-tokens-enable t
    lsp-progress-spinner-type 'progress-bar-filled
    lsp-enable-folding nil
-   lsp-enable-text-document-color t
-   lsp-enable-on-type-formatting nil)
+   lsp-enable-text-document-color nil
+   lsp-enable-on-type-formatting nil
+   lsp-modeline-code-actions-enable nil )
   :hook (
          (prog-mode . (lambda ()
                         (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'sh-mode 'makefile-mode)
@@ -104,20 +70,22 @@
                                 ,(face-foreground 'font-lock-string-face)
                                 ,(face-foreground 'font-lock-constant-face)
                                 ,(face-foreground 'font-lock-variable-name-face))))
-
+  ;; tailwindcss lsp
   (use-package lsp-tailwindcss
     :init
     (setq lsp-tailwindcss-add-on-mode t))
 
+  ;; python lsp 
   (use-package lsp-pyright
     :hook (python-mode . (lambda ()
                            (require 'lsp-pyright)
                            (lsp-deferred))))
-  ;;scala lsp 
+  ;; scala lsp 
   (use-package lsp-metals
     :disabled
     :custom
     (lsp-metals-enable-semantic-highlighting t))
+  
   ;; typst lsp
   (add-to-list 'lsp-language-id-configuration
                '("\\.typ$" . "typst"))
@@ -181,6 +149,42 @@
     (require 'dap-chrome)
     (dap-chrome-setup))
   )
+
+;;; eglot 
+(use-package eglot
+  :disabled
+  :straight (:type built-in)
+  :hook ((prog-mode . (lambda ()
+                        (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'makefile-mode 'snippet-mode 'fish-mode)
+                          (eglot-ensure))))
+         ((markdown-mode yaml-mode yaml-ts-mode) . eglot-ensure))
+  :init
+  (setq eglot-autoshutdown t
+        eglot-send-changes-idle-time 0.5)
+  
+  :config
+  ;;  (add-to-list 'eglot-stay-out-of 'flymake)
+
+  ;; for rust-analyzer extensions 
+  (use-package eglot-x
+    :straight (:host github :repo "nemethf/eglot-x")
+    :config
+    (eglot-x-setup))
+  
+  (use-package consult-eglot
+    :bind (:map eglot-mode-map
+                ("C-M-." . consult-eglot-symbols)))
+  
+  (use-package eglot-booster
+    :disabled
+    :straight (:host github :repo "jdtsmith/eglot-booster")
+    :config	(eglot-booster-mode))
+
+  (use-package flycheck-eglot
+    :after (flycheck)
+    :config
+    (global-flycheck-eglot-mode 1)))
+
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

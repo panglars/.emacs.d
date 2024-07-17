@@ -67,7 +67,7 @@
                                       :font font
                                       :height 120)))
  ((string-equal system-name "sf1000")
-  (cl-loop for font in '("CodeNewRoman Nerd Font" "Source Code Pro" "Courier New")
+  (cl-loop for font in '("Iosevka Nerd Font Mono" "Source Code Pro" "Courier New")
            when (find-font (font-spec :name font))
            return (set-face-attribute 'default nil
                                       :font font
