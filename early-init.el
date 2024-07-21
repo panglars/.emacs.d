@@ -24,4 +24,7 @@
 ;; Make UTF-8 the default coding system:
 (set-language-environment "UTF-8")
 
+;; Use plists for deserialization
+(setenv "LSP_USE_PLISTS" "true")
+
 
