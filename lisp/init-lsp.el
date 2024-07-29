@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding:t; -*-
 
 ;;; lsp-bridge
-
+;; TODO: maybe migrate lsp-mode 
 
 ;;; lsp-mode
 

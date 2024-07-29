@@ -28,7 +28,7 @@
    '("G" . magit)
    '("o" . ace-window)
    '("p" . projectile-command-map)
-   '("P" . consult-project-buffer)
+   ;; '("P" . consult-project-buffer)
    '("z" . popper-toggle-latest)
    '("[" . tab-previous)
    '("]" . tab-next)

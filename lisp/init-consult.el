@@ -7,7 +7,7 @@
         ("C-c F" . consult-fd)
         ("C-c i" . consult-imenu)
         ("C-c R" . consult-bookmark)            ;; orig. bookmark-jump
-        ("C-x b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+        ("C-c B" . consult-project-buffer)      ;; orig. project-switch-to-buffer
         ("C-x C-r" . consult-recent-file)
         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
