@@ -93,13 +93,20 @@
 ;; UI
 (require 'init-ui)
 (require 'init-highlight)
-(require 'init-window)
-(require 'init-buffer)
+(require 'init-window) ;; window,buffer and frame
 
 ;; Completion
 (require 'init-completion)
 (require 'init-consult)
 (require 'init-format)
+
+;; IDE
+(require 'init-git)
+(require 'init-shell)
+(require 'init-project)
+(require 'init-flycheck)
+(require 'init-lsp)
+(require 'init-filemanager)
 
 ;; Lang
 (require 'init-org)
@@ -111,14 +118,6 @@
 (require 'init-rust)
 (require 'init-prog)
 
-
-;; IDE
-(require 'init-git)
-(require 'init-shell)
-(require 'init-project)
-(require 'init-flycheck)
-(require 'init-lsp)
-(require 'init-filemanager)
 
 ;; Misc
 (require 'init-copilot)

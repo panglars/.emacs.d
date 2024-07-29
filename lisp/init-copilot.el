@@ -13,6 +13,7 @@
   :init
   (setq copilot--indent-warning-printed-p t))
 
+;; prompts 
 (defvar lan/gptel-prompts
   '((translator . (:sys "You are a professional translator."
                         :user "You will be provided with text delimited by triple backticks, your task is to translate the wrapped text into %s. You should only output the translated text. \n```%s```"))
