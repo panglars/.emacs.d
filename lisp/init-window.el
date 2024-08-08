@@ -82,6 +82,7 @@
           "\\*lsp-help\\*$" "\\*lsp session\\*$"
           "\\*quickrun\\*$"
           "\\*gptel-quick\\*$"
+          "\\*gt-result\\*$"
           "\\*eldoc\\*$"
           "\\*apheleia-apheleia-npx-log\\*$"
           "\\*tldr\\*$"
@@ -99,19 +100,20 @@
     (setq popper-group-function #'popper-group-by-projectile))
 
   :config
+  
   (popper-mode 1)
   (popper-echo-mode 1)
 
-  ;; HACK: close popper with `C-g'
-  (defun +popper-close-window-hack (&rest _)
-    "Close popper window via `C-g'."
-    (when (and (called-interactively-p 'interactive)
-               (not (region-active-p))
-               popper-open-popup-alist)
-      (let ((window (caar popper-open-popup-alist)))
-        (when (window-live-p window)
-          (delete-window window)))))
-  (advice-add #'keyboard-quit :before #'+popper-close-window-hack)
+  ;; ;; HACK: close popper with `C-g'
+  ;; (defun +popper-close-window-hack (&rest _)
+  ;;   "Close popper window via `C-g'."
+  ;;   (when (and (called-interactively-p 'interactive)
+  ;;              (not (region-active-p))
+  ;;              popper-open-popup-alist)
+  ;;     (let ((window (caar popper-open-popup-alist)))
+  ;;       (when (window-live-p window)
+  ;;         (delete-window window)))))
+  ;; (advice-add #'keyboard-quit :before #'+popper-close-window-hack)
   )
 
 ;;; Ibuffer 

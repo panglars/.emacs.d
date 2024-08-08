@@ -1,4 +1,4 @@
-;;; -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t -*-;
 
 (use-package rime
   :config
@@ -35,7 +35,7 @@
         (gt-translator
          :taker   (gt-taker :text 'word :pick 'paragraph)       
          :engines (gt-google-engine)
-         :render  (gt-posframe-pop-render)))
+         :render  (gt-buffer-render)))
   )
 
 (provide 'init-chinese)
