@@ -33,6 +33,17 @@
 
 (use-package gptel
   :config
+  (setq
+   gptel-model   "gpt-4o-2024-08-06"
+   gptel-backend
+   (gptel-make-openai "GPTAPI.US"          
+     :host "www.gptapi.us"
+     :endpoint "/openai/v1/chat/completions"
+     :stream t
+     :key #'my-chatapi-key
+     :models '("gpt-4o-2024-08-06"
+               "gpt-4o-mini")))
+  
   (defun lan/gptel-commit-summary ()
     "Summarize current git commit."
     (interactive)
