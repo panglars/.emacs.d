@@ -25,6 +25,7 @@
 
 ;;  bi-directional editing in online text editors and text areas from within Emacs
 (use-package atomic-chrome
+  :disabled
   :demand t
   :straight (atomic-chrome
              :repo "KarimAziev/atomic-chrome"

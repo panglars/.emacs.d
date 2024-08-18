@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding:t; -*-
 
 (use-package org
+  :straight(:type built-in)
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
   

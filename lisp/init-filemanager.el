@@ -32,6 +32,10 @@
   :config
   ;; (dirvish-peek-mode) ; Preview files in minibuffer
   ;; (dirvish-side-follow-mode) ; similar to `treemacs-follow-mode'
+
+  ;; HACK:enable dired-omit-mode  
+  (add-hook 'dired-mode-hook 'dired-omit-mode)
+  
   (setq dirvish-default-layout '(0 0.4 0.6))
   (setq dirvish-mode-line-format
         '(:left (sort symlink) :right (omit yank index)))
