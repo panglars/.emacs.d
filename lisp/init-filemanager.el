@@ -1,6 +1,8 @@
 ;;
 
 (use-package dirvish
+  :straight (:type git :host github :repo "alexluigit/dirvish"
+                   :fork (:host github :repo "hlissner/dirvish"))
   :init
   (dirvish-override-dired-mode)
   :custom
@@ -13,6 +15,7 @@
 
      ("c" "~/Codes" "Codes")
      ("p" "~/Codes/Project/" "Project")
+     
      ("r" "~/Codes/Repo/" "Repo")
      ("o" "~/Documents/Org/" "Org")
      ("n" "~/Documents/Notes/" "Notes")
