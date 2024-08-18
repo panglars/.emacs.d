@@ -3,8 +3,8 @@
         ("C-c M-x" . consult-mode-command)
         ("C-c b" . consult-buffer)
         ("C-c r" . consult-ripgrep)
-        ("C-c f" . consult-flycheck)
-        ("C-c F" . consult-fd)
+        ("C-c j" . consult-flycheck)
+        ("C-c f" . consult-fd)
         ("C-c i" . consult-imenu)
         ("C-c R" . consult-bookmark)            ;; orig. bookmark-jump
         ("C-c B" . consult-project-buffer)      ;; orig. project-switch-to-buffer

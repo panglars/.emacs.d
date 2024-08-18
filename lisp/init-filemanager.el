@@ -1,3 +1,4 @@
+;;
 
 (use-package dirvish
   :init
@@ -28,13 +29,13 @@
   :config
   ;; (dirvish-peek-mode) ; Preview files in minibuffer
   ;; (dirvish-side-follow-mode) ; similar to `treemacs-follow-mode'
+  (setq dirvish-default-layout '(0 0.4 0.6))
   (setq dirvish-mode-line-format
         '(:left (sort symlink) :right (omit yank index)))
   (setq dirvish-attributes
         '(nerd-icons file-time file-size collapse git-msg))
   (setq delete-by-moving-to-trash t)
   (setq dirvish-subtree-state-style 'nerd)
-  (setq dirvish-default-layout '(0 0.4 0.6))
   (setq dired-listing-switches
         "-l --almost-all --human-readable --group-directories-first --no-group")
   (setq dirvish-path-separators (list
