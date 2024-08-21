@@ -25,6 +25,14 @@
           "*Apropos*" "*Help*" "*cvs*" "*Buffer List*" "*Ibuffer*"
           "*esh command on file*" "*which-key*")))
 
+;; Enforce rules for popup windows
+(use-package shackle
+  :hook (after-init . shackle-mode)
+  :config
+  (setq shackle-default-size 0.4)
+  )
+
+
 (use-package popper
   :defines popper-echo-dispatch-actions
   :autoload popper-group-by-projectile
@@ -100,7 +108,6 @@
     (setq popper-group-function #'popper-group-by-projectile))
 
   :config
-  
   (popper-mode 1)
   (popper-echo-mode 1)
 
@@ -115,6 +122,7 @@
   ;;         (delete-window window)))))
   ;; (advice-add #'keyboard-quit :before #'+popper-close-window-hack)
   )
+
 
 ;;; Ibuffer 
 (use-package ibuffer

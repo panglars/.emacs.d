@@ -48,7 +48,7 @@
   ("C-c l d" . lsp-find-definition)
   ("C-c l i" . lsp-find-implementation)
   ("C-c l r" . lsp-find-references)
-  ("C-c l h" . lsp-describe-thing-at-point)
+  ("C-c l h" . lsp-ui-doc-show)
   ("C-c l f" . lsp-format-buffer)
   ("C-c l F" . lsp-organize-imports)
   ("C-c l a" . lsp-execute-code-action)

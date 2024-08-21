@@ -30,6 +30,7 @@
    '("p" . projectile-command-map)
    ;; '("P" . consult-project-buffer)
    '("z" . popper-toggle-latest)
+   '("Z" . popper-cycle)
    '("[" . tab-previous)
    '("]" . tab-next)
    '("," . previous-buffer)
