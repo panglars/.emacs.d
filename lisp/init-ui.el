@@ -81,7 +81,6 @@
   ;;            (propertize " " 'face face)
   ;;            (propertize (number-to-string i) 'face `(:inherit ,face :weight ultra-bold :underline t))
   ;;            (propertize (concat " " (alist-get 'name tab) " ") 'face face)))))
-  
   )
 
 (use-package parrot

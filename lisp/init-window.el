@@ -123,7 +123,6 @@
   ;; (advice-add #'keyboard-quit :before #'+popper-close-window-hack)
   )
 
-
 ;;; Ibuffer 
 (use-package ibuffer
   :straight (:type built-in)
