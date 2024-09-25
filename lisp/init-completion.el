@@ -81,7 +81,6 @@
   ;; Repeat last session
   (use-package vertico-repeat
     :after vertico
-    :ensure nil
     :bind ("C-c C-r" . vertico-repeat)
     :config
     (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)))

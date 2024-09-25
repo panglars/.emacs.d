@@ -21,7 +21,7 @@
 
 (use-package magit-todos
   :after magit
-  :init
+  :config
   (magit-todos-mode 1))
 
 ;; Git modes

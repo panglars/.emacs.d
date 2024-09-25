@@ -32,9 +32,7 @@
    (typescript-ts-mode . combobulate-mode)
    (json-ts-mode . combobulate-mode)
    (tsx-ts-mode . combobulate-mode))
-  ;; Amend this to the directory where you keep Combobulate's source
-  ;; code.
-  :load-path ("path-to-git-checkout-of-combobulate"))
+  )
 
 ;;; typst
 (use-package typst-ts-mode
