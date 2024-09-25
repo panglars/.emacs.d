@@ -68,7 +68,7 @@
   :bind (("C-c n n" . tab-new)
          ("C-c n x" . tab-close))
   :config
-  (setq tab-bar-separator ""
+  (setq tab-bar-separator " "
         tab-bar-tab-name-truncated-max 20
         tab-bar-auto-width nil
         tab-bar-close-button-show nil

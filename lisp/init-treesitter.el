@@ -18,10 +18,9 @@
   (add-to-list 'treesit-auto-recipe-list my/tsauto-config)
   (global-treesit-auto-mode))
 
+;; https://www.masteringemacs.org/article/combobulate-bulk-editing-treesitter-nodes-multiple-cursors
 (use-package combobulate
   :preface
-  ;; You can customize Combobulate's key prefix here.
-  ;; Note that you may have to restart Emacs for this to take effect!
   (setq combobulate-key-prefix "C-c j")
   :hook
   ((python-ts-mode . combobulate-mode)
