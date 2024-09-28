@@ -23,9 +23,12 @@
 (use-package pangu-spacing
   :config
   (global-pangu-spacing-mode 1)
-  (add-hook 'org-mode-hook
-            #'(lambda ()
-                (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))
+  (let ((enable-pangu-spacing
+         #'(lambda ()
+             (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))
+    (add-hook 'org-mode-hook enable-pangu-spacing)
+    (add-hook 'markdown-mode-hook enable-pangu-spacing)))
+
 
 (use-package go-translate
   :bind (("C-c k" . gt-do-translate))
