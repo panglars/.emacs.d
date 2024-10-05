@@ -64,7 +64,7 @@
 (modify-all-frames-parameters
  '((right-divider-width . 5)
    (left-divider-width . 5)
-   (internal-border-width . 5)))
+   (internal-border-width . 0)))
 (dolist (face '(window-divider
                 window-divider-first-pixel
                 window-divider-last-pixel))

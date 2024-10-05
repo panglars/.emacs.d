@@ -63,24 +63,29 @@
 (use-package tab-bar
   :straight (:type built-in)
   :hook (after-init . tab-bar-mode)
-  :custom
-  (tab-bar-history-buttons-show nil)
+  
   :bind (("C-c n n" . tab-new)
-         ("C-c n x" . tab-close))
+         ("C-c n x" . tab-close)
+         ("C-c n b" . consult-buffer-other-tab)
+         ("C-c n 1" . tab-close-other)
+         ("C-c n r" . tab-rename))
+  
   :config
   (setq tab-bar-separator " "
-        tab-bar-tab-name-truncated-max 20
+        tab-bar-border nil
+        tab-bar-history-buttons-show nil
         tab-bar-auto-width nil
         tab-bar-close-button-show nil
+        tab-bar-tab-name-truncated-max 20
         tab-bar-tab-hints t)
-  (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
-  ;; (setq tab-bar-tab-name-format-function
-  ;;       (lambda (tab i)
-  ;;         (let ((face (funcall tab-bar-tab-face-function tab)))
-  ;;           (concat
-  ;;            (propertize " " 'face face)
-  ;;            (propertize (number-to-string i) 'face `(:inherit ,face :weight ultra-bold :underline t))
-  ;;            (propertize (concat " " (alist-get 'name tab) " ") 'face face)))))
+  (setq tab-bar-format '(tab-bar-format-menu-bar meow-indicator tab-bar-format-tabs tab-bar-separator))
+  (setq tab-bar-tab-name-format-function
+        (lambda (tab i)
+          (let ((face (funcall tab-bar-tab-face-function tab)))
+            (concat
+             (propertize " " 'face face)
+             (propertize (number-to-string i) 'face `(:inherit ,face :weight ultra-bold :underline t))
+             (propertize (concat " " (alist-get 'name tab) " ") 'face face)))))
   )
 
 (use-package parrot
