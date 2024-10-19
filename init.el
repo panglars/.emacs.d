@@ -93,12 +93,11 @@
 ;; UI
 (require 'init-ui)
 (require 'init-highlight)
-(require 'init-window) ;; window,buffer and frame
+(require 'init-window) ;; window, buffer and frame
 
 ;; Completion
 (require 'init-completion)
 (require 'init-consult)
-(require 'init-format)
 
 ;; IDE
 (require 'init-git)
@@ -106,6 +105,7 @@
 (require 'init-project)
 (require 'init-flycheck)
 (require 'init-lsp)
+(require 'init-format)
 (require 'init-filemanager)
 
 ;; Lang
@@ -120,7 +120,7 @@
 
 
 ;; Misc
-(require 'init-copilot)
+(require 'init-ai)
 (require 'init-reader)
 (require 'init-intergration)
 (require 'init-count)
