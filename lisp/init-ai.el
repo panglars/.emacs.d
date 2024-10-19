@@ -6,7 +6,7 @@
   :config
   (setq aider-args '("--no-auto-commits" "--model" "gpt-4o"))
   (setenv "OPENAI_API_BASE" "https://api.gptapi.us/v1/chat/completions")
-  (setenv "OPENAI_API_KEY" "")
+  (setenv "OPENAI_API_KEY" my/api-key)
   ;; Optional: Set a key binding for the transient menu
   (global-set-key (kbd "C-c q") 'aider-transient-menu))
 
@@ -37,7 +37,7 @@
      :host "www.gptapi.us"
      :endpoint "/openai/v1/chat/completions"
      :stream t
-     :key #'my-chatapi-key
+     :key my/api-key
      :models '("gpt-4o-2024-08-06"
                "gpt-4o-mini")))
   
