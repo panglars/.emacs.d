@@ -14,6 +14,8 @@
   (setq no-littering-etc-directory (expand-file-name "etc/" my-cache-dir)
         no-littering-var-directory (expand-file-name "var/" my-cache-dir)))
 
+(setq desktop-path '("~/.emacs.d/")) 
+
 ;; pop up a frame at point
 (use-package popup)
 (use-package posframe)
@@ -41,6 +43,7 @@
 ;; (if (daemonp)
 ;;     (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
 ;;   (load-theme 'doom-moonlight t))
+
 
 (use-package auto-dark
   :config 

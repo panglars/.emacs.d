@@ -1,19 +1,14 @@
 ;;  -*- lexical-binding: t; -*-
 
-(use-package copilot
-  :disabled
-  :defer t
-  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :hook ((prog-mode . (lambda ()
-                        (unless (eq major-mode 'beancount-mode)
-                          (copilot-mode 1)))))
-  :bind (:map copilot-completion-map
-              ("C-j" . copilot-accept-completion)
-              ("M-j" . copilot-clear-overlay)
-              ("C-c j n" . copilot-next-completion)
-              ("C-c j p" . copilot-previous-completion))
-  :init
-  (setq copilot--indent-warning-printed-p t))
+;; aider
+(use-package aider
+  :straight (:host github :repo "tninja/aider.el" :files ("aider.el"))
+  :config
+  (setq aider-args '("--no-auto-commits" "--model" "gpt-4o"))
+  (setenv "OPENAI_API_BASE" "https://api.gptapi.us/v1/chat/completions")
+  (setenv "OPENAI_API_KEY" "")
+  ;; Optional: Set a key binding for the transient menu
+  (global-set-key (kbd "C-c q") 'aider-transient-menu))
 
 ;; prompts 
 (defvar lan/gptel-prompts
@@ -39,12 +34,12 @@
    gptel-model   "gpt-4o-2024-08-06"
    gptel-backend
    (gptel-make-openai "GPTAPI.US"          
-     :host "www.gptapi.us"
-     :endpoint "/openai/v1/chat/completions"
-     :stream t
-     :key #'my-chatapi-key
-     :models '("gpt-4o-2024-08-06"
-               "gpt-4o-mini")))
+                      :host "www.gptapi.us"
+                      :endpoint "/openai/v1/chat/completions"
+                      :stream t
+                      :key #'my-chatapi-key
+                      :models '("gpt-4o-2024-08-06"
+                                "gpt-4o-mini")))
   
   (defun lan/gptel-commit-summary ()
     "Summarize current git commit."
@@ -55,8 +50,8 @@
                          (plist-get prompts :user)
                          (shell-command-to-string "git diff --cached"))))
       (gptel-request user-prompt
-        :stream t
-        :system sys-prompt)))
+                     :stream t
+                     :system sys-prompt)))
 
   (defun lan/gptel-rewrite (bounds &optional directive)
     (interactive
@@ -70,27 +65,27 @@
            (read-string "ChatGPT Directive: "
                         "You are a prose editor. Rewrite my prompt more professionally."))))
     (gptel-request
-        (buffer-substring-no-properties (car bounds) (cdr bounds)) ;the prompt
-      :system (or directive "You are a prose editor. Rewrite my prompt more professionally.")
-      :buffer (current-buffer)
-      :context (cons (set-marker (make-marker) (car bounds))
-                     (set-marker (make-marker) (cdr bounds)))
-      :callback
-      (lambda (response info)
-        (if (not response)
-            (message "ChatGPT response failed with: %s" (plist-get info :status))
-          (let* ((bounds (plist-get info :context))
-                 (beg (car bounds))
-                 (end (cdr bounds))
-                 (buf (plist-get info :buffer)))
-            (with-current-buffer buf
-              (save-excursion
-                (goto-char beg)
-                (kill-region beg end)
-                (insert response)
-                (set-marker beg nil)
-                (set-marker end nil)
-                (message "Rewrote line. Original line saved to kill-ring."))))))))
+     (buffer-substring-no-properties (car bounds) (cdr bounds)) ;the prompt
+     :system (or directive "You are a prose editor. Rewrite my prompt more professionally.")
+     :buffer (current-buffer)
+     :context (cons (set-marker (make-marker) (car bounds))
+                    (set-marker (make-marker) (cdr bounds)))
+     :callback
+     (lambda (response info)
+       (if (not response)
+           (message "ChatGPT response failed with: %s" (plist-get info :status))
+         (let* ((bounds (plist-get info :context))
+                (beg (car bounds))
+                (end (cdr bounds))
+                (buf (plist-get info :buffer)))
+           (with-current-buffer buf
+             (save-excursion
+               (goto-char beg)
+               (kill-region beg end)
+               (insert response)
+               (set-marker beg nil)
+               (set-marker end nil)
+               (message "Rewrote line. Original line saved to kill-ring."))))))))
   )
 
 
