@@ -91,5 +91,10 @@
               truncate-lines t
               truncate-partial-width-windows nil)
 
+;; Re-read files on disk when there’s a change
+(setq auto-revert-interval 1)
+(setq auto-revert-check-vc-info t)
+;; (setq global-auto-revert-non-file-buffers t)
+(global-auto-revert-mode)
 
 (provide 'init-base)

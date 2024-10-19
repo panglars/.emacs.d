@@ -27,8 +27,12 @@ I use [[https://github.com/radian-software/apheleia][apheleia]] to format code
 + ripgrep
 + fzf
 + git
+  
 *** language runtime and translater
 See [[https://emacs-lsp.github.io/lsp-mode/page/languages/][lsp-mode]]
 
+*** ai tools
++ aider
+  
 ** Function
 
