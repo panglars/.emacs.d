@@ -9,13 +9,13 @@
   (setq org-modules '(org-habit)
         org-directory my-org-directory
         org-capture-templates
-        `(("t" "Task" entry (file+headline ,(concat org-directory "/todo.org") "Task")
+        `(("w" "Work" entry (file+headline ,(concat org-directory "/todo.org") "Work")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
           ("e" "Event" entry (file+headline ,(concat org-directory "/todo.org") "Event")
            "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
           ("s" "School" entry (file+headline ,(concat org-directory "/school.org") "School")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
-          ("S" "School appointment" entry (file+headline ,(concat org-directory "/school.org") "School")
+          ("S" "School Events" entry (file+headline ,(concat org-directory "/school.org") "School")
            "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
           ("m" "Misc" entry (file+headline ,(concat org-directory "/inbox.org") "Misc")
            "* TODO %?\n" :empty-lines 1)
