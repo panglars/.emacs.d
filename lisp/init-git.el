@@ -1,4 +1,5 @@
 (use-package magit
+  :straight (:type built-in)
   :init
   ;; Suppress the message we get about "Turning on magit-auto-revert-mode" when loading Magit.
   (setq magit-no-message '("Turning on magit-auto-revert-mode...")
