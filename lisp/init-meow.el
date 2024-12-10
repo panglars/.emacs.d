@@ -5,6 +5,7 @@
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-colemak)
   (setq meow-expand-hint-remove-delay 3)
   (setq meow-use-clipboard t)
+  (setq meow-keypad-leader-dispatch "C-c")
   (meow-motion-overwrite-define-key
    '("n" . meow-next)
    '("p" . meow-prev)
