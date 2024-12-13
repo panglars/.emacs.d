@@ -1,6 +1,4 @@
 ;; CSS
-;; (use-package css-mode
-;;   :init (setq css-indent-offset 2))
 
 ;; Major mode for editing web templates
 (use-package web-mode
@@ -12,6 +10,7 @@
 
 ;; Adds node_modules/.bin directory to `exec_path'
 (use-package add-node-modules-path
+  :disabled
   :hook ((web-mode js-mode js2-mode) . add-node-modules-path))
 
 (use-package restclient
@@ -22,10 +21,9 @@
     :diminish
     :hook (restclient-mode . restclient-test-mode)))
 
-(use-package rainbow-mode)
-
-
+;; Insert JSDoc comments
 (use-package jsdoc
+  :disabled
   :straight (:host github :repo "isamert/jsdoc.el"))
 
 
