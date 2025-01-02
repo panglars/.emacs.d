@@ -20,7 +20,7 @@
   "The theme to use when in light mode."
   :type 'symbol)
 
-(defcustom my-dark-theme 'ef-dream
+(defcustom my-dark-theme 'modus-vivendi-tinted
   "The theme to use when in dark mode."
   :type 'symbol)
 

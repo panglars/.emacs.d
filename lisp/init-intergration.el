@@ -4,9 +4,11 @@
   :init (global-wakatime-mode))
 
 ;; Discord rich presence
-(use-package elcord)
+(use-package elcord
+  :disabled)
 
 (use-package telega
+  :disabled
   :straight (telega :type git :host github :repo "zevlg/telega.el" :branch "master")
   :init
   (add-hook 'telega-load-hook

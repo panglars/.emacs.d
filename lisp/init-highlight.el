@@ -4,6 +4,16 @@
          ((dashboard-mode eshell-mode shell-mode term-mode vterm-mode) .
           (lambda () (setq-local global-hl-line-mode nil)))))
 
+(use-package paren
+  :straight (:type built-in)
+  :custom-face (show-paren-match ((t (:foreground "SpringGreen3" :underline t :weight bold))))
+  :config
+  (setq show-paren-when-point-inside-paren t
+        show-paren-when-point-in-periphery t
+        show-paren-context-when-offscreen t
+        show-paren-delay 0.2)
+  )
+
 ;; Highlight brackets according to their depth
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode)

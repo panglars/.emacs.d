@@ -5,9 +5,6 @@
 
 (use-package clojure-mode)
 
-(use-package fish-mode
-  :disabled)
-
 (use-package scala-mode
   :interpreter
   ("scala" . scala-mode))
@@ -22,6 +19,10 @@
 ;; CSV highlight
 (use-package rainbow-csv
   :straight (:host github :repo "emacs-vs/rainbow-csv"))
+
+;; preview color in buffer
+(use-package colorful-mode
+  :hook (prog-mode text-mode))
 
 ;;; Devdocs
 (use-package devdocs
