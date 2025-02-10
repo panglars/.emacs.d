@@ -2,6 +2,7 @@
 
 ;; aider
 (use-package aider
+  :disabled
   :straight (:host github :repo "tninja/aider.el" :files ("aider.el"))
   :config
   (setq aider-args '("--no-auto-commits" "--model" "gpt-4o"))
@@ -29,6 +30,7 @@
 
 
 (use-package gptel
+  :disabled
   :config
   (setq
    gptel-model   "gpt-4o-2024-08-06"
