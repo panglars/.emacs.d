@@ -35,3 +35,4 @@ custom.el
 /.wakatime-project
 /tree-sitter/
 /var/
+.aider*

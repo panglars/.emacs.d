@@ -5,7 +5,7 @@
   :config
   (setq aidermacs-default-model "openrouter/anthropic/claude-3.5-sonnet")
   ;; (setenv "ANTHROPIC_API_KEY" anthropic-api-key)
-  (global-set-key (kbd "C-c a") 'aidermacs-transient-menu)
+  (global-set-key (kbd "C-c q") 'aidermacs-transient-menu)
                                         ; See the Configuration section below
   (setq aidermacs-backend 'vterm)
   (setq aidermacs-auto-commits nil)

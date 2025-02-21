@@ -17,7 +17,7 @@
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
           ("S" "School Events" entry (file+headline ,(concat org-directory "/school.org") "School")
            "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
-          ("m" "Misc" entry (file+headline ,(concat org-directory "/inbox.org") "Misc")
+          ("m" "Misc" entry (file+headline ,(concat org-directory "/todo.org") "Misc")
            "* TODO %?\n" :empty-lines 1)
           ("f" "Flag" entry (file ,(concat org-directory "/flag.org"))
            "* TODO %?\n" :empty-lines 1)
