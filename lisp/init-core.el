@@ -79,7 +79,7 @@
 (use-package which-key
   :hook (after-init . which-key-mode)
   :config
-  (setq which-key-idle-delay 0.2
+  (setq which-key-idle-delay 1
         which-key-compute-remaps t
         which-key-min-display-lines 1
         which-key-add-column-padding 1

@@ -7,6 +7,7 @@
     :init (setq vterm-always-compile-module t)
     :bind (:map vterm-mode-map
                 ("<f10>" . vterm-toggle)
+                ("C-\\" . toggle-input-method)
                 ([(control return)] . vterm-toggle-insert-cd)))
   (use-package vterm-toggle
     :bind (("<f10>" . vterm-toggle)))
