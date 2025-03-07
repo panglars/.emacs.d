@@ -20,10 +20,8 @@
 
 ;; https://www.masteringemacs.org/article/combobulate-bulk-editing-treesitter-nodes-multiple-cursors
 (use-package combobulate
-  :custom
-  ;; You can customize Combobulate's key prefix here.
-  ;; Note that you may have to restart Emacs for this to take effect!
-  (combobulate-key-prefix "C-c j")
+  :disabled
+  :custom (combobulate-key-prefix "C-c h")
   :hook ((prog-mode . combobulate-mode)))
 
 ;;; typst

@@ -36,3 +36,5 @@ custom.el
 /tree-sitter/
 /var/
 .aider*
+/.lsp-session-v1
+/tramp
