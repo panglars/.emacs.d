@@ -38,3 +38,5 @@ custom.el
 .aider*
 /.lsp-session-v1
 /tramp
+/.dap-breakpoints
+/bookmarks
