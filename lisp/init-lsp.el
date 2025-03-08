@@ -1,10 +1,5 @@
 ;;; -*- lexical-binding:t; -*-
 
-;;; lsp-bridge
-;; TODO: maybe migrate lsp-mode 
-
-;;; lsp-mode
-
 ;; emacs-lsp-booster
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
   "Try to parse bytecode instead of json."
@@ -37,7 +32,7 @@
       orig-result)))
 (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
 
-
+;; lsp-mode
 (use-package lsp-mode
   :defer t
   :custom
@@ -116,9 +111,9 @@
                            (lsp-deferred))))
   ;; scala lsp 
   (use-package lsp-metals
-    :disabled
     :custom
-    (lsp-metals-enable-semantic-highlighting t))
+    (lsp-metals-enable-semantic-highlighting t)
+    :hook (scala-mode . lsp))
   
   ;; typst lsp
   (add-to-list 'lsp-language-id-configuration
