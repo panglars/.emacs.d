@@ -1,5 +1,10 @@
 (use-package apheleia
   :config
+  (push '(prettier-astro . ("apheleia-npx" "prettier" "--stdin-filepath" filepath  "--parser=astro"
+                            (apheleia-formatters-js-indent "--use-tabs" "--tab-width")))
+        apheleia-formatters)
+  (setf (alist-get 'astro-ts-mode apheleia-mode-alist)
+        '(prettier-astro))
   (apheleia-global-mode +1))
 
 (use-package aggressive-indent-mode
