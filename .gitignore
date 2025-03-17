@@ -41,3 +41,4 @@ custom.el
 /.dap-breakpoints
 /bookmarks
 /*.db
+/dirvish/
