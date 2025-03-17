@@ -1,13 +1,13 @@
 ;;  -*- lexical-binding: t; -*-
 
 (use-package aidermacs
-  :straight (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
+  :bind (("C-c q" . aidermacs-transient-menu))
   :config
   (setq aidermacs-default-model "openrouter/anthropic/claude-3.7-sonnet")
-  (global-set-key (kbd "C-c q") 'aidermacs-transient-menu)
-                                        ; See the Configuration section below
-  (setq aidermacs-backend 'vterm)
-  (setq aidermacs-auto-commits nil)
+  ;; (setq aidermacs-backend 'vterm)
+  ;; (setopt aidermacs-vterm-use-theme-colors nil)
+  (setq aidermacs-comint-multiline-newline-key "S-<return>")
+  (setq aidermacs-vterm-multiline-newline-key "S-<return>")
   (setq aidermacs-use-architect-mode t))
 
 
