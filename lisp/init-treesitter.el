@@ -37,7 +37,10 @@
   :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode" :files (:defaults "*.el") :build (:not compile)))
 
 ;;; astro
-(use-package astro-ts-mode)
+(use-package astro-ts-mode
+  :bind (:map astro-ts-mode-map
+              ("C-c ]" . nil))
+  )
 
 
 (provide 'init-treesitter)

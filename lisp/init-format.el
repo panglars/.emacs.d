@@ -1,10 +1,6 @@
 (use-package apheleia
+  :straight (:host github :repo "panglars/apheleia")
   :config
-  (push '(prettier-astro . ("apheleia-npx" "prettier" "--stdin-filepath" filepath  "--parser=astro"
-                            (apheleia-formatters-js-indent "--use-tabs" "--tab-width")))
-        apheleia-formatters)
-  (setf (alist-get 'astro-ts-mode apheleia-mode-alist)
-        '(prettier-astro))
   (apheleia-global-mode +1))
 
 (use-package aggressive-indent-mode
@@ -15,7 +11,7 @@
   :disabled
   :load-path (lambda () (expand-file-name "site-lisp/header2" user-emacs-directory))
   :custom
-  (header-copyright-notice (concat "Copyright (C) 2023 " (user-full-name) "\n"))
+  (header-copyright-notice (concat "Copyright (C) 2025 " (user-full-name) "\n"))
   :hook (emacs-lisp-mode . auto-make-header)
   :config
   (add-to-list 'write-file-functions 'auto-update-file-header)
