@@ -1,6 +1,7 @@
 ;;  -*- lexical-binding: t; -*-
 
 (use-package aidermacs
+  :disabled
   :bind (("C-c q" . aidermacs-transient-menu))
   :config
   (setq aidermacs-default-model "openrouter/anthropic/claude-3.7-sonnet")

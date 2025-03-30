@@ -125,6 +125,7 @@
          (subed-mode . motion)
          (vundo-mode . motion)
          (autoscratch-mode . insert)
+         (lsp-bridge-ref-mode . motion)
          ))
     (add-to-list 'meow-mode-state-list state))
   )

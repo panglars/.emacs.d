@@ -104,7 +104,6 @@
 (require 'init-shell)
 (require 'init-project)
 (require 'init-flycheck)
-(require 'init-lsp)
 (require 'init-format)
 (require 'init-filemanager)
 
@@ -117,6 +116,8 @@
 (require 'init-golang)
 (require 'init-rust)
 (require 'init-prog)
+(require 'init-lsp)
+
 
 
 ;; Misc

@@ -1,5 +1,6 @@
 
 (use-package flycheck
+  :disabled
   :commands flycheck-redefine-standard-error-levels
   :hook (after-init . global-flycheck-mode)
   :bind (:map flycheck-mode-map

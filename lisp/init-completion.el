@@ -4,6 +4,7 @@
 (setq text-mode-ispell-word-completion nil)
 
 (use-package corfu
+  :disabled
   :straight (corfu :includes (corfu-indexed corfu-quick) :files (:defaults "extensions/corfu-*.el"))
   :custom
   (corfu-auto t)

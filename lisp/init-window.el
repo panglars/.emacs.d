@@ -81,6 +81,7 @@
           "^\\*terminal.*\\*.*$"     term-mode
           ;; "^\\*vterm[inal]*.*\\*.*$" vterm-mode
 
+          ;; "\\*lsp-bridge-.+\\*" lsp-bridge-mode
           "\\*DAP Templates\\*$" dap-server-log-mode
           "\\*ELP Profiling Restuls\\*" profiler-report-mode
           "\\*Paradox Report\\*$" "\\*package update results\\*$" "\\*Package-Lint\\*$"

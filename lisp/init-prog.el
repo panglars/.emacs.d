@@ -49,23 +49,25 @@
   (("<f5>" . quickrun)
    ("M-<f5>" . quickrun-shell)))
 
-(use-package yasnippet
-  :hook (prog-mode . yas-minor-mode)
-  :custom
-  (yas-use-menu nil)
-  :config
-  (add-hook 'yas-keymap-disable-hook
-            (lambda ()
-              (and (frame-live-p corfu--frame)
-                   (frame-visible-p corfu--frame))))
-  
-  (use-package yasnippet-snippets)
-  (use-package consult-yasnippet
-    :bind
-    ("C-c y" . consult-yasnippet))
+(use-package yasnippet)
 
-  (setq yas-inhibit-overlay-modification-protection t)
-  (advice-add 'yas--on-protection-overlay-modification :override #'ignore))
+;; (use-package yasnippet
+;;   :hook (prog-mode . yas-minor-mode)
+;;   :custom
+;;   (yas-use-menu nil)
+;;   :config
+;;   (add-hook 'yas-keymap-disable-hook
+;;             (lambda ()
+;;               (and (frame-live-p corfu--frame)
+;;                    (frame-visible-p corfu--frame))))
+ 
+;;   (use-package yasnippet-snippets)
+;;   (use-package consult-yasnippet
+;;     :bind
+;;     ("C-c y" . consult-yasnippet))
+
+;;   (setq yas-inhibit-overlay-modification-protection t)
+;;   (advice-add 'yas--on-protection-overlay-modification :override #'ignore))
 
 
 (provide 'init-prog)
