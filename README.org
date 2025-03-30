@@ -6,33 +6,23 @@
 
 ** Feature
 + Straight.el to manage and lazy load package.
-+ corfu,orderless,vertico,cape to fast and comformtable completion
-+ lsp-mode and bulit-in treesit for js(x)/ts(x),taildwind-CSS,rust,python,c,etc...
++ orderless,vertico to fast and comformtable completion
++ lsp-bridge and bulit-in treesit for js(x)/ts(x),taildwind-CSS,astro,rust,python,c,etc...
 + morden UI with editor,modeline,dashboard,magit,org-mode.
 + Chinese IME and translater
-+ meow edit,code format,quickrun,dap-mode,flycheck,vterm,projectile,drivish,consult.
-+ telegram,ChatGPT clients,PDF-reader in Emacs.
++ meow edit,code forma,quickrun,vterm,projectile,drivish,consult.
   
 ** Install
 You may install some extenal programs before you use this dotfiles
 *** code format provider
 I use [[https://github.com/radian-software/apheleia][apheleia]] to format code
-+ python: black
-+ js/ts: prettier
-+ cxx: clang-format
-+ clojure: cljfmt
-+ rust: rustfmt
   
 *** commadline tools
 + ripgrep
 + fzf
 + git
   
-*** language runtime and translater
-See [[https://emacs-lsp.github.io/lsp-mode/page/languages/][lsp-mode]]
-
-*** ai tools
-+ aider
+*** language server
+[[https://github.com/manateelazycat/lsp-bridge][lsp-bridge]]
   
-** Function
 
