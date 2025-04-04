@@ -70,7 +70,7 @@
            when (find-font (font-spec :name font))
            return (set-face-attribute 'default nil
                                       :font font
-                                      :height 140))))
+                                      :height 120))))
 
 ;; Specify font for all unicode characters
 (cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
@@ -124,7 +124,6 @@
 (require 'init-ai)
 (require 'init-reader)
 (require 'init-intergration)
-(require 'init-count)
 ;;
 
 ;;; init.el ends here

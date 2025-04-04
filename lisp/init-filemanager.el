@@ -29,12 +29,13 @@
      ("f" "~/.config" ".config")
      ("l" "~/.local/share" ".local/share")
      ))
+
+  :hook
+  (dirvish-mode . dired-omit-mode)
+  
   :config
   ;; (dirvish-peek-mode) ; Preview files in minibuffer
   ;; (dirvish-side-follow-mode) ; similar to `treemacs-follow-mode'
-
-  ;; HACK:enable dired-omit-mode  
-  (add-hook 'dired-mode-hook 'dired-omit-mode)
   
   (setq dirvish-default-layout '(0 0.4 0.6))
   (setq dirvish-mode-line-format
@@ -43,6 +44,7 @@
         '(nerd-icons file-time file-size collapse git-msg))
   (setq delete-by-moving-to-trash t)
   (setq dirvish-subtree-state-style 'nerd)
+  (setq dired-clean-confirm-killing-deleted-buffers nil)
   (setq dired-listing-switches
         "-l --almost-all --human-readable --group-directories-first --no-group")
   (setq dirvish-path-separators (list
@@ -62,15 +64,15 @@
    ("C-c D" . dirvish-fd)
    :map dirvish-mode-map ; Dirvish inherits `dired-mode-map'
    ("b"   . dirvish-quick-access)
-   ("f"   . dired-isearch-filenames)
-   ("F"   . dirvish-file-info-menu)
+   ("f"   . dirvish-fd)
    ("y"   . dirvish-yank-menu)
    ("N"   . dirvish-narrow)
    ("e"   . dired-up-directory)
    ("i"   . dired-find-file)
    ("^"   . dirvish-history-last)
    ("h"   . dirvish-history-jump) ; remapped `describe-mode'
-   ("s"   . dirvish-quicksort)    ; remapped `dired-sort-toggle-or-edit'
+   ("s"   . consult-line)
+   ("S"   . dirvish-quicksort)    ; remapped `dired-sort-toggle-or-edit'
    ("v"   . dirvish-vc-menu)      ; remapped `dired-view-file'
    ("T"   . dirvish-side)
    ("TAB" . dirvish-subtree-toggle)
