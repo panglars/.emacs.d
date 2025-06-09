@@ -9,15 +9,15 @@
   (setq org-modules '(org-habit)
         org-directory my-org-directory
         org-capture-templates
-        `(("w" "Work" entry (file+headline ,(concat org-directory "/todo.org") "Work")
+        `(("w" "Work" entry (file+headline ,(concat org-directory "/work.org") "Work")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
-          ("e" "Event" entry (file+headline ,(concat org-directory "/todo.org") "Event")
+          ("e" "Event" entry (file+headline ,(concat org-directory "/work.org") "Event")
            "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
           ("s" "School" entry (file+headline ,(concat org-directory "/school.org") "School")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
-          ("S" "School Events" entry (file+headline ,(concat org-directory "/school.org") "School")
-           "* TODO %?\nSCHEDULED: %^t\n" :empty-lines 1)
-          ("m" "Misc" entry (file+headline ,(concat org-directory "/todo.org") "Misc")
+          ("t" "TODO" entry (file+headline ,(concat org-directory "/inbox.org") "Todo")
+           "* TODO %?\n" :empty-lines 1)
+          ("m" "Misc" entry (file+headline ,(concat org-directory "/inbox.org") "Misc")
            "* TODO %?\n" :empty-lines 1)
           ("f" "Flag" entry (file ,(concat org-directory "/flag.org"))
            "* TODO %?\n" :empty-lines 1)
@@ -75,9 +75,10 @@
                                 (setq prettify-symbols-alist nil)
                                 (prettify-symbols-mode -1)))))
   (use-package org-fancy-priorities
+    :disabled
     :hook (org-mode . org-fancy-priorities-mode)
     :init (setq org-fancy-priorities-list
-                '("HIGH" "MEDIUM" "LOW" "OPTIONAL")))
+                '("A" "B" "C" "D")))
 
   ;; Babel
   (setq org-confirm-babel-evaluate nil

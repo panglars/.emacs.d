@@ -51,7 +51,7 @@
 
 
 (use-package yasnippet
-  :hook (lsp-mode . yas-minor-mode)
+  :hook (prog-mode . yas-minor-mode)
   :custom
   (yas-use-menu nil)
   :config
