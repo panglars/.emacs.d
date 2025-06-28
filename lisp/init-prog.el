@@ -13,7 +13,7 @@
   :disabled)
 
 (use-package markdown-mode
-  :mode ("README\\.md\\'" . gfm-mode)
+  :mode ("README\\(_zh\\)?\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
 
 ;; CSV highlight
@@ -49,6 +49,12 @@
   (("<f5>" . quickrun)
    ("M-<f5>" . quickrun-shell)))
 
+;; Pixel-perfect visual alignment for Org and Markdown tables
+(use-package valign
+  :hook (org-mode . valign-mode))
+
+(use-package ast-grep
+  :straight (:type git :host github :repo "SunskyXH/ast-grep.el"))
 
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode)
@@ -59,11 +65,6 @@
             (lambda ()
               (and (frame-live-p corfu--frame)
                    (frame-visible-p corfu--frame))))
-
-  ;;   (use-package yasnippet-snippets)
-  ;;   (use-package consult-yasnippet
-  ;;     :bind
-  ;;     ("C-c y" . consult-yasnippet))
 
   (setq yas-inhibit-overlay-modification-protection t)
   (advice-add 'yas--on-protection-overlay-modification :override #'ignore))

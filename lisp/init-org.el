@@ -29,8 +29,7 @@
            "* %?" :tree-type week :time-prompt t)
           )
         org-todo-keywords
-        '((sequence "TODO(t)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
-        org-todo-keyword-faces '(("HANGUP" . warning))
+        '((sequence "TODO(t)" "HOLD(h)" "STARTED(s)" "|" "DONE(d)" "FAILED(f)" "CANCEL(c)"))
         org-tags-column -80
         org-log-done 'time
         org-fold-catch-invisible-edits 'smart
@@ -56,7 +55,6 @@
   ;; Add new template
   (add-to-list 'org-structure-template-alist '("n" . "note"))
 
-  ;; org-resume
 
   ;; Add md/gfm backends
   (add-to-list 'org-export-backends 'md)
@@ -127,9 +125,6 @@
       (bind-keys :map org-agenda-mode-map
                  ("K" . org-pomodoro)
                  ("C-c C-x m" . org-pomodoro)))))
-
-(use-package valign
-  :hook (org-mode . valign-mode))
 
 ;;; roam
 (use-package org-roam
