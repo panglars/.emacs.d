@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package meow
   :init (meow-global-mode 1)
   :demand nil

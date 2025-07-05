@@ -1,4 +1,5 @@
-;; CSS
+;; -*- lexical-binding: t; -*-
+
 
 ;; Major mode for editing web templates
 (use-package web-mode

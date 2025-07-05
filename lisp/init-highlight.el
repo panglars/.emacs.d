@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package hl-line
   :straight (:type built-in)
   :hook ((after-init . global-hl-line-mode)

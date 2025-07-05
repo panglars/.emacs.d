@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package consult
   :bind(;; C-c bindings in `mode-specific-map'
         ("C-c M-x" . consult-mode-command)

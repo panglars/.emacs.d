@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package cc-mode
   :mode ("\\.h|\\.cpp" . c++-mode)
   :hook ((c-mode c++-mode) . lan/cxx-mode-setup)

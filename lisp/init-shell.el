@@ -1,4 +1,5 @@
-;; @see https://github.com/akermu/emacs-libvterm#installation
+;; -*- lexical-binding: t; -*-
+;; @see https://github.com/akermu/emacs-libvterm#installation 
 (when (and module-file-suffix           ; dynamic module
            (executable-find "cmake")
            (executable-find "libtool")  ; libtool-bin

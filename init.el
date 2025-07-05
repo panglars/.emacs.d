@@ -49,6 +49,7 @@
   (load custom-file))
 
 (use-package gcmh
+  :disabled
   :hook (after-init . gcmh-mode)
   :config
   (setq gcmh-high-cons-threshold (* 128 1024 1024)))

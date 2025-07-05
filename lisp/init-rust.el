@@ -1,4 +1,4 @@
-;;; init-rust.el --- 
+;; -*- lexical-binding: t; -*- 
 ;;
 
 (use-package rust-mode)

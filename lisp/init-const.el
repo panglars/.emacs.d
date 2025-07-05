@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (defconst my-cache-dir (concat user-emacs-directory "cache/")
   "Emacs cache directory.")
 

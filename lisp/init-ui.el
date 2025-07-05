@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package page-break-lines
   :config
   (set-fontset-font "fontset-default"

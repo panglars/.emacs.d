@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 
 ;; Transparent title bar
 (when (featurep 'ns)

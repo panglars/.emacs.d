@@ -1,4 +1,4 @@
-;;; init-reader.el ---
+;; -*- lexical-binding: t; -*-
 
 ;; PDF reader
 (when (display-graphic-p)

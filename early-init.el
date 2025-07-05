@@ -1,4 +1,4 @@
-;;; -*- lexical-binding: t -*-
+;; -*- lexical-binding: t -*-
 
 ;; No need of package-quickstart since we are using straight.el as package manager
 (setq package-quickstart nil)

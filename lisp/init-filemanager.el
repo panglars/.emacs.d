@@ -1,4 +1,4 @@
-;;
+;;  -*- lexical-binding: t; -*-
 
 (use-package dirvish
   :straight (:type git :host github :repo "alexluigit/dirvish"

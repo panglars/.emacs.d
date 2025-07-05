@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package magit
   :init
   ;; Suppress the message we get about "Turning on magit-auto-revert-mode" when loading Magit.
