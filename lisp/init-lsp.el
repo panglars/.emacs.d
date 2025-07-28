@@ -137,6 +137,7 @@
                                 ,(face-foreground 'font-lock-variable-name-face))))
   ;; tailwindcss lsp
   (use-package lsp-tailwindcss
+    :straight (:host github :repo "merrickluo/lsp-tailwindcss")
     :init
     (setq lsp-tailwindcss-add-on-mode t))
   
@@ -147,6 +148,7 @@
                            (lsp-deferred))))
   ;; scala lsp 
   (use-package lsp-metals
+    :disabled
     :custom
     (lsp-metals-enable-semantic-highlighting t)
     :hook (scala-mode . lsp))

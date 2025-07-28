@@ -4,7 +4,7 @@
   :custom
   (treesit-auto-install 'prompt)
   :config
-  (setq treesit-auto-langs '(awk bash bibtex c-sharp commonlisp css dart dockerfile elixir go gomod heex html java javascript json julia kotlin latex lua make markdown proto r ruby rust toml tsx typescript typst verilog vhdl yaml))
+  (setq treesit-auto-langs '(awk bash bibtex c-sharp commonlisp css dart dockerfile elixir go gomod heex html java javascript json julia kotlin latex lua make proto r ruby rust toml tsx typescript typst verilog vhdl yaml))
   (treesit-auto-add-to-auto-mode-alist 'treesit-auto-langs)
   (setq my-typst-tsauto-config
         (make-treesit-auto-recipe
@@ -15,15 +15,15 @@
          :revision "master"
          :source-dir "src"
          :ext "\\.typ$"))
-  (setq my-astro-tsauto-config
-        (make-treesit-auto-recipe
-         :lang 'astro
-         :ts-mode 'astro-ts-mode
-         :url "https://github.com/virchau13/tree-sitter-astro"
-         :revision "master"
-         :source-dir "src"))
-  (add-to-list 'treesit-auto-recipe-list my-astro-tsauto-config)
   (add-to-list 'treesit-auto-recipe-list my-typst-tsauto-config)
+  ;; BUG: can't auto install astro-ts-mode  
+  ;; (let ((astro-recipe (make-treesit-auto-recipe
+  ;;                      :lang 'astro
+  ;;                      :ts-mode 'astro-ts-mode
+  ;;                      :url "https://github.com/virchau13/tree-sitter-astro"
+  ;;                      :revision "master"
+  ;;                      :source-dir "src")))
+  ;;   (add-to-list 'treesit-auto-recipe-list astro-recipe))
   (global-treesit-auto-mode))
 
 ;; https://www.masteringemacs.org/article/combobulate-bulk-editing-treesitter-nodes-multiple-cursors
@@ -38,6 +38,7 @@
 
 ;;; astro
 (use-package astro-ts-mode
+  :disabled
   :bind (:map astro-ts-mode-map
               ("C-c ]" . nil))
   )

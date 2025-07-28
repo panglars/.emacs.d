@@ -19,7 +19,7 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode)
   :config
-  (setq rainbow-delimiters-max-face-count 3))
+  (setq rainbow-delimiters-max-face-count 8))
 
 (use-package goggles
   :hook ((prog-mode text-mode) . goggles-mode))

@@ -131,4 +131,8 @@
     (add-to-list 'meow-mode-state-list state))
   )
 
+(use-package meow-tree-sitter
+  :config (meow-tree-sitter-register-defaults))
+
+
 (provide 'init-meow)

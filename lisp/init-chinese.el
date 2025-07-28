@@ -30,7 +30,7 @@
     (add-hook 'markdown-mode-hook enable-pangu-spacing)))
 
 
-(use-package go-translate
+(use-package gt
   :bind (("C-c k" . gt-do-translate))
   :config
   (setq gt-langs '(en zh))
