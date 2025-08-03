@@ -1,6 +1,4 @@
-;;; init-core.el ---Base setting after load -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Code:
+;;; -*- lexical-binding: t -*-
 
 (use-package benchmark-init
   :demand t
@@ -8,7 +6,7 @@
   (require 'benchmark-init-modes)
   (add-hook 'after-init-hook #'benchmark-init/deactivate))
 
-(setq desktop-path '("~/.emacs.d/")) 
+(setq desktop-path '("~/.emacs.d/"))
 
 ;; pop up a frame at point
 (use-package popup)
@@ -31,20 +29,19 @@
 ;;; theme
 ;; (use-package doom-themes)
 (use-package modus-themes)
+(use-package catppuccin-theme
+  :config
+  (setq catppuccin-flavor 'latte)
+  (catppuccin-reload))
 ;; (use-package kaolin-themes)
-(use-package ef-themes)
-
-;; (if (daemonp)
-;;     (add-hook 'after-make-frame-functions (lambda (frame) (load-theme 'modus-operandi-tinted t)))
-;;   (load-theme 'doom-moonlight t))
+;; (use-package ef-themes)
 
 
 (use-package auto-dark
-  :config 
-  (setq auto-dark-dark-theme my-dark-theme)
-  (setq auto-dark-light-theme my-light-theme)
-  ;; (setq auto-dark-detection-method nil) ;; dangerous to be set manually
-  (auto-dark-mode t))
+  :init (auto-dark-mode)
+  :config
+  (setq auto-dark-themes '((catppuccin) (modus-operandi))))
+
 
 ;; transparent background
 (setq default-frame-alist '((width . 120)
@@ -121,11 +118,11 @@
         eldoc-echo-area-prefer-doc-buffer t
         eldoc-echo-area-use-multiline-p nil
         eglot-extend-to-xref t)
-  
+
   ;;  displays ElDoc documentations in a childframe
   (use-package eldoc-box))
 
-;; use curl insted built-in url 
+;; use curl insted built-in url
 (use-package plz)
 
 (provide 'init-core)

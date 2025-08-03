@@ -31,7 +31,7 @@
 
 
 (use-package gt
-  :bind (("C-c k" . gt-do-translate))
+  :bind (("C-c k" . gt-translate))
   :config
   (setq gt-langs '(en zh))
   (setq gt-default-translator

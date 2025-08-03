@@ -119,8 +119,6 @@
 (require 'init-prog)
 (require 'init-lsp)
 
-
-
 ;; Misc
 (require 'init-ai)
 (require 'init-reader)
