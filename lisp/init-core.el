@@ -107,7 +107,6 @@
 
 (use-package eldoc
   :straight (:type built-in)
-  :bind (("C-c e" . eldoc-print-current-symbol-info))
   :custom
   (eldoc-documentation-strategy #'eldoc-documentation-compose)
   :config
