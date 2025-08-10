@@ -79,7 +79,6 @@
           "^\\*eshell.*\\*.*$"       eshell-mode
           "^\\*shell.*\\*.*$"        shell-mode
           "^\\*terminal.*\\*.*$"     term-mode
-          ;; "^\\*vterm[inal]*.*\\*.*$" vterm-mode
 
           ;; "\\*lsp-bridge-.+\\*" lsp-bridge-mode
           "\\*DAP Templates\\*$" dap-server-log-mode

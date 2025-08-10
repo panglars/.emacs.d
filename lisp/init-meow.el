@@ -120,7 +120,6 @@
          (eshell-mode . insert)
          (shell-mode . insert)
          (term-mode . insert)
-         (vterm-mode . insert)
          (help-mode . normal)
          (helpful-mode . normal)
          (subed-mode . motion)

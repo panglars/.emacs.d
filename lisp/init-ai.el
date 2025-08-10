@@ -1,11 +1,8 @@
 ;;  -*- lexical-binding: t; -*-
-
-(use-package claude-code
-  :straight (:type git :host github :repo "stevemolitor/claude-code.el" :branch "main" :depth 1
-                   :files ("*.el" (:exclude "images/*")))
-  ;; :bind-keymap
-  ;; ("C-c v" . claude-code-command-map) 
+(use-package claude-code-ide
+  :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
+  :bind ("C-c C-v" . claude-code-ide-menu) 
   :config
-  (claude-code-mode))
+  (claude-code-ide-emacs-tools-setup)) 
 
 (provide 'init-ai)
