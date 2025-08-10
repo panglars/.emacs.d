@@ -29,18 +29,15 @@
 ;;; theme
 ;; (use-package doom-themes)
 (use-package modus-themes)
-(use-package catppuccin-theme
-  :config
-  (setq catppuccin-flavor 'latte)
-  (catppuccin-reload))
+(use-package catppuccin-theme)
 ;; (use-package kaolin-themes)
 ;; (use-package ef-themes)
 
 
 (use-package auto-dark
-  :init (auto-dark-mode)
-  :config
-  (setq auto-dark-themes '((catppuccin) (modus-operandi))))
+  :custom
+  (auto-dark-themes '((catppuccin) (modus-operandi)))
+  :init (auto-dark-mode))
 
 
 ;; transparent background
