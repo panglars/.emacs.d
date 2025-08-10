@@ -98,15 +98,16 @@
   (setq
    lsp-enable-symbol-highlighting nil
    lsp-lens-enable t
-   lsp-signature-auto-activate nil
+   lsp-signature-auto-activate t
+   lsp-signature-doc-lines 1
    lsp-headerline-breadcrumb-enable nil
-   lsp-eldoc-render-all t
+   lsp-eldoc-render-all nil
    lsp-signature-render-documentation nil
    lsp-progress-prefix "󱦟"
    lsp-semantic-tokens-enable t
    lsp-progress-spinner-type 'progress-bar-filled
-   lsp-enable-folding nil
-   lsp-enable-text-document-color nil
+   lsp-enable-folding t
+   lsp-enable-text-document-color t
    lsp-enable-on-type-formatting nil
    lsp-modeline-code-actions-enable nil )
   :hook (

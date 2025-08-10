@@ -4,8 +4,11 @@
   :straight(:type built-in)
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
-  
   :config
+  ;; for tab-bar switch tab
+  (unbind-key "C-c [" org-mode-map)
+  (unbind-key "C-c ]" org-mode-map)
+
   (setq org-modules '(org-habit)
         org-directory my-org-directory
         org-capture-templates
@@ -57,7 +60,6 @@
   ;; Add new template
   (add-to-list 'org-structure-template-alist '("n" . "note"))
 
-
   ;; Add md/gfm backends
   (add-to-list 'org-export-backends 'md)
   (use-package ox-gfm
@@ -74,6 +76,7 @@
                                 ;; Disable Prettify Symbols mode
                                 (setq prettify-symbols-alist nil)
                                 (prettify-symbols-mode -1)))))
+  
   (use-package org-fancy-priorities
     :disabled
     :hook (org-mode . org-fancy-priorities-mode)
@@ -85,19 +88,6 @@
         org-src-fontify-natively t
         org-src-tab-acts-natively t)
   
-  (defconst load-language-alist
-    '((emacs-lisp . t)
-      (python     . t)
-      (ruby       . t)
-      (js         . t)
-      (css        . t)
-      (C          . t)
-      (java       . t))
-    "Alist of org ob languages.")
-
-  (org-babel-do-load-languages 'org-babel-load-languages
-                               load-language-alist)
-
   ;; Rich text clipboard
   (use-package org-rich-yank
     :bind (:map org-mode-map
@@ -130,6 +120,7 @@
 
 ;;; roam
 (use-package org-roam
+  :disabled
   :straight (org-roam :type git :host github :repo "org-roam/org-roam")
   :bind (
          ("C-c n a" . org-roam-alias-add)
@@ -160,17 +151,11 @@
                               "#+title: ${title}\n")
            :unnarrowed t)
           ))
-  (org-roam-db-autosync-mode))
-
-(use-package org-roam-ui
-  :bind ("C-c n u" . org-roam-ui-mode))
-
-(defun lan/remap-mode (mode)
-  "make org-src-get-lang-mode respect major-mode-remap-alist"
-  (treesit-auto--set-major-remap)
-  (alist-get mode major-mode-remap-alist mode)
+  (org-roam-db-autosync-mode)
+  (use-package org-roam-ui
+    :bind ("C-c n u" . org-roam-ui-mode))
   )
-(advice-add 'org-src-get-lang-mode :filter-return #'lan/remap-mode)
+
 
 
 (provide 'init-org)
