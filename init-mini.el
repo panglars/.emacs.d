@@ -34,6 +34,6 @@
 ;; Load core config
 (require 'init-const)
 (require 'init-base)
-;;(require 'init-core)
+(require 'init-core)
 
 (require 'init-meow)
