@@ -144,7 +144,6 @@
   
   ;; python lsp 
   (use-package lsp-pyright
-    :disabled
     :hook (python-mode . (lambda ()
                            (require 'lsp-pyright)
                            (lsp-deferred))))
