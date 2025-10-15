@@ -59,19 +59,11 @@
   (find-font (font-spec :name font-name)))
 
 ;; Specify default Font
-(cond
- ((string-equal system-name "SF24")
-  (cl-loop for font in '("Iosevka Nerd Font Mono" "Source Code Pro" "Courier New")
-           when (find-font (font-spec :name font))
-           return (set-face-attribute 'default nil
-                                      :font font
-                                      :height 120)))
- ((string-equal system-name "sf1000")
-  (cl-loop for font in '("Iosevka Nerd Font Mono" "Source Code Pro" "Courier New")
-           when (find-font (font-spec :name font))
-           return (set-face-attribute 'default nil
-                                      :font font
-                                      :height 120))))
+(cl-loop for font in '("CodeNewRoman Nerd Font" "Iosevka Nerd Font Mono" "JetBrainsMono Nerd Font")
+         when (find-font (font-spec :name font))
+         return (set-face-attribute 'default nil
+                                    :font font
+                                    :height 130))
 ;; Specify font for all unicode characters
 (cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
          when (font-installed-p font)
