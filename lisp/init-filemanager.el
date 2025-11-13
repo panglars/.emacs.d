@@ -1,5 +1,12 @@
 ;;  -*- lexical-binding: t; -*-
 
+(use-package eee
+  :straight '(:type git :host github :repo "eval-exec/eee.el"
+                    :files (:defaults "*.el" "*.sh"))
+  :config
+  (setq ee-terminal-command "ghostty"))
+
+
 (use-package dirvish
   :straight (:type git :host github :repo "alexluigit/dirvish"
                    :fork (:host github :repo "hlissner/dirvish"))
@@ -41,7 +48,7 @@
   (setq dirvish-mode-line-format
         '(:left (sort symlink) :right (omit yank index)))
   (setq dirvish-attributes
-        '(nerd-icons file-time file-size collapse git-msg))
+        '(subtree-state nerd-icons collapse file-time file-size))
   (setq delete-by-moving-to-trash t)
   (setq dirvish-subtree-state-style 'nerd)
   (setq dired-clean-confirm-killing-deleted-buffers nil)

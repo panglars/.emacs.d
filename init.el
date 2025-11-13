@@ -59,7 +59,7 @@
   (find-font (font-spec :name font-name)))
 
 ;; Specify default Font
-(cl-loop for font in '("CodeNewRoman Nerd Font" "Iosevka Nerd Font Mono" "JetBrainsMono Nerd Font")
+(cl-loop for font in '("CodeNewRoman Nerd Font" "Iosevka Nerd Font Mono")
          when (find-font (font-spec :name font))
          return (set-face-attribute 'default nil
                                     :font font
