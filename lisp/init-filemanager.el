@@ -8,8 +8,7 @@
 
 
 (use-package dirvish
-  :straight (:type git :host github :repo "alexluigit/dirvish"
-                   :fork (:host github :repo "hlissner/dirvish"))
+  :straight (:type git :host github :repo "alexluigit/dirvish")
   :init
   (dirvish-override-dired-mode)
   :custom
@@ -19,18 +18,13 @@
      ("d" "~/Downloads" "Downloads")
      ("D" "~/Documents" "Documents")
      ("P" "~/Pictures" "Pictures")
-
      ("c" "~/Codes" "Codes")
      ("p" "~/Codes/Project/" "Project")
-     
-     ("r" "~/Codes/Repo/" "Repo")
      ("o" "~/Documents/Org/" "Org")
      ("n" "~/Documents/Notes/" "Notes")
-
      ("e" "/etc/" "etc")
      ("u" "/usr/" "usr")
      ("v" "/var/" "var")
-     
      ("t" "~/.local/share/Trash/files" "TrashCan")
      ("e" "~/.emacs.d" ".emacs.d")
      ("f" "~/.config" ".config")
@@ -58,8 +52,7 @@
                                  (format " %s " (nerd-icons-codicon "nf-cod-home"))
                                  (format " %s " (nerd-icons-codicon "nf-cod-root_folder"))
                                  (format " %s " (nerd-icons-faicon "nf-fa-angle_right"))))
-  (setq dirvish-preview-dispatchers
-        (cl-substitute 'pdf-preface 'pdf dirvish-preview-dispatchers))
+  (setq dirvish-hide-details '(dirvish-side))
   
   ;; mouse support 
   (define-key dirvish-mode-map (kbd "<mouse-1>") 'dirvish-subtree-toggle-or-open)
