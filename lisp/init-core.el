@@ -35,10 +35,11 @@
 
 
 (use-package auto-dark
-  :custom
-  (auto-dark-themes '((catppuccin) (modus-operandi)))
-  :init (auto-dark-mode))
-
+  :defer t
+  :init
+  (setq auto-dark-themes '((catppuccin) (modus-operandi)))
+  (setq custom-safe-themes t)
+  (auto-dark-mode))
 
 ;; transparent background
 (setq default-frame-alist '((width . 120)
