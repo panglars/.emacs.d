@@ -30,7 +30,7 @@
    dashboard-page-separator "\n"
    dashboard-set-init-info t
    ;; dashboard-startup-banner "~/.emacs.d/logo_umu.svg"
-   ;; dashboard-startup-banner 'logo
+   dashboard-startup-banner 'logo
    dashboard-projects-backend 'projectile
    dashboard-items '((recents . 10)
                      (projects . 5)
@@ -51,10 +51,11 @@
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode)
   :init
-  (setq doom-modeline-height 25
-        doom-modeline-window-width-limit 100
+  (setq doom-modeline-window-width-limit 100
+        doom-modeline-minor-modes nil
+        doom-modeline-buffer-encoding nil
+        doom-modeline-position-column-line-format '("L%l:C%c")))
 
-        doom-modeline-minor-modes nil))
 (use-package hide-mode-line
   :hook (((eshell-mode shell-mode
                        term-mode
