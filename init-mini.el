@@ -32,8 +32,10 @@
 (straight-use-package 'use-package)
 
 ;; Load core config
-(require 'init-const)
 (require 'init-base)
 (require 'init-core)
 
 (require 'init-meow)
+
+(require 'init-completion)
+(require 'init-consult)

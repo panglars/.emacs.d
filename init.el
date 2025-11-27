@@ -1,10 +1,8 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 
-
-(when (version< emacs-version "29.1")
-  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
-
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(setq load-prefer-newer t)
+(setq native-compile-prune-cache t)
 
 ;; Adjust garbage collection threshold for early startup (see use of gcmh below)
 (setq gc-cons-threshold (* 128 1024 1024))
@@ -54,12 +52,12 @@
   :config
   (setq gcmh-high-cons-threshold (* 128 1024 1024)))
 
+;; Font 
 (defun font-installed-p (font-name)
   "Check if font with FONT-NAME is available."
   (find-font (font-spec :name font-name)))
 
 (cond
- 
  ((string-equal system-name "SF25")
   (cl-loop for font in '("Iosevka Nerd Font Mono" "Source Code Pro" "Courier New")
            when (find-font (font-spec :name font))
@@ -82,8 +80,13 @@
          when (font-installed-p font)
          return (set-fontset-font t '(#x4e00 . #x9fff) font))
 
+(defcustom my/org-directory (expand-file-name "~/Documents/Org")
+  "Org files directory"
+  :type '(string))
+
+(setq desktop-path '("~/.emacs.d/"))
+
 ;; Load core config
-(require 'init-const)
 (require 'init-base)
 (require 'init-core)
 
@@ -93,7 +96,6 @@
 
 ;; UI
 (require 'init-ui)
-(require 'init-highlight)
 (require 'init-window) ;; window, buffer and frame
 
 ;; Completion
@@ -104,18 +106,14 @@
 (require 'init-git)
 (require 'init-shell)
 (require 'init-project)
-(require 'init-flycheck)
-(require 'init-format)
+(require 'init-linting)
 (require 'init-filemanager)
 
 ;; Lang
 (require 'init-org)
 (require 'init-treesitter)
-(require 'init-python)
 (require 'init-web)
 (require 'init-cxx)
-(require 'init-golang)
-(require 'init-rust)
 (require 'init-prog)
 (require 'init-lsp)
 

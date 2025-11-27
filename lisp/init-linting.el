@@ -32,4 +32,14 @@
                              (t 'grep)))
   )
 
-(provide 'init-flycheck)
+;; formatter
+(use-package apheleia
+  :straight (:host github :repo "panglars/apheleia")
+  :config
+  (apheleia-global-mode +1))
+
+(use-package aggressive-indent-mode
+  :defer t
+  :hook (emacs-lisp-mode . aggressive-indent-mode))
+
+(provide 'init-linting)

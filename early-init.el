@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*-
+;;; early-init.el --- Early initialization -*- lexical-binding: t -*-
 
 ;; No need of package-quickstart since we are using straight.el as package manager
 (setq package-quickstart nil)
@@ -10,6 +10,7 @@
 (push '(tool-bar-lines . 0) default-frame-alist)
 (push '(vertical-scroll-bars) default-frame-alist)
 (when (bound-and-true-p tooltip-mode) (tooltip-mode -1))
+(setq-default frame-title-format '("%b  -  GNU Emacs"))
 
 ;; Resizing the Emacs frame can be a terribly expensive part of changing the
 ;; font. By inhibiting this, we easily halve startup times with fonts that are

@@ -6,8 +6,6 @@
   (require 'benchmark-init-modes)
   (add-hook 'after-init-hook #'benchmark-init/deactivate))
 
-(setq desktop-path '("~/.emacs.d/"))
-
 ;; pop up a frame at point
 (use-package popup)
 (use-package posframe)
@@ -23,12 +21,15 @@
         ;; display-line-numbers-type 'relative
         display-line-numbers-current-absolute t))
 
-;; an aesthetic plugin designed to visually distinguish "real" buffers
+;; An aesthetic plugin designed to visually distinguish "real" buffers
 ;;(use-package solaire-mode)
 
 ;;; theme
 ;; (use-package doom-themes)
-(use-package modus-themes)
+(use-package modus-themes
+  :config
+  (modus-themes-load-theme 'modus-operandi))
+
 (use-package catppuccin-theme)
 ;; (use-package kaolin-themes)
 ;; (use-package ef-themes)

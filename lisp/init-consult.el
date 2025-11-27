@@ -34,6 +34,7 @@
          ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package consult-org-roam
+  :disabled
   :after (org-roam)
   :custom
   (consult-org-roam-grep-func #'consult-ripgrep)

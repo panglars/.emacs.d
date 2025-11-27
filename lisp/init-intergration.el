@@ -25,7 +25,7 @@
   (telega-load-hook . telega-appindicator-mode)
   (telega-load-hook . telega-mode-line-mode))
 
-;;  bi-directional editing in online text editors and text areas from within Emacs
+;; bi-directional editing in online text editors and text areas from within Emacs
 (use-package atomic-chrome
   :disabled
   :demand t

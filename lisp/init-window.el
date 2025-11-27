@@ -12,18 +12,21 @@
         aw-background t
         aw-minibuffer-flag t))
 
-;; [winner] Restore old window configurations
+;; Restore old window configurations
 (use-package winner
   :straight (:type built-in)
   :commands (winner-undo winner-redo)
-  :init
-  (setq winner-dont-bind-my-keys t)
   :hook (after-init . winner-mode)
-  :config
-  (setq winner-boring-buffers
-        '("*Completions*" "*Compile-Log*" "*inferior-lisp*" "*Fuzzy Completions*"
-          "*Apropos*" "*Help*" "*cvs*" "*Buffer List*" "*Ibuffer*"
-          "*esh command on file*" "*which-key*")))
+  :init (setq winner-boring-buffers '("*Completions*"
+                                      "*Compile-Log*"
+                                      "*inferior-lisp*"
+                                      "*Fuzzy Completions*"
+                                      "*Apropos*"
+                                      "*Help*"
+                                      "*cvs*"
+                                      "*Buffer List*"
+                                      "*Ibuffer*"
+                                      "*esh command on file*")))
 
 ;; Enforce rules for popup windows
 (use-package shackle
@@ -34,29 +37,31 @@
 
 
 (use-package popper
-  :defines popper-echo-dispatch-actions
-  :autoload popper-group-by-projectile
+  :custom
+  (popper-group-function #'popper-group-by-directory)
+  (popper-echo-dispatch-actions t)
   :bind (("C-`"   . popper-toggle-latest)
          ("M-`"   . popper-cycle)
          ("C-M-`" . popper-toggle-type))
+  :hook (emacs-startup . popper-echo-mode)
   :init
   (with-eval-after-load 'projectile
     (setq popper-group-function #'popper-group-by-projectile))
-  (setq popper-reference-buffers
-        '("\\*Messages\\*"
+  (setq popper-mode-line ""
+        popper-reference-buffers
+        '("\\*Messages\\*$"
           "Output\\*$" "\\*Pp Eval Output\\*$"
-          "\\*Compile-Log\\*"
-          ;; "\\*Completions\\*"
-          "\\*Warnings\\*"
-          "\\*Async Shell Command\\*"
-          "\\*Apropos\\*"
-          "\\*Backtrace\\*"
-          "\\*Calendar\\*"
-          "\\*Embark Actions\\*"
-          "\\*Finder\\*"
-          "\\*Kill Ring\\*"
-          "\\*Go-Translate\\*"
-          "\\*xref\\*"
+          "^\\*eldoc.*\\*$"
+          "\\*Compile-Log\\*$"
+          "\\*Completions\\*$"
+          "\\*Warnings\\*$"
+          "\\*Async Shell Command\\*$"
+          "\\*Apropos\\*$"
+          "\\*Backtrace\\*$"
+          "\\*Calendar\\*$"
+          "\\*Fd\\*$" "\\*Find\\*$" "\\*Finder\\*$"
+          "\\*Kill Ring\\*$"
+          "\\*Embark \\(Collect\\|Live\\):.*\\*$"
 
           bookmark-bmenu-mode
           comint-mode
@@ -70,15 +75,17 @@
 
           gnus-article-mode devdocs-mode
           grep-mode occur-mode rg-mode deadgrep-mode ag-mode pt-mode
-          ivy-occur-mode ivy-occur-grep-mode
           youdao-dictionary-mode osx-dictionary-mode fanyi-mode
+          "^\\*gt-result\\*$" "^\\*gt-log\\*$"
 
           "^\\*Process List\\*" process-menu-mode
           list-environment-mode cargo-process-mode
 
-          "^\\*eshell.*\\*.*$"       eshell-mode
-          "^\\*shell.*\\*.*$"        shell-mode
-          "^\\*terminal.*\\*.*$"     term-mode
+          "^\\*.*eat.*\\*.*$"
+          "^\\*.*eshell.*\\*.*$"
+          "^\\*.*shell.*\\*.*$"
+          "^\\*.*terminal.*\\*.*$"
+          "^\\*.*vterm[inal]*.*\\*.*$"
 
           ;; "\\*lsp-bridge-.+\\*" lsp-bridge-mode
           "\\*DAP Templates\\*$" dap-server-log-mode

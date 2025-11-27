@@ -13,6 +13,7 @@
   :defer t)
 
 (use-package activities
+  :disabled
   :init
   (activities-mode)
   (activities-tabs-mode)

@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding:t; -*-
 
 (use-package org
-  :straight(:type built-in)
   :bind (("C-c a" . org-agenda)
          ("C-c C" . org-capture))
   :config
@@ -10,7 +9,7 @@
   (unbind-key "C-c ]" org-mode-map)
 
   (setq org-modules '(org-habit)
-        org-directory my-org-directory
+        org-directory my/org-directory
         org-capture-templates
         `(("w" "Work" entry (file+headline ,(concat org-directory "/work.org") "Work")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
@@ -43,10 +42,10 @@
         org-pretty-entities nil
         org-hide-emphasis-markers t)
   
-;;; Agenda 
+  ;; org agenda 
   (setq
    org-agenda-time-leading-zero t
-   org-agenda-files (list my-org-directory)
+   org-agenda-files (list my/org-directory)
    org-agenda-tags-column 0
    org-agenda-block-separator ?─
    org-agenda-time-grid
@@ -136,7 +135,7 @@
          ;; ("C-c n y" . org-roam-dailies-capture-yesterday)
          )
   :custom
-  (org-roam-directory (file-truename my-org-roam-directory))
+  (org-roam-directory (file-truename my/org-directory))
   :config
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:15}" 'face 'org-tag)))
   (setq
@@ -155,7 +154,5 @@
   (use-package org-roam-ui
     :bind ("C-c n u" . org-roam-ui-mode))
   )
-
-
 
 (provide 'init-org)
