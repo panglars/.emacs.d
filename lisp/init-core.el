@@ -26,9 +26,9 @@
 
 ;;; theme
 ;; (use-package doom-themes)
-(use-package modus-themes
-  :config
-  (modus-themes-load-theme 'modus-operandi))
+;;(use-package modus-themes
+;;  :config
+;;  (modus-themes-load-theme 'modus-operandi))
 
 (use-package catppuccin-theme)
 ;; (use-package kaolin-themes)

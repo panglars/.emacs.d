@@ -90,6 +90,16 @@
              (propertize (concat " " (alist-get 'name tab) " ") 'face face)))))
   )
 
+(use-package tab-line
+  :disabled
+  :straight (:type built-in)
+  :config
+  (global-tab-line-mode 1)
+  (setq
+   tab-line-new-button-show nil
+   tab-line-close-button-show nil))
+
+
 (use-package hl-line
   :straight (:type built-in)
   :hook ((after-init . global-hl-line-mode)

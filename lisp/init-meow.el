@@ -34,8 +34,8 @@
    '("Z" . popper-cycle)
    '("[" . tab-previous)
    '("]" . tab-next)
-   '("," . previous-buffer)
-   '("." . next-buffer)
+   '("," . tab-line-switch-to-prev-tab)
+   '("." . tab-line-switch-to-next-tab)
    )
   (meow-normal-define-key
    '("0" . meow-expand-0)
