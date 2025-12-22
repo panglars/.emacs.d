@@ -59,7 +59,7 @@
 
 (cond
  ((string-equal system-name "SF25")
-  (cl-loop for font in '("Iosevka Nerd Font Mono 11" "Source Code Pro 12")
+  (cl-loop for font in '("Iosevka Nerd Font Mono 11" "Source Code Pro 11")
            when (find-font (font-spec :name font))
            return (set-face-attribute 'default nil
                                       :font font)))
