@@ -42,7 +42,7 @@
   (setq dirvish-mode-line-format
         '(:left (sort symlink) :right (omit yank index)))
   (setq dirvish-attributes
-        '(subtree-state nerd-icons collapse file-time file-size))
+        '(nerd-icons collapse file-time file-size))
   (setq delete-by-moving-to-trash t)
   (setq dirvish-subtree-state-style 'nerd)
   (setq dired-clean-confirm-killing-deleted-buffers nil)

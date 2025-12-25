@@ -25,8 +25,6 @@
            "* TODO %?\n" :empty-lines 1)
           ("i" "Idea" entry (file+headline ,(concat org-directory "/inbox.org") "Idea")
            "* TODO %?\n" :empty-lines 1)
-          ("n" "Note" entry (file+headline ,(concat org-directory "/inbox.org") "Note")
-           "* %? %^G\n%U" :empty-lines 1)
           ("j" "Journal" entry(file+datetree ,(concat org-directory "/journal.org"))
            "* %<%R> %?" :tree-type week)
           ("J" "Journal other day" entry(file+datetree ,(concat org-directory "/journal.org"))
