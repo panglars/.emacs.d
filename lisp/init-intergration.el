@@ -4,8 +4,7 @@
   :init (global-wakatime-mode))
 
 ;; Discord rich presence
-(use-package elcord
-  :disabled)
+(use-package elcord)
 
 (use-package telega
   :disabled
