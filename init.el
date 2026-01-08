@@ -78,7 +78,7 @@
          when (font-installed-p font)
          return (set-fontset-font t '(#x4e00 . #x9fff) font))
 
-(defcustom my/org-directory (expand-file-name "~/Documents/Org")
+(defcustom ORG-PATH (expand-file-name "~/Documents/Org")
   "Org files directory"
   :type '(string))
 
@@ -101,7 +101,6 @@
 (require 'init-consult)
 
 ;; IDE
-(require 'init-git)
 (require 'init-shell)
 (require 'init-project)
 (require 'init-linting)
@@ -109,8 +108,6 @@
 
 ;; Lang
 (require 'init-org)
-(require 'init-treesitter)
-(require 'init-web)
 (require 'init-cxx)
 (require 'init-prog)
 (require 'init-lsp)

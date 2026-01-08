@@ -1,15 +1,16 @@
 ;;; -*- lexical-binding:t; -*-
 
 (use-package org
-  :bind (("C-c a" . org-agenda)
-         ("C-c C" . org-capture))
+  :bind (("C-c A" . org-agenda)
+         ("C-c C" . org-capture)
+         ("C-c L" . org-stored-link))
   :config
   ;; for tab-bar switch tab
   (unbind-key "C-c [" org-mode-map)
   (unbind-key "C-c ]" org-mode-map)
 
   (setq org-modules '(org-habit)
-        org-directory my/org-directory
+        org-directory ORG-PATH
         org-capture-templates
         `(("w" "Work" entry (file+headline ,(concat org-directory "/work.org") "Work")
            "* TODO %?\nDEADLINE: %^t\n" :empty-lines 1)
@@ -31,19 +32,24 @@
            "* %?" :tree-type week :time-prompt t)
           )
         org-todo-keywords
-        '((sequence "TODO(t)" "HOLD(h)" "STARTED(s)" "|" "DONE(d)" "FAILED(f)" "CANCEL(c)"))
-        org-tags-column -80
+        '((sequence "TODO(t)" "HOLD(h)" "|" "DONE(d!/!)" "FAILED(f)" "CANCEL(c)")
+          (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c/!)")
+          (sequence "WAITING(w/!)" "DELEGATED(e!)" "HOLD(h)" "|" "CANCELLED(c/!)"))
+        org-tags-column 80
         org-log-done 'time
-        org-fold-catch-invisible-edits 'smart
+        org-fold-catch-invisible-edits 'show
+        org-export-coding-system 'utf-8
         org-startup-indented t
         org-ellipsis (if (char-displayable-p ?⏷) "\t⏷" nil)
         org-pretty-entities nil
+        org-image-actual-width nil
+        org-edit-src-content-indentation 0
         org-hide-emphasis-markers t)
   
   ;; org agenda 
   (setq
    org-agenda-time-leading-zero t
-   org-agenda-files (list my/org-directory)
+   org-agenda-files (list ORG-PATH)
    org-agenda-tags-column 0
    org-agenda-block-separator ?─
    org-agenda-time-grid
@@ -64,15 +70,28 @@
 
   ;; Prettify UI
   (use-package org-modern
-    :init
-    (setq org-modern-star ["➤" "✦" "✜" "✲" "✸" "❅"])
     :hook ((org-mode . org-modern-mode)
            (org-agenda-finalize . org-modern-agenda)
            (org-modern-mode . (lambda ()
                                 "Adapt `org-modern-mode'."
                                 ;; Disable Prettify Symbols mode
                                 (setq prettify-symbols-alist nil)
-                                (prettify-symbols-mode -1)))))
+                                (prettify-symbols-mode -1))))
+    :config
+    (setq org-modern-star 'replace
+          org-modern-replace-stars "❑✰❑✰❑✰"
+          org-modern-list '((?+ . "◦")
+                            (?- . "•"))
+          org-hide-emphasis-markers t
+          org-tags-column 0
+          org-modern-block-fringe 2
+          org-fold-catch-invisible-edits 'show-and-error
+          org-special-ctrl-a/e t
+          org-insert-heading-respect-content t
+          org-modern-table-vertical 0
+          org-modern-table-horizontal 0.2
+          org-ellipsis "[+]")
+    )
   
   (use-package org-fancy-priorities
     :disabled
@@ -133,7 +152,7 @@
          ;; ("C-c n y" . org-roam-dailies-capture-yesterday)
          )
   :custom
-  (org-roam-directory (file-truename my/org-directory))
+  (org-roam-directory (file-truename ORG-PATH))
   :config
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:15}" 'face 'org-tag)))
   (setq

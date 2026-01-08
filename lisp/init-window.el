@@ -85,7 +85,7 @@
           "^\\*.*eshell.*\\*.*$"
           "^\\*.*shell.*\\*.*$"
           "^\\*.*terminal.*\\*.*$"
-          "^\\*.*vterm[inal]*.*\\*.*$"
+          ;; "^\\*.*vterm[inal]*.*\\*.*$"
 
           ;; "\\*lsp-bridge-.+\\*" lsp-bridge-mode
           "\\*DAP Templates\\*$" dap-server-log-mode

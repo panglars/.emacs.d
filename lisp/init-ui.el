@@ -29,13 +29,14 @@
    dashboard-set-navigator t
    dashboard-page-separator "\n"
    dashboard-set-init-info t
-   ;; dashboard-startup-banner "~/.emacs.d/logo_umu.svg"
    dashboard-startup-banner 'logo
    dashboard-projects-backend 'projectile
-   dashboard-items '((recents . 10)
+   dashboard-items '((recents . 8)
                      (projects . 5)
-                     (bookmarks . 5)))
-  (setq dashboard-startupify-list '(dashboard-insert-newline
+                     (agenda    . 5)
+                     (bookmarks . 3)))
+  (setq dashboard-startupify-list '(dashboard-insert-banner
+                                    dashboard-insert-newline
                                     dashboard-insert-banner-title
                                     dashboard-insert-newline
                                     dashboard-insert-navigator
@@ -182,5 +183,34 @@
       (when (derived-mode-p 'prog-mode 'yaml-mode)
         (symbol-overlay-mode 1)))
     (advice-add #'deactivate-mark :after #'turn-on-symbol-overlay)))
+
+(use-package indent-bars
+  :hook ((java-ts-mode
+          python-ts-mode
+          python-mode
+          vue-mode
+          typescript-mode
+          typescript-ts-mode
+          js-mode) . indent-bars-mode)
+  :custom
+  (indent-bars-color '(highlight :face-bg t :blend 0.15))
+  (indent-bars-width-frac 0.1)
+  (indent-bars-pad-frac 0.1)
+  (indent-bars-zigzag nil)
+  (indent-bars-prefer-character t)
+  (indent-bars-no-stipple-char ?\u2502)
+  (indent-bars-pattern ".")
+  (indent-bars-display-on-blank-lines t)
+  (indent-bars-color-by-depth '(:regexp "outline-\\([0-9]+\\)" :blend 1))
+  (indent-bars-highlight-current-depth '(:blend 1 :width 0.5))
+  (indent-bars-treesit-support t)
+  (indent-bars-no-descend-string t) 
+  (indent-bars-treesit-scope 
+   '((python function_definition 
+             class_definition 
+             for_statement
+             if_statement 
+             with_statement 
+             while_statement))))
 
 (provide 'init-ui)
