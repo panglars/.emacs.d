@@ -86,7 +86,6 @@
           (sql           . ("https://github.com/DerekStride/tree-sitter-sql"))
           (typescript    . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.23.2" "typescript/src"))
           (tsx           . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.23.2" "tsx/src"))
-          ;; (typst         . ("https://github.com/uben0/tree-sitter-typst"))
           (vue           . ("https://github.com/tree-sitter-grammars/tree-sitter-vue"))
           (yaml          . ("https://github.com/tree-sitter-grammars/tree-sitter-yaml"))
           ;; (markdown      . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
@@ -101,6 +100,17 @@
         (treesit-install-language-grammar lang)
         (message "`%s' parser was installed." lang)
         (sit-for 0.75)))))
+
+;; typst
+(use-package typst-ts-mode
+  :straight (:type git :host codeberg :repo "meow_king/typst-ts-mode" :branch "main")
+  :custom
+  (typst-ts-watch-options "--open")
+  (typst-ts-mode-grammar-location (expand-file-name "tree-sitter/libtree-sitter-typst.so" user-emacs-directory))
+  (typst-ts-mode-enable-raw-blocks-highlight t)
+  :config
+  (keymap-set typst-ts-mode-map "C-c C-c" #'typst-ts-tmenu))
+
 
 ;; Markdown
 (use-package markdown-mode

@@ -153,6 +153,11 @@
     :custom
     (lsp-metals-enable-semantic-highlighting t)
     :hook (scala-mode . lsp))
+
+  ;; rpm spec lsp
+  (use-package rpm-spec-mode
+    :mode "\\.spec'"
+    :config (require 'lsp-rpm-spec))
   
   ;; typst lsp
   (add-to-list 'lsp-language-id-configuration

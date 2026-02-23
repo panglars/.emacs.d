@@ -1,6 +1,10 @@
 ;;; -*- lexical-binding: t -*-;
 
 (use-package rime
+  :straight (rime :type git
+                  :host github
+                  :repo "DogLooksGood/emacs-rime"
+                  :files ("*.el" "Makefile" "lib.c"))
   :config
   ;; meow-mode hook
   (setq rime-disable-predicates
