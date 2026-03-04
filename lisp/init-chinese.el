@@ -5,6 +5,9 @@
                   :host github
                   :repo "DogLooksGood/emacs-rime"
                   :files ("*.el" "Makefile" "lib.c"))
+  :custom
+  (default-input-method "rime")
+  (rime-show-candidate 'posframe)
   :config
   ;; meow-mode hook
   (setq rime-disable-predicates
@@ -15,13 +18,10 @@
         (list :font "LXGW WenKai Screen-14"
               ;;  :internal-border-width 10
               ))
-  (setq rime-share-data-dir "~/.local/share/fcitx5/rime")
+  (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
   :bind
   (:map rime-mode-map
         ("C-`" . 'rime-send-keybinding))
-  :custom
-  (default-input-method "rime")
-  (rime-show-candidate 'posframe)
   )
 
 (use-package pangu-spacing
