@@ -11,7 +11,8 @@
   (corfu-bar-width 0.5)
   (corfu-quit-at-boundary t)
   (corfu-quit-no-match t)
-  (corfu-max-width 100)
+  (corfu-min-width 20)
+  (corfu-max-width 80)
   (corfu-auto-delay 0.2)
   (corfu-auto-prefix 2)
   (corfu-preview-current nil)
@@ -54,20 +55,21 @@
                           ("M-n" . corfu-popupinfo-scroll-up)
                           ("M-d" . corfu-popupinfo-toggle)))
     :config
-    (setq corfu-popupinfo-delay '(0.5 . 0.5)
+    (setq corfu-popupinfo-delay '(1.0 . 0.5)
           corfu-popupinfo-min-height 10)))
 
 ;; A bunch of completion at point extensions
 (use-package cape
-  :after corfu
+  :defer 1
   :config
   (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  ;; (add-to-list 'completion-at-point-functions #'cape-keyword)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 
+;; Emacs completion style
 (use-package orderless
   :init
-  (setq completion-styles '(orderless flex)
+  (setq completion-styles '(basic substring initials orderless)
         completion-category-defaults nil
         completion-category-overrides '((file (styles basic partial-completion)))))
 
@@ -79,14 +81,7 @@
   :config
   (setq vertico-resize nil
         vertico-count 15
-        vertico-cycle t)
-
-  ;; Repeat last session
-  (use-package vertico-repeat
-    :after vertico
-    :bind ("C-c C-r" . vertico-repeat)
-    :config
-    (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)))
+        vertico-cycle t))
 
 ;; A very simple alternative to more involved SessionManagement solutions.
 (use-package savehist
