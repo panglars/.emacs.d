@@ -2,8 +2,13 @@
 
 (use-package agent-shell
   :config
-  (setq agent-shell-google-authentication
-        (agent-shell-google-make-authentication :login t))
+  (defun my/agent-shell-dot-subdir (subdir)
+    (let* ((cwd (string-remove-suffix "/" (agent-shell-cwd)))
+           (sanitized (replace-regexp-in-string "/" "-" (string-remove-prefix "/" cwd))))
+      (expand-file-name subdir (locate-user-emacs-file (concat "agent-shell/" sanitized)))))
+
+  (setopt agent-shell-dot-subdir-function #'my/agent-shell-dot-subdir)
+  (setopt agent-shell-write-inhibit-minor-modes '(aggressive-indent-mode))
   )
 
 

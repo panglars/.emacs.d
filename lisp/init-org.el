@@ -1,4 +1,6 @@
-;;; -*- lexical-binding:t; -*-
+;;; init-org.el --- -*- lexical-binding:t; -*-
+
+;;; Code:
 
 (use-package org
   :straight (:type built-in)
@@ -47,7 +49,7 @@
         org-edit-src-content-indentation 0
         org-hide-emphasis-markers t)
   
-  ;; org agenda 
+  ;; org agenda
   (setq
    org-agenda-time-leading-zero t
    org-agenda-files (list ORG-PATH)
@@ -174,3 +176,7 @@
   )
 
 (provide 'init-org)
+
+(provide 'init-org)
+
+;;; init-org.el ends here

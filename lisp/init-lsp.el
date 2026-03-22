@@ -1,39 +1,5 @@
-;;; -*- lexical-binding:t; -*-
+;;; init-lsp.el --- -*- lexical-binding:t; -*-
 
-;; lsp-bridge
-(use-package lsp-bridge
-  :disabled
-  :straight '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
-                         :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
-                         :build (:not compile))
-  :bind
-  (("C-c l d" . lsp-bridge-find-def)
-   ("C-c l D" . lsp-bridge-find-def-other-window)
-   ("C-c l b" . lsp-bridge-find-def-return)
-   ("C-c l i" . lsp-bridge-find-impl)
-   ("C-c l I" . lsp-bridge-find-impl-other-window)
-   ("C-c l t" . lsp-bridge-find-type-def)
-   ("C-c l T" . lsp-bridge-find-type-def-other-window)
-   ("C-c l r" . lsp-bridge-find-references)
-   ("C-c l E" . lsp-bridge-popup-documentation)
-   ("C-c l n" . lsp-bridge-rename)
-   ("C-c l e" . lsp-bridge-diagnostic-list)
-   ("C-c l a" . lsp-bridge-code-action)
-   ("C-c l f" . lsp-bridge-signature-help-fetch)
-   ("C-c l p" . lsp-bridge-peek)
-   :map lsp-bridge-ref-mode-map
-   ("C-n" . lsp-bridge-ref-jump-next-keyword)
-   ("C-p" . lsp-bridge-ref-jump-prev-keyword)
-   ("N" . lsp-bridge-ref-jump-next-file)
-   ("P" . lsp-bridge-ref-jump-prev-file)
-   )
-
-  :hook (astro-ts-mode . lsp-bridge-mode)
-  :init
-  (global-lsp-bridge-mode)
-  ;; :config
-  ;; (add-to-list 'lsp-bridge-default-mode-hooks 'astro-ts-mode-hook)
-  )
 
 ;; emacs-lsp-booster
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
@@ -67,7 +33,7 @@
       orig-result)))
 (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
 
-;; lsp-mode
+;;;; lsp-mode
 (use-package lsp-mode
   :defer t
   :custom
@@ -154,11 +120,6 @@
     (lsp-metals-enable-semantic-highlighting t)
     :hook (scala-mode . lsp))
 
-  ;; rpm spec lsp
-  (use-package rpm-spec-mode
-    :mode "\\.spec'"
-    :config (require 'lsp-rpm-spec))
-  
   ;; typst lsp
   (add-to-list 'lsp-language-id-configuration
                '("\\.typ$" . "typst"))
@@ -188,7 +149,7 @@
     (dap-chrome-setup))
   )
 
-;;; eglot 
+;;;; eglot 
 (use-package eglot
   :disabled
   :straight (:type built-in)

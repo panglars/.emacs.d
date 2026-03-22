@@ -15,7 +15,7 @@
         python-indent-guess-indent-offset nil
         python-shell-completion-native-enable nil))
 
-;; Rust
+
 (use-package rust-mode)
 
 (use-package cargo-mode
@@ -172,3 +172,7 @@
 
 (provide 'init-prog)
 
+
+(provide 'init-prog)
+
+;;; init-prog.el ends here
