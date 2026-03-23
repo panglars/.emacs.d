@@ -1,4 +1,5 @@
-;;; -*- lexical-binding:t; -*-
+;;; init-lsp.el --- -*- lexical-binding:t; -*-
+
 
 ;; emacs-lsp-booster
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
@@ -32,7 +33,7 @@
       orig-result)))
 (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
 
-;; lsp-mode
+;;;; lsp-mode
 (use-package lsp-mode
   :defer t
   :custom
@@ -119,7 +120,6 @@
     (lsp-metals-enable-semantic-highlighting t)
     :hook (scala-mode . lsp))
 
-
   ;; typst lsp
   (add-to-list 'lsp-language-id-configuration
                '("\\.typ$" . "typst"))
@@ -149,7 +149,7 @@
     (dap-chrome-setup))
   )
 
-;;; eglot 
+;;;; eglot 
 (use-package eglot
   :disabled
   :straight (:type built-in)

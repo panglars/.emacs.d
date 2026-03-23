@@ -1,5 +1,7 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 
+;;; Code:
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (setq load-prefer-newer t)
 (setq native-compile-prune-cache t)
@@ -52,7 +54,7 @@
   :config
   (setq gcmh-high-cons-threshold (* 128 1024 1024)))
 
-;; Font 
+;;;; Font
 (defun font-installed-p (font-name)
   "Check if font with FONT-NAME is available."
   (find-font (font-spec :name font-name)))
@@ -84,7 +86,8 @@
 
 (setq desktop-path '("~/.emacs.d/"))
 
-;; Load core config
+;;;; Load core config
+
 (require 'init-base)
 (require 'init-core)
 
