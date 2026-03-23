@@ -38,7 +38,7 @@
 (use-package auto-dark
   :defer t
   :init
-  (setq auto-dark-themes '((catppuccin) (modus-operandi)))
+  (setq auto-dark-themes '((catppuccin) (modus-operandi-tinted)))
   (setq custom-safe-themes t)
   (auto-dark-mode))
 

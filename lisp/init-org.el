@@ -23,7 +23,7 @@
            "* TODO %?\n" :empty-lines 1)
           ("m" "Misc" entry (file+headline ,(concat org-directory "/inbox.org") "Misc")
            "* TODO %?\n" :empty-lines 1)
-          ("f" "Flag" entry (file+headline ,(concat org-directory "/inbox.org") "Flag")
+          ("f" "Fun" entry (file+headline ,(concat org-directory "/inbox.org") "Fun")
            "* TODO %?\n" :empty-lines 1)
           ("i" "Idea" entry (file+headline ,(concat org-directory "/inbox.org") "Idea")
            "* TODO %?\n" :empty-lines 1)
