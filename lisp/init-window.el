@@ -73,6 +73,8 @@
           flymake-diagnostics-buffer-mode
           flycheck-error-list-mode flycheck-verify-mode
 
+          pi-coding-agent-input-mode
+
           gnus-article-mode devdocs-mode
           grep-mode occur-mode rg-mode deadgrep-mode ag-mode pt-mode
           youdao-dictionary-mode osx-dictionary-mode fanyi-mode

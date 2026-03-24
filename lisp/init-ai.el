@@ -1,15 +1,16 @@
 ;;  -*- lexical-binding: t; -*-
 
-(use-package agent-shell
-  :config
-  (defun my/agent-shell-dot-subdir (subdir)
-    (let* ((cwd (string-remove-suffix "/" (agent-shell-cwd)))
-           (sanitized (replace-regexp-in-string "/" "-" (string-remove-prefix "/" cwd))))
-      (expand-file-name subdir (locate-user-emacs-file (concat "agent-shell/" sanitized)))))
-
-  (setopt agent-shell-dot-subdir-function #'my/agent-shell-dot-subdir)
-  (setopt agent-shell-write-inhibit-minor-modes '(aggressive-indent-mode))
+(use-package pi-coding-agent
+  :init (defalias 'pi 'pi-coding-agent)
+  :bind (:map pi-coding-agent-chat-mode-map
+              ("?" . pi-coding-agent-menu)
+              ("P" . pi-coding-agent-previous-message)
+              ("N" . pi-coding-agent-next-message))
+  :custom
+  (pi-coding-agent-tool-preview-lines 0)         ; Lines shown before collapsing tool output
+  (pi-coding-agent-bash-preview-lines 1)          ; Lines shown for bash output
+  (pi-coding-agent-visit-file-other-window t)     ; RET opens file in other window (nil for same)
+  (pi-coding-agent-input-markdown-highlighting t)  ; tree-sitter markdown highlighting in input buffer
   )
-
 
 (provide 'init-ai)
