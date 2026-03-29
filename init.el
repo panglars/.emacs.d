@@ -116,7 +116,6 @@
 (require 'init-lsp)
 
 ;; Misc
-(require 'init-ai)
 (require 'init-reader)
 (require 'init-intergration)
 ;;

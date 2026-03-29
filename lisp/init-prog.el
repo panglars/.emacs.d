@@ -54,13 +54,11 @@
 (use-package zig-mode)
 
 (use-package scala-mode
+  :disabled
   :interpreter
   ("scala" . scala-mode))
 
-(use-package just-mode
-  :disabled)
-
-;; Treesitter
+;;;; Treesitter
 (use-package treesit
   :straight (:type built-in)
   :commands (+treesit-install-all-languages)
@@ -125,7 +123,7 @@
 (use-package colorful-mode
   :hook (prog-mode text-mode))
 
-;;; Devdocs
+;;;; Devdocs
 (use-package devdocs
   :bind
   ("C-c S" . devdocs-lookup))
@@ -155,6 +153,7 @@
   :hook (org-mode . valign-mode))
 
 (use-package ast-grep
+  :disabled
   :straight (:type git :host github :repo "SunskyXH/ast-grep.el"))
 
 (use-package yasnippet
@@ -170,7 +169,20 @@
   (setq yas-inhibit-overlay-modification-protection t)
   (advice-add 'yas--on-protection-overlay-modification :override #'ignore))
 
-(provide 'init-prog)
+;;;; LLM agent
+
+(use-package pi-coding-agent
+  :init (defalias 'pi 'pi-coding-agent)
+  :bind (:map pi-coding-agent-chat-mode-map
+              ("?" . pi-coding-agent-menu)
+              ("P" . pi-coding-agent-previous-message)
+              ("N" . pi-coding-agent-next-message))
+  :custom
+  (pi-coding-agent-tool-preview-lines 0)         ; Lines shown before collapsing tool output
+  (pi-coding-agent-bash-preview-lines 1)          ; Lines shown for bash output
+  (pi-coding-agent-visit-file-other-window t)     ; RET opens file in other window (nil for same)
+  (pi-coding-agent-input-markdown-highlighting t)  ; tree-sitter markdown highlighting in input buffer
+  )
 
 
 (provide 'init-prog)
