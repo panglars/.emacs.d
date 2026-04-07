@@ -24,19 +24,25 @@
   (telega-load-hook . telega-appindicator-mode)
   (telega-load-hook . telega-mode-line-mode))
 
-;; bi-directional editing in online text editors and text areas from within Emacs
-(use-package atomic-chrome
-  :disabled
-  :demand t
-  :straight (atomic-chrome
-             :repo "KarimAziev/atomic-chrome"
-             :type git
-             :host github)
-  :commands (atomic-chrome-start-server)
-  :config
-  (setq-default atomic-chrome-buffer-open-style 'frame)
-  (setq-default atomic-chrome-auto-remove-file t)
-  (setq-default atomic-chrome-extension-type-list '(atomic-chrome))
-  (atomic-chrome-start-server))
+;;;; LLM agent
+
+(use-package pi-coding-agent
+  :init (defalias 'pi 'pi-coding-agent)
+  :bind (:map pi-coding-agent-chat-mode-map
+              ("?" . pi-coding-agent-menu)
+              ("P" . pi-coding-agent-previous-message)
+              ("N" . pi-coding-agent-next-message))
+  :custom
+  (pi-coding-agent-tool-preview-lines 0)         ; Lines shown before collapsing tool output
+  (pi-coding-agent-bash-preview-lines 1)          ; Lines shown for bash output
+  (pi-coding-agent-visit-file-other-window t)     ; RET opens file in other window (nil for same)
+  (pi-coding-agent-input-markdown-highlighting t)  ; tree-sitter markdown highlighting in input buffer
+  )
+
+;;;; terminal
+
+(use-package ghostel
+  :straight (ghostel :type git :host github :repo "dakra/ghostel" :bench "main"))
+
 
 (provide 'init-intergration)

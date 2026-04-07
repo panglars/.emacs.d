@@ -104,7 +104,6 @@
 (require 'init-consult)
 
 ;; IDE
-(require 'init-shell)
 (require 'init-project)
 (require 'init-linting)
 (require 'init-filemanager)
@@ -117,7 +116,6 @@
 
 ;; Misc
 (require 'init-reader)
-(require 'init-intergration)
-;;
+(require 'init-intergration) ;; shell, mail, llm
 
 ;;; init.el ends here
