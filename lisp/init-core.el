@@ -26,27 +26,17 @@
 
 ;;; theme
 ;; (use-package doom-themes)
-;;(use-package modus-themes
-;;  :config
-;;  (modus-themes-load-theme 'modus-operandi))
-
-(use-package catppuccin-theme)
-;; (use-package kaolin-themes)
+;; (use-package catppuccin-theme)
 ;; (use-package ef-themes)
+(use-package doric-themes
+  :config
+  (doric-themes-load-random 'light))
 
-
-(use-package auto-dark
-  :defer t
-  :init
-  (setq auto-dark-themes '((catppuccin) (modus-operandi-tinted)))
-  (setq custom-safe-themes t)
-  (auto-dark-mode))
-
-;; transparent background
 (setq default-frame-alist '((width . 120)
                             (height . 80)
                             ;; (alpha-background . 90)
                             ))
+
 (when (display-graphic-p)
   ;; Frame maximized
   (set-frame-parameter (selected-frame) 'fullscreen 'maximized)

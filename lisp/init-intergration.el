@@ -27,6 +27,7 @@
 ;;;; LLM agent
 
 (use-package pi-coding-agent
+  :disabled
   :init (defalias 'pi 'pi-coding-agent)
   :bind (:map pi-coding-agent-chat-mode-map
               ("?" . pi-coding-agent-menu)
