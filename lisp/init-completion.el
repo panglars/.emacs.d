@@ -1,4 +1,4 @@
-;;; -*- lexical-binding: t -*-
+;; -*- lexical-binding: t -*-
 
 ;; https://github.com/minad/corfu/discussions/457
 (setq text-mode-ispell-word-completion nil)

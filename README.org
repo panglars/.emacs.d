@@ -25,4 +25,3 @@ I use [[https://github.com/radian-software/apheleia][apheleia]] to format code
   
 *** language server
 + lsp-mode  
-

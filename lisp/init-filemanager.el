@@ -1,12 +1,5 @@
 ;;  -*- lexical-binding: t; -*-
 
-(use-package eee
-  :straight '(:type git :host github :repo "eval-exec/eee.el"
-                    :files (:defaults "*.el" "*.sh"))
-  :config
-  (setq ee-terminal-command "ghostty"))
-
-
 (use-package dirvish
   :straight (:type git :host github :repo "alexluigit/dirvish")
   :init

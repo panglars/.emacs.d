@@ -91,8 +91,9 @@
 
 (use-package elec-pair
   :straight (:type built-in)
-  :hook (after-init . electric-pair-mode)
   :config
+  (add-hook 'prog-mode-hook 'electric-pair-local-mode)
+  (add-hook 'conf-mode-hook 'electric-pair-local-mode)
   (setq electric-pair-inhibit-predicate (lambda (char) (minibufferp))))
 
 (use-package sudo-edit)

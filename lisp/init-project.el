@@ -6,26 +6,20 @@
   (setq magit-no-message '("Turning on magit-auto-revert-mode...")
         magit-diff-refine-hunk t)
   :config
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   (setq fill-column 72
         magit-auto-revert-mode t
         git-commit-summary-max-length 50
         magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
         git-commit-style-convention-checks '(overlong-summary-line non-empty-second-line)))
 
-(use-package smerge-mode
-  :defer t
-  :straight (:type built-in)
-  :hook (find-file . (lambda ()
-                       (save-excursion
-                         (goto-char (point-min))
-                         (when (re-search-forward "^<<<<<<< " nil t)
-                           (smerge-mode 1))))))
-
-(use-package magit-todos
-  :disabled
-  :after magit
+(use-package diff-hl
   :config
-  (magit-todos-mode 1))
+  (setq diff-hl-disable-on-remote t)
+  (global-diff-hl-mode))
+
+(use-package smerge-mode
+  :straight (:type built-in))
 
 ;; Git config file modes
 (use-package git-modes)

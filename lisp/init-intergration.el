@@ -26,24 +26,47 @@
 
 ;;;; LLM agent
 
-(use-package pi-coding-agent
-  :disabled
-  :init (defalias 'pi 'pi-coding-agent)
-  :bind (:map pi-coding-agent-chat-mode-map
-              ("?" . pi-coding-agent-menu)
-              ("P" . pi-coding-agent-previous-message)
-              ("N" . pi-coding-agent-next-message))
-  :custom
-  (pi-coding-agent-tool-preview-lines 0)         ; Lines shown before collapsing tool output
-  (pi-coding-agent-bash-preview-lines 1)          ; Lines shown for bash output
-  (pi-coding-agent-visit-file-other-window t)     ; RET opens file in other window (nil for same)
-  (pi-coding-agent-input-markdown-highlighting t)  ; tree-sitter markdown highlighting in input buffer
-  )
+(use-package codex-ide
+  :straight (:type git :host github :repo "dgillis/emacs-codex-ide")
+  :bind ("C-c a" . codex-ide-menu))
 
 ;;;; terminal
 
 (use-package ghostel
-  :straight (ghostel :type git :host github :repo "dakra/ghostel" :bench "main"))
+  :disabled
+  :straight (ghostel :type git :host github :repo "dakra/ghostel" :bench "main")
+  :bind(("<f10>" . ghostel)
+        ("C-c t" . ghostel-project))
+  :config
+  (setq ghostel-tramp-shell-integration t)
+  )
 
+(use-package eat
+  :straight (eat :type git
+                 :host codeberg
+                 :repo "akib/emacs-eat"
+                 :files ("*.el" ("term" "term/*.el") "*.texi"
+                         "*.ti" ("terminfo/e" "terminfo/e/*")
+                         ("terminfo/65" "terminfo/65/*")
+                         ("integration" "integration/*")
+                         (:exclude ".dir-locals.el" "*-tests.el")))
+  :config
+  ;; Q to quit after process exit
+  (add-hook 'eat-exit-hook 'view-mode)
+  ;; eshell support
+  (add-hook 'eshell-load-hook #'eat-eshell-mode)
+  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
+
+  ;; Integration with Meow
+  (defun meomacs-eat-meow-setup ()
+    (add-hook 'meow-normal-mode-hook 'eat-emacs-mode nil t)
+    (add-hook 'meow-insert-mode-hook 'eat-char-mode nil t))
+  (with-eval-after-load "meow"
+    (with-eval-after-load "eat"
+      (keymap-set eat-char-mode-map "C-S-v" 'eat-yank)
+      (advice-add 'eat-semi-char-mode :after 'eat-emacs-mode)
+      (add-hook 'eat-mode-hook 'meomacs-eat-meow-setup)))
+  
+  )
 
 (provide 'init-intergration)
