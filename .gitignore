@@ -42,3 +42,5 @@ custom.el
 /bookmarks
 /*.db
 /dirvish/
+/tabsession.el
+/projects.eld

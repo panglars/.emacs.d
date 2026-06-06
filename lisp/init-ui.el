@@ -66,13 +66,10 @@
 (use-package tab-bar
   :straight (:type built-in)
   :hook (after-init . tab-bar-mode)
-  
-  :bind (("C-c n n" . tab-new)
-         ("C-c n x" . tab-close)
-         ("C-c n b" . consult-buffer-other-tab)
-         ("C-c n 1" . tab-close-other)
-         ("C-c n r" . tab-rename))
-  
+  :bind (("C-c TAB n" . tab-new)
+         ("C-c TAB x" . tab-close)
+         ("C-c TAB 1" . tab-close-other)
+         ("C-c TAB r" . tab-rename))
   :config
   (setq tab-bar-separator " "
         tab-bar-border nil

@@ -1,20 +1,16 @@
 
-#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
-[[/logo.svg]]
-
 * PangLAN's .emacs.d
 
 ** Feature
 + Straight.el to manage and lazy load package.
 + orderless,vertico to fast and comformtable completion
-+ lsp-bridge and bulit-in treesit for js(x)/ts(x),taildwind-CSS,astro,rust,python,c,etc...
++ lsp-mode and bulit-in treesit for js(x)/ts(x),taildwind-CSS,astro,rust,python,c,etc...
 + morden UI with editor,modeline,dashboard,magit,org-mode.
 + Chinese IME and translater
-+ meow edit,code forma,quickrun,vterm,projectile,drivish,consult.
-  
++ meow edit,code forma,quickrun,vterm,projectile,drivish,consult
+ 
 ** Install
 You may install some extenal programs before you use this dotfiles
-
 *** code format provider
 I use [[https://github.com/radian-software/apheleia][apheleia]] to format code
   

@@ -18,12 +18,10 @@
 
 ;; Completion
 (require 'init-completion)
-(require 'init-consult)
 
 ;; IDE
 (require 'init-project)
 (require 'init-linting)
-(require 'init-filemanager)
 
 ;; Lang
 (require 'init-org)
