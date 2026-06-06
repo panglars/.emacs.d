@@ -7,6 +7,7 @@
         ("C-c j" . consult-flycheck)
         ("C-c f" . consult-fd)
         ("C-c i" . consult-imenu)
+        ("C-c I" . consult-imenu-multi)
         ("C-c R" . consult-bookmark)            ;; orig. bookmark-jump
         ("C-c B" . consult-project-buffer)      ;; orig. project-switch-to-buffer
         ("C-x C-r" . consult-recent-file)

@@ -1,5 +1,7 @@
 ;;; early-init.el --- Early initialization -*- lexical-binding: t -*-
 
+(setq inhibit-x-resources t)
+
 ;; No need of package-quickstart since we are using straight.el as package manager
 (setq package-quickstart nil)
 ;; Do not initialise the package manager. This is done in `init.el'.
@@ -27,5 +29,3 @@
 
 ;; Use plists for deserialization
 (setenv "LSP_USE_PLISTS" "true")
-
-

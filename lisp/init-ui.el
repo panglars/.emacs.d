@@ -27,14 +27,13 @@
    dashboard-set-file-icons t
    dashboard-set-heading-icons t
    ;; dashboard-set-footer t
-   dashboard-set-navigator t
+   dashboard-set-navigator nil
    dashboard-page-separator "\n"
    dashboard-set-init-info t
-   dashboard-startup-banner 'logo
+   ;; dashboard-startup-banner 'logo-braille
    dashboard-projects-backend 'projectile
    dashboard-items '((recents . 8)
                      (projects . 5)
-                     (agenda    . 5)
                      (bookmarks . 3)))
   (setq dashboard-startupify-list '(dashboard-insert-banner
                                     dashboard-insert-newline

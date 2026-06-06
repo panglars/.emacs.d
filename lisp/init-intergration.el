@@ -27,6 +27,7 @@
 ;;;; LLM agent
 
 (use-package codex-ide
+  :disabled
   :straight (:type git :host github :repo "dgillis/emacs-codex-ide")
   :bind ("C-c a" . codex-ide-menu))
 
@@ -63,7 +64,7 @@
     (add-hook 'meow-insert-mode-hook 'eat-char-mode nil t))
   (with-eval-after-load "meow"
     (with-eval-after-load "eat"
-      (keymap-set eat-char-mode-map "C-S-v" 'eat-yank)
+      (keymap-set eat-char-mode-map "C-y" 'eat-yank)
       (advice-add 'eat-semi-char-mode :after 'eat-emacs-mode)
       (add-hook 'eat-mode-hook 'meomacs-eat-meow-setup)))
   

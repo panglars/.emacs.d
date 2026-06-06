@@ -1,7 +1,7 @@
 ;;  -*- lexical-binding: t; -*-
 
 (use-package dirvish
-  :straight (:type git :host github :repo "alexluigit/dirvish")
+  :straight (:type git :host github :repo "latiagertrutis/dirvish")
   :init
   (dirvish-override-dired-mode)
   :custom
@@ -52,7 +52,7 @@
   (define-key dirvish-mode-map (kbd "<mouse-2>") 'dired-mouse-find-file-other-window)
   (define-key dirvish-mode-map (kbd "<mouse-3>") 'dired-mouse-find-file)
   
-  :bind ; Bind `dirvish|dirvish-side|dirvish-dwim' as you see fit
+  :bind 
   (("C-c d" . dirvish-dwim)
    ("C-c D" . dirvish-fd)
    :map dirvish-mode-map ; Dirvish inherits `dired-mode-map'

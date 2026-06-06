@@ -25,22 +25,27 @@
 ;;(use-package solaire-mode)
 
 ;;; theme
-;; (use-package doom-themes)
-;; (use-package catppuccin-theme)
 ;; (use-package ef-themes)
-(use-package doric-themes
+(use-package standard-themes)
+(use-package modus-themes
+  :init
+  (modus-themes-include-derivatives-mode 1)
   :config
-  (doric-themes-load-random 'light))
+  (modus-themes-load-theme 'modus-operandi-tinted)
+  )
+
+;; (use-package doric-themes)
 
 (setq default-frame-alist '((width . 120)
                             (height . 80)
                             ;; (alpha-background . 90)
                             ))
 
-(when (display-graphic-p)
-  ;; Frame maximized
-  (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-  (add-to-list 'default-frame-alist '(fullscreen . maximized)))
+
+;; (when (display-graphic-p)
+;;   ;; Frame maximized
+;;   (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+;;   (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 
 (use-package nerd-icons)
 
@@ -113,5 +118,7 @@
 
 ;; use curl insted built-in url
 (use-package plz)
+
+(use-package ssh-agency)
 
 (provide 'init-core)

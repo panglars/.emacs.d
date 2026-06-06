@@ -35,6 +35,6 @@
 (require 'init-reader)
 (require 'init-intergration) ;; shell, mail, llm
 
-(server-start)
+;; (server-start)
 
 ;;; init.el ends here
