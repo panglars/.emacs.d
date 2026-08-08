@@ -5,7 +5,7 @@
 
 (use-package vlf)
 
-;; Python
+;;;; Python
 (use-package python
   :straight (:type built-in)
   :mode ("\\.py\\'" . python-mode)
@@ -15,7 +15,7 @@
         python-indent-guess-indent-offset nil
         python-shell-completion-native-enable nil))
 
-
+;;;; rust
 (use-package rust-mode)
 
 (use-package cargo-mode
@@ -57,6 +57,10 @@
   :disabled
   :interpreter
   ("scala" . scala-mode))
+
+(use-package slime
+  :disabled
+  :config (setq inferior-lisp-program "/usr/bin/sbcl"))
 
 ;;;; Treesitter
 (use-package treesit
