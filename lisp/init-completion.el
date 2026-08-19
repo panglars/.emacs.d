@@ -1,21 +1,32 @@
 ;; -*- lexical-binding: t -*-
 
 ;; https://github.com/minad/corfu/discussions/457
-(setq text-mode-ispell-word-completion nil)
+(setq text-mode-ispell-word-completion nil
+      tab-always-indent 'complete
+      read-extended-command-predicate #'command-completion-default-include-p)
 
 (use-package corfu
-  :straight (corfu :includes (corfu-indexed corfu-quick) :files (:defaults "extensions/corfu-*.el"))
+  :straight (corfu :includes (corfu-quick) :files (:defaults "extensions/corfu-*.el"))
   :custom
   (corfu-auto t)
   (corfu-cycle t)
   (corfu-bar-width 0.5)
-  (corfu-quit-at-boundary t)
-  (corfu-quit-no-match t)
+  (corfu-quit-at-boundary 'separator)
+  (corfu-quit-no-match 'separator)
   (corfu-min-width 20)
   (corfu-max-width 80)
   (corfu-auto-delay 0.2)
   (corfu-auto-prefix 2)
   (corfu-preview-current nil)
+  (global-corfu-modes '((not shell-mode
+                             eshell-mode
+                             comint-mode
+                             erc-mode
+                             gud-mode
+                             rcirc-mode
+                             text-mode
+                             minibuffer-inactive-mode)
+                        t))
   :bind (:map corfu-map
               ("C-n" . corfu-next)
               ("C-p" . corfu-previous)
@@ -25,14 +36,6 @@
   :init
   (global-corfu-mode 1)
   :config
-  (setq corfu-excluded-modes '(shell-mode
-                               eshell-mode
-                               comint-mode
-                               erc-mode
-                               gud-mode
-                               rcirc-mode
-                               text-mode
-                               minibuffer-inactive-mode))
   ;; extensions
   (use-package nerd-icons-corfu
     :config
@@ -46,34 +49,39 @@
   (use-package corfu-history
     :straight nil
     :after corfu
-    :hook (corfu-mode . corfu-history-mode))
+    :config
+    (corfu-history-mode 1))
   (use-package corfu-popupinfo
     :straight nil
     :after corfu
-    :hook (corfu-mode . corfu-popupinfo-mode)
-    :bind (:map corfu-map(("M-p" . corfu-popupinfo-scroll-down)
-                          ("M-n" . corfu-popupinfo-scroll-up)
-                          ("M-d" . corfu-popupinfo-toggle)))
+    :demand t
+    :bind (:map corfu-map
+                ("M-p" . corfu-popupinfo-scroll-down)
+                ("M-n" . corfu-popupinfo-scroll-up)
+                ("M-d" . corfu-popupinfo-toggle))
+    :custom
+    (corfu-popupinfo-delay '(0.5 . 0.5))
     :config
-    (setq corfu-popupinfo-delay '(1.0 . 0.5)
-          corfu-popupinfo-min-height 10)))
+    (corfu-popupinfo-mode 1)))
 
 ;; A bunch of completion at point extensions
 (use-package cape
-  :defer 1
-  :config
-  (add-to-list 'completion-at-point-functions #'cape-file)
+  :bind ("C-c P" . cape-prefix-map)
+  :init
   ;; (add-to-list 'completion-at-point-functions #'cape-keyword)
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+  ;; `add-hook' prepends by default, so `cape-file' takes precedence.
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file))
 
 ;; Emacs completion style
 (use-package orderless
-  :init
-  (setq completion-styles '(basic substring initials orderless)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles basic partial-completion)))))
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles basic partial-completion))))
+  (completion-pcm-leading-wildcard t))
 
-;;vertical interactive completion 
+;; Vertical interactive completion
 (use-package vertico
   :straight (vertico :includes (vertico-repeat)
                      :files (:defaults "extensions/vertico-*.el"))
@@ -82,6 +90,12 @@
   (setq vertico-resize nil
         vertico-count 15
         vertico-cycle t))
+
+(use-package vertico-repeat
+  :straight nil
+  :after vertico
+  :bind ("M-R" . vertico-repeat)
+  :hook (minibuffer-setup . vertico-repeat-save))
 
 ;; A very simple alternative to more involved SessionManagement solutions.
 (use-package savehist
@@ -98,7 +112,7 @@
   :init
   ;; Must be in the :init section of use-package such that the mode gets
   ;; enabled right away. Note that this forces loading the package.
-  (marginalia-mode))
+  (marginalia-mode 1))
 
 (use-package embark
   :bind
@@ -130,7 +144,7 @@
 (use-package nerd-icons-completion
   :after marginalia
   :config
-  (nerd-icons-completion-mode)
+  (nerd-icons-completion-mode 1)
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 
 (provide 'init-completion)
