@@ -42,10 +42,10 @@
                             ))
 
 
-;; (when (display-graphic-p)
-;;   ;; Frame maximized
-;;   (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-;;   (add-to-list 'default-frame-alist '(fullscreen . maximized)))
+(when (display-graphic-p)
+  ;; Frame maximized
+  (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 
 (use-package nerd-icons)
 
@@ -60,7 +60,7 @@
   (set-face-foreground face (face-attribute 'default :background)))
 (set-face-background 'fringe (face-attribute 'default :background))
 
-
+;;;; which-key
 (use-package which-key
   :hook (after-init . which-key-mode)
   :config
@@ -119,7 +119,7 @@
 ;; use curl insted built-in url
 (use-package plz)
 
-(use-package ssh-agency)
+;; (use-package ssh-agency)
 
 (use-package consult
   :bind(;; C-c bindings in `mode-specific-map'

@@ -26,11 +26,6 @@
 
 ;;;; LLM agent
 
-(use-package codex-ide
-  :disabled
-  :straight (:type git :host github :repo "dgillis/emacs-codex-ide")
-  :bind ("C-c a" . codex-ide-menu))
-
 ;;;; terminal
 
 (use-package ghostel

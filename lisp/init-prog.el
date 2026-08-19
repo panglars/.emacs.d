@@ -2,8 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
-
 (use-package vlf)
+
+;;;; clojure
+(use-package clojure-mode)
+
+(use-package cider)
 
 ;;;; Python
 (use-package python
@@ -37,19 +41,18 @@
 
 ;; Web
 (use-package web-mode
-  :mode "\\.\\(phtml\\|php\\|[gj]sp\\|as[cp]x\\|erb\\|djhtml\\|html?\\|hbs\\|ejs\\|jade\\|swig\\|tm?pl\\|vue\\|astro\\)$"
+  :mode (("\\.\\(phtml\\|php\\|[gj]sp\\|as[cp]x\\|erb\\|djhtml\\|html?\\|hbs\\|ejs\\|jade\\|swig\\|tm?pl\\|vue\\)$" . web-mode)
+         ("\\.astro\\'" . astro-mode))
   :config
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
   ;; ASTRO
-  (define-derived-mode astro-mode web-mode "astro")
+  (define-derived-mode astro-mode web-mode "Astro")
   )
 
 ;; Other language
 (use-package lua-mode)
-
-(use-package clojure-mode)
 
 (use-package zig-mode)
 

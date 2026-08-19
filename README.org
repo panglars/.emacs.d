@@ -1,23 +1,26 @@
 
-* PangLAN's .emacs.d
+* PangLARS's .emacs.d
 
 ** Feature
-+ Straight.el to manage and lazy load package.
++ Straight.el and use-package to manage and lazy load package.
 + orderless,vertico to fast and comformtable completion
-+ lsp-mode and bulit-in treesit for js(x)/ts(x),taildwind-CSS,astro,rust,python,c,etc...
-+ morden UI with editor,modeline,dashboard,magit,org-mode.
++ Eglot and built-in treesit for JS(X)/TS(X), Astro, Rust, Python, C/C++ and Typst.
++ morden UI with editor, modeline, dashboard, org-mode and org-agenda.
 + Chinese IME and translater
-+ meow edit,code forma,quickrun,vterm,projectile,drivish,consult
++ meow edit, quickrun, vterm, projectile, drivish, consult
  
 ** Install
 You may install some extenal programs before you use this dotfiles
 *** code format provider
 I use [[https://github.com/radian-software/apheleia][apheleia]] to format code
-  
 *** commadline tools
 + ripgrep
 + fzf
 + git
-  
-*** language server
-+ lsp-mode  
+*** LSP servers
++ clangd
++ pyright
++ rust-analyzer
++ typescript-language-server
++ @astrojs/language-server
++ tinymist
