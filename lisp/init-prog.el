@@ -12,7 +12,6 @@
 ;;;; Python
 (use-package python
   :straight (:type built-in)
-  :mode ("\\.py\\'" . python-mode)
   :init
   (setq python-indent-offset 4
         python-fill-docstring-style 'django
@@ -20,24 +19,11 @@
         python-shell-completion-native-enable nil))
 
 ;;;; rust
-(use-package rust-mode)
-
 (use-package cargo-mode
   :hook
-  (rust-mode . cargo-minor-mode)
+  ((rust-mode rust-ts-mode) . cargo-minor-mode)
   :config
   (setq compilation-scroll-output t))
-
-;; Go
-(use-package go-mode
-  :mode ("\\.go\\'" . go-mode)
-  :config
-  (use-package go-tag
-    :init (setq go-tag-args (list "-transform" "camelcase"))))
-
-(use-package gotest
-  :init
-  (setq go-test-verbose t))
 
 ;; Web
 (use-package web-mode
@@ -51,17 +37,9 @@
   (define-derived-mode astro-mode web-mode "Astro")
   )
 
-;; Other language
-(use-package lua-mode
-  :straight (:type built-in))
-
 (use-package zig-mode)
 
-(use-package scala-mode
-  :disabled
-  :interpreter
-  ("scala" . scala-mode))
-
+;; common lisp
 (use-package slime
   :disabled
   :config (setq inferior-lisp-program "/usr/bin/sbcl"))
@@ -69,43 +47,20 @@
 ;;;; Treesitter
 (use-package treesit
   :straight (:type built-in)
-  :commands (+treesit-install-all-languages)
+  :demand t
   :config
-  (setq treesit-language-source-alist
-        '((rust          . ("https://github.com/tree-sitter/tree-sitter-rust"))
-          (toml          . ("https://github.com/tree-sitter/tree-sitter-toml"))
-          ;; (haskell       . ("https://github.com/tree-sitter/tree-sitter-haskell"))
-          ;; (bibtex        . ("https://github.com/latex-lsp/tree-sitter-bibtex"))
-          ;; (cmake         . ("https://github.com/uyha/tree-sitter-cmake"))
-          (css           . ("https://github.com/tree-sitter/tree-sitter-css"))
-          ;; (dockerfile    . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
-          (html          . ("https://github.com/tree-sitter/tree-sitter-html"))
-          (java          . ("https://github.com/tree-sitter/tree-sitter-java"))
-          (javascript    . ("https://github.com/tree-sitter/tree-sitter-javascript"))
-          (jsdoc         . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
-          (json          . ("https://github.com/tree-sitter/tree-sitter-json"))
-          (latex         . ("https://github.com/latex-lsp/tree-sitter-latex"))
-          ;; (make          . ("https://github.com/tree-sitter-grammars/tree-sitter-make"))
-          ;; (lua           . ("https://github.com/tree-sitter-grammars/tree-sitter-lua"))
-          ;; (org           . ("https://github.com/milisims/tree-sitter-org"))
-          ;; (python        . ("https://github.com/tree-sitter/tree-sitter-python"))
-          (sql           . ("https://github.com/DerekStride/tree-sitter-sql"))
-          (typescript    . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.23.2" "typescript/src"))
-          (tsx           . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.23.2" "tsx/src"))
-          (vue           . ("https://github.com/tree-sitter-grammars/tree-sitter-vue"))
-          (yaml          . ("https://github.com/tree-sitter-grammars/tree-sitter-yaml"))
-          (markdown      . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
-          (markdown-inline . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
-          ))
-
-  (defun +treesit-install-all-languages ()
-    "Install all languages specified by `treesit-language-source-alist'."
-    (interactive)
-    (let ((languages (mapcar 'car treesit-language-source-alist)))
-      (dolist (lang languages)
-        (treesit-install-language-grammar lang)
-        (message "`%s' parser was installed." lang)
-        (sit-for 0.75)))))
+  (let ((excluded-modes '(c-ts-mode
+                          c++-ts-mode
+                          c-or-c++-ts-mode
+                          cmake-ts-mode
+                          )))
+    ;; use classic major modes
+    (setopt treesit-auto-install-grammar 'ask
+            treesit-enabled-modes
+            (seq-remove
+             (lambda (mode) (memq mode excluded-modes))
+             (delete-dups
+              (mapcar #'cdr treesit-major-mode-remap-alist))))))
 
 ;; typst
 (use-package typst-ts-mode
@@ -119,9 +74,9 @@
 
 
 ;; Markdown
-(use-package markdown-mode
-  :mode ("README\\(_zh\\)?\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
+(use-package markdown-ts-mode
+  :straight (:type built-in)
+  :mode ("\\.\\(?:md\\|markdown\\|mkd\\|mdown\\|mkdn\\|mdwn\\|mdx\\)\\'" . markdown-ts-mode))
 
 ;; CSV highlight
 (use-package rainbow-csv
@@ -156,13 +111,6 @@
   (("<f5>" . quickrun)
    ("M-<f5>" . quickrun-shell)))
 
-;; Pixel-perfect visual alignment for Org and Markdown tables
-(use-package valign
-  :hook (org-mode . valign-mode))
-
-(use-package ast-grep
-  :disabled
-  :straight (:type git :host github :repo "SunskyXH/ast-grep.el"))
 
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode)

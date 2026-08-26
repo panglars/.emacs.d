@@ -109,11 +109,10 @@
   :config
   (setq eldoc-echo-area-display-truncation-message t
         eldoc-echo-area-prefer-doc-buffer t
+        eldoc-help-at-pt t
         eldoc-echo-area-use-multiline-p nil
         eglot-extend-to-xref t)
-
-  ;;  displays ElDoc documentations in a childframe
-  (use-package eldoc-box))
+  )
 
 ;; use curl insted built-in url
 (use-package plz)

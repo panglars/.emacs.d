@@ -31,7 +31,7 @@
          #'(lambda ()
              (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))
     (add-hook 'org-mode-hook enable-pangu-spacing)
-    (add-hook 'markdown-mode-hook enable-pangu-spacing)))
+    (add-hook 'markdown-ts-mode-hook enable-pangu-spacing)))
 
 
 (use-package gt

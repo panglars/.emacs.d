@@ -189,7 +189,8 @@
           vue-mode
           typescript-mode
           typescript-ts-mode
-          js-mode) . indent-bars-mode)
+          js-mode
+          js-ts-mode) . indent-bars-mode)
   :custom
   (indent-bars-color '(highlight :face-bg t :blend 0.15))
   (indent-bars-width-frac 0.1)
