@@ -44,3 +44,4 @@ custom.el
 /dirvish/
 /tabsession.el
 /projects.eld
+*.eld

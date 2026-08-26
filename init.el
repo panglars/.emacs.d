@@ -4,7 +4,6 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (setq load-prefer-newer t)
-(setq native-compile-prune-cache t)
 
 ;;;; Load core config
 

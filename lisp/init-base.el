@@ -29,13 +29,13 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Install use-package
+;; Load the built-in use-package
 (setq use-package-enable-imenu-support t
       use-package-verbose (not (bound-and-true-p byte-compile-current-file))
       use-package-expand-minimally t
       use-package-compute-statistics nil)
 (setq byte-compile-warnings '(cl-functions))
-(straight-use-package 'use-package)
+(require 'use-package)
 
 ;; Load custom file
 (setq custom-file (concat user-emacs-directory "custom.el"))
@@ -55,12 +55,12 @@
   (find-font (font-spec :name font-name)))
 
 (cond
- ((string-equal system-name "SF25")
+ ((string-equal (system-name) "SF25")
   (cl-loop for font in '("CodeNewRoman Nerd Font 11" "Source Code Pro 11")
            when (find-font (font-spec :name font))
            return (set-face-attribute 'default nil
                                       :font font)))
- ((string-equal system-name "sf1000")
+ ((string-equal (system-name) "sf1000")
   (cl-loop for font in '("CodeNewRoman Nerd Font 13" "Source Code Pro 12")
            when (find-font (font-spec :name font))
            return (set-face-attribute 'default nil
@@ -101,9 +101,6 @@
 (setq make-backup-files nil
       auto-save-default nil
       create-lockfiles nil)
-
-;; Make native compilation silent
-(setq native-compile-prune-cache t)
 
 ;; Always load the newest file
 (setq load-prefer-newer t)

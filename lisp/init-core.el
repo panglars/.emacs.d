@@ -36,10 +36,8 @@
 
 ;; (use-package doric-themes)
 
-(setq default-frame-alist '((width . 120)
-                            (height . 80)
-                            ;; (alpha-background . 90)
-                            ))
+(add-to-list 'default-frame-alist '(width . 120))
+(add-to-list 'default-frame-alist '(height . 80))
 
 
 (when (display-graphic-p)
@@ -62,6 +60,7 @@
 
 ;;;; which-key
 (use-package which-key
+  :straight (:type built-in)
   :hook (after-init . which-key-mode)
   :config
   (setq which-key-idle-delay 1

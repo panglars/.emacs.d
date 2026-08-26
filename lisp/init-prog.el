@@ -52,7 +52,8 @@
   )
 
 ;; Other language
-(use-package lua-mode)
+(use-package lua-mode
+  :straight (:type built-in))
 
 (use-package zig-mode)
 
