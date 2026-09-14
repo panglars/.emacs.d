@@ -125,6 +125,7 @@
 
   ;; Pomodoro
   (use-package org-pomodoro
+    :disabled
     :custom-face
     (org-pomodoro-mode-line ((t (:inherit warning))))
     (org-pomodoro-mode-line-overtime ((t (:inherit error))))
