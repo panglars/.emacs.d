@@ -13,7 +13,7 @@
   (flycheck-emacs-lisp-load-path 'inherit)
   (flycheck-display-errors-delay 0.5)
   (flycheck-check-syntax-automatically '(save mode-enabled))
-  (flycheck-annotate-current-line-style 'below)
+  (flycheck-annotate-current-line-style 'eol)
   (flycheck-annotate-other-lines-style 'eol)
   (flycheck-eglot-exclusive nil)
   (flycheck-lsp-exclusive t)
@@ -34,7 +34,6 @@
 
 ;; formatter
 (use-package apheleia
-  :straight (:host github :repo "panglars/apheleia")
   :config
   (apheleia-global-mode +1))
 
