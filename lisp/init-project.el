@@ -143,6 +143,7 @@
   (tabspaces-fully-resolve-paths t)  ; Resolve relative project paths to absolute
   (tabspaces-exclude-buffers '("*Messages*" "*Compile-Log*"))  ; Additional buffers to exclude
   :config
+  (setq tabspaces-project-switch-opens-workspace t)
   ;; Store all project sessions in a specific directory
   (setq tabspaces-session-project-session-store "~/.emacs.d/.cache/tabspaces-sessions/")
   )
