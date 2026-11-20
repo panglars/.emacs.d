@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t; -*- 
 
+;;;; wakatime
 (use-package wakatime-mode
   :init (global-wakatime-mode))
 
@@ -64,5 +65,8 @@
       (add-hook 'eat-mode-hook 'meomacs-eat-meow-setup)))
   
   )
+
+;;;; reader
+(use-package emureader)
 
 (provide 'init-intergration)

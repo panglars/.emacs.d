@@ -29,7 +29,6 @@
 (require 'init-lsp)
 
 ;; Misc
-(require 'init-reader)
 (require 'init-intergration) ;; shell, mail, llm
 
 ;; (server-start)
