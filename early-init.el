@@ -1,11 +1,15 @@
 ;;; early-init.el --- Early initialization -*- lexical-binding: t -*-
 
-(setq inhibit-x-resources t)
+;;; Package startup
 
 ;; No need of package-quickstart since we are using straight.el as package manager
 (setq package-quickstart nil)
 ;; Do not initialise the package manager. This is done in `init.el'.
 (setq package-enable-at-startup nil)
+
+;;; Initial frame
+
+(setq inhibit-x-resources t)
 
 ;; Prevent the glimpse of un-styled Emacs by disabling these UI elements early.
 (push '(menu-bar-lines . 0) default-frame-alist)
@@ -24,5 +28,8 @@
 ;; cursor color is concerned).
 (advice-add #'x-apply-session-resources :override #'ignore)
 
-;; Make UTF-8 the default coding system:
+;;; Encoding
+
 (set-language-environment "UTF-8")
+
+;;; early-init.el ends here

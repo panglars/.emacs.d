@@ -1,6 +1,10 @@
-;;; init-org.el --- -*- lexical-binding:t; -*-
+;;; init-org.el --- Org, agenda and notes -*- lexical-binding: t; -*-
 
-;;; Code:
+;;; Org and agenda
+
+(defcustom ORG-PATH (expand-file-name "~/Documents/Org")
+  "Org files directory"
+  :type '(string))
 
 (use-package org
   :straight (:type built-in)
@@ -138,7 +142,8 @@
                  ("K" . org-pomodoro)
                  ("C-c C-x m" . org-pomodoro)))))
 
-;;; roam
+;;; Org-roam
+
 (use-package org-roam
   :disabled
   :straight (org-roam :type git :host github :repo "org-roam/org-roam")
@@ -176,7 +181,10 @@
     :bind ("C-c n u" . org-roam-ui-mode))
   )
 
-(provide 'init-org)
+;;; Meow bindings
+
+(with-eval-after-load 'init-editing
+  (meow-leader-define-key '("C" . org-capture)))
 
 (provide 'init-org)
 

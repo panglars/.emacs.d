@@ -8,6 +8,26 @@
 + morden UI with editor, modeline, dashboard, org-mode and org-agenda.
 + Chinese IME and translater
 + meow edit, quickrun, vterm, projectile, drivish, consult
+
+** Configuration
+
+Set an entry in =lan/init-modules= in [[file:init.el][init.el]] to =nil= to
+skip that module on the next startup. The order in the list is the load order.
+
+The configuration files use =;;;= for sections and =;;;;= for subsections.
+Use =C-c @ C-n= and =C-c @ C-p= to move between visible headings. Use
+=C-c @ C-d= and =C-c @ C-s= to fold and expand the current section.
+Use =M-x consult-outline= to find a heading by name when completion is enabled.
+
+** Quick terminal editing
+
+[[file:init-mini.el][init-mini.el]] loads the basic Meow editing keys shared
+with the full configuration. Start the full configuration once to install Meow
+before using the terminal editor.
+
+#+begin_src sh
+export EDITOR="emacs -Q -nw -l \"$HOME/.emacs.d/init-mini.el\""
+#+end_src
  
 ** Install
 You may install some extenal programs before you use this dotfiles

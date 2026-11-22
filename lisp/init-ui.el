@@ -1,4 +1,67 @@
-;; -*- lexical-binding: t; -*-
+;;; init-ui.el --- Appearance, buffers and windows -*- lexical-binding: t; -*-
+
+;;; Fonts and theme
+
+(defun font-installed-p (font-name)
+  "Check if font with FONT-NAME is available."
+  (find-font (font-spec :name font-name)))
+
+(cond
+ ((string-equal (system-name) "SF25")
+  (cl-loop for font in '("CodeNewRoman Nerd Font 11" "Source Code Pro 11")
+           when (find-font (font-spec :name font))
+           return (set-face-attribute 'default nil
+                                      :font font)))
+ ((string-equal (system-name) "sf1000")
+  (cl-loop for font in '("CodeNewRoman Nerd Font 13" "Source Code Pro 12")
+           when (find-font (font-spec :name font))
+           return (set-face-attribute 'default nil
+                                      :font font))))
+
+;; Specify font for all unicode characters
+(cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
+         when (font-installed-p font)
+         return(set-fontset-font t 'unicode font nil 'prepend))
+;; Specify font for Chinese characters
+(cl-loop for font in '("LXGW WenKai Screen" "WenQuanYi Micro Hei" "Microsoft Yahei")
+         when (font-installed-p font)
+         return (set-fontset-font t '(#x4e00 . #x9fff) font))
+
+;; No gc for font caches
+(setq inhibit-compacting-font-caches t)
+
+;; (use-package ef-themes)
+(use-package standard-themes)
+(use-package modus-themes
+  :init
+  (modus-themes-include-derivatives-mode 1)
+  :config
+  (modus-themes-load-theme 'modus-operandi-tinted)
+  )
+
+;; (use-package doric-themes)
+
+(add-to-list 'default-frame-alist '(width . 120))
+(add-to-list 'default-frame-alist '(height . 80))
+
+
+(when (display-graphic-p)
+  ;; Frame maximized
+  (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized)))
+
+(modify-all-frames-parameters
+ '((right-divider-width . 5)
+   (left-divider-width . 5)
+   (internal-border-width . 0)))
+(dolist (face '(window-divider
+                window-divider-first-pixel
+                window-divider-last-pixel))
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default :background)))
+(set-face-background 'fringe (face-attribute 'default :background))
+
+;;; Dashboard and mode line
 
 (use-package page-break-lines
   :config
@@ -31,9 +94,7 @@
    dashboard-page-separator "\n"
    dashboard-set-init-info t
    ;; dashboard-startup-banner 'logo-braille
-   dashboard-projects-backend 'projectile
    dashboard-items '((recents . 8)
-                     (projects . 5)
                      (bookmarks . 3)))
   (setq dashboard-startupify-list '(dashboard-insert-banner
                                     dashboard-insert-newline
@@ -63,6 +124,8 @@
                        lsp-ui-imenu-mode
                        pdf-annot-list-mode) . hide-mode-line-mode)))
 
+;;; Tabs
+
 (use-package tab-bar
   :straight (:type built-in)
   :hook (after-init . tab-bar-mode)
@@ -78,7 +141,9 @@
         tab-bar-close-button-show nil
         tab-bar-tab-name-truncated-max 20
         tab-bar-tab-hints t)
-  (setq tab-bar-format '(tab-bar-format-menu-bar meow-indicator tab-bar-format-tabs tab-bar-separator))
+  (setq tab-bar-format '(tab-bar-format-menu-bar tab-bar-format-tabs tab-bar-separator))
+  (with-eval-after-load 'init-editing
+    (setq tab-bar-format '(tab-bar-format-menu-bar meow-indicator tab-bar-format-tabs tab-bar-separator)))
   (setq tab-bar-tab-name-format-function
         (lambda (tab i)
           (let ((face (funcall tab-bar-tab-face-function tab)))
@@ -97,6 +162,24 @@
    tab-line-new-button-show nil
    tab-line-close-button-show nil))
 
+;;; Buffer appearance
+
+;; Transparent title bar
+(when (featurep 'ns)
+  (push '(ns-transparent-titlebar . t) default-frame-alist))
+
+(use-package display-line-numbers
+  :straight (:type built-in)
+  :init
+  ;; (add-hook 'text-mode-hook #'display-line-numbers-mode)
+  ;;  (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+  (setq display-line-numbers-width 4
+        display-line-numbers-widen t
+        ;; display-line-numbers-type 'relative
+        display-line-numbers-current-absolute t))
+
+;; An aesthetic plugin designed to visually distinguish "real" buffers
+;;(use-package solaire-mode)
 
 (use-package hl-line
   :straight (:type built-in)
@@ -212,6 +295,7 @@
              with_statement 
              while_statement))))
 
+;;; Windows and popups
 
 (keymap-set global-map "<f6>" 'window-toggle-side-windows)
 
@@ -260,8 +344,6 @@
          ("C-M-`" . popper-toggle-type))
   :hook (emacs-startup . popper-echo-mode)
   :init
-  (with-eval-after-load 'projectile
-    (setq popper-group-function #'popper-group-by-projectile))
   (setq popper-mode-line ""
         popper-reference-buffers
         '("\\*Messages\\*$"
@@ -328,10 +410,9 @@
           "\\*prolog\\*" inferior-python-mode inf-ruby-mode swift-repl-mode
           "\\*rustfmt\\*$" rustic-compilation-mode rustic-cargo-clippy-mode
           rustic-cargo-outdated-mode rustic-cargo-run-mode rustic-cargo-test-mode))
+  :config
   (with-eval-after-load 'projectile
     (setq popper-group-function #'popper-group-by-projectile))
-
-  :config
   (popper-mode 1)
   (popper-echo-mode 1)
 
@@ -347,7 +428,8 @@
   ;; (advice-add #'keyboard-quit :before #'+popper-close-window-hack)
   )
 
-;;; Ibuffer 
+;;; Buffer list
+
 (use-package ibuffer
   :straight (:type built-in)
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode)
@@ -364,4 +446,13 @@
   (ibuffer-movement-cycle nil)
   (ibuffer-show-empty-filter-groups nil))
 
+;;; Meow bindings
+
+(with-eval-after-load 'init-editing
+  (meow-leader-define-key '("o" . ace-window)
+                         '("z" . popper-toggle-latest)
+                         '("Z" . popper-cycle)))
+
 (provide 'init-ui)
+
+;;; init-ui.el ends here

@@ -1,4 +1,6 @@
-;; -*- lexical-binding: t -*-
+;;; init-completion.el --- Completion, search and actions -*- lexical-binding: t; -*-
+
+;;; In-buffer completion
 
 ;; https://github.com/minad/corfu/discussions/457
 (setq text-mode-ispell-word-completion nil
@@ -73,6 +75,8 @@
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
   (add-hook 'completion-at-point-functions #'cape-file))
 
+;;; Minibuffer completion
+
 ;; Emacs completion style
 (use-package orderless
   :custom
@@ -86,6 +90,9 @@
   :straight (vertico :includes (vertico-repeat)
                      :files (:defaults "extensions/vertico-*.el"))
   :hook (after-init . vertico-mode)
+  :init
+  (when after-init-time
+    (vertico-mode 1))
   :config
   (setq vertico-resize nil
         vertico-count 15
@@ -113,6 +120,41 @@
   ;; Must be in the :init section of use-package such that the mode gets
   ;; enabled right away. Note that this forces loading the package.
   (marginalia-mode 1))
+
+;;; Search and navigation
+
+(use-package consult
+  :bind(;; C-c bindings in `mode-specific-map'
+        ("C-c M-x" . consult-mode-command)
+        ("C-c b" . consult-buffer)
+        ("C-c r" . consult-ripgrep)
+        ("C-c f" . consult-fd)
+        ("C-c i" . consult-imenu)
+        ("C-c I" . consult-imenu-multi)
+        ("C-c R" . consult-bookmark)            ;; orig. bookmark-jump
+        ("C-c B" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+        ("C-x C-r" . consult-recent-file)
+        ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+        ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+        ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+        ("M-#"   . consult-register-load)
+        ("M-'"   . consult-register-store)        ;; orig. abbrev-prefix-mark (unrelated)
+        ("C-M-#" . consult-register)
+        ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+        )
+  :init
+  ;; Use Consult to select xref locations with preview
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref))
+
+;; [consult-dir] Insert path quickly in minibuffer
+(use-package consult-dir
+  :bind (("C-x C-d" . consult-dir)
+         :map minibuffer-local-completion-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file)))
+
+;;; Actions and annotations
 
 (use-package embark
   :bind
@@ -147,4 +189,13 @@
   (nerd-icons-completion-mode 1)
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 
+;;; Meow bindings
+
+(with-eval-after-load 'init-editing
+  (meow-leader-define-key '("/" . embark-act))
+  (meow-normal-define-key '(";" . embark-act)
+                          '("L" . consult-goto-line)))
+
 (provide 'init-completion)
+
+;;; init-completion.el ends here

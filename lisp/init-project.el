@@ -1,6 +1,7 @@
-;; -*- lexical-binding: t; -*-
+;;; init-project.el --- Projects, version control and workspaces -*- lexical-binding: t; -*-
 
-;;;; magit
+;;; Version control
+
 (use-package magit
   :init
   ;; Suppress the message we get about "Turning on magit-auto-revert-mode" when loading Magit.
@@ -34,7 +35,8 @@
   (blamer-author-formatter "  ✎ %s ")
   )
 
-;;;; projectile
+;;; Project navigation
+
 (use-package projectile
   :bind (:map projectile-mode-map
               ("C-c C-p" . projectile-command-map))
@@ -45,7 +47,8 @@
         projectile-use-git-grep t)
   )
 
-;;;; file manager
+;;; File manager
+
 (use-package dirvish
   :straight (:type git :host github :repo "latiagertrutis/dirvish")
   :init
@@ -110,7 +113,6 @@
    ("i"   . dired-find-file)
    ("^"   . dirvish-history-last)
    ("h"   . dirvish-history-jump) ; remapped `describe-mode'
-   ("s"   . consult-line)
    ("S"   . dirvish-quicksort)    ; remapped `dired-sort-toggle-or-edit'
    ("v"   . dirvish-vc-menu)      ; remapped `dired-view-file'
    ("T"   . dirvish-side)
@@ -124,7 +126,8 @@
    ("M-e" . dirvish-emerge-menu)
    ("M-j" . dirvish-fd-jump)))
 
-;;;; workspace
+;;; Workspaces
+
 (use-package tabspaces
   :straight (:type git :host codeberg :repo "mclear-tools/tabspaces")
   :hook (after-init . tabspaces-mode) 
@@ -145,7 +148,26 @@
   :config
   (setq tabspaces-project-switch-opens-workspace t)
   ;; Store all project sessions in a specific directory
-  (setq tabspaces-session-project-session-store "~/.emacs.d/.cache/tabspaces-sessions/")
+  (setq tabspaces-session-project-session-store
+        (expand-file-name ".cache/tabspaces-sessions/" user-emacs-directory))
   )
 
+;;; Integration with other modules
+
+(with-eval-after-load 'dashboard
+  (setq dashboard-projects-backend 'projectile))
+
+(with-eval-after-load 'init-completion
+  (with-eval-after-load 'dirvish
+    (keymap-set dirvish-mode-map "s" #'consult-line)))
+
+(with-eval-after-load 'init-editing
+  (meow-leader-define-key '("G" . magit)
+                         '("p" . projectile-command-map))
+  (meow-normal-define-key '("<" . projectile-previous-project-buffer)
+                          '(">" . projectile-next-project-buffer)
+                          '("T" . dirvish-side)))
+
 (provide 'init-project)
+
+;;; init-project.el ends here

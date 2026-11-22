@@ -1,8 +1,11 @@
-;; -*- lexical-binding: t; -*-
-(use-package meow
-  :init (meow-global-mode 1)
-  :demand nil
-  :config
+;;; lan-meow.el --- Shared Meow editing keys -*- lexical-binding: t; -*-
+
+(require 'meow)
+
+;;; Basic editing keys
+
+(defun lan/meow-setup ()
+  "Set up the basic Meow editing keys and Colemak cheatsheet."
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-colemak)
   (setq meow-expand-hint-remove-delay 3)
   (setq meow-use-clipboard t)
@@ -13,7 +16,6 @@
    '("<escape>" . ignore))
   (meow-leader-define-key
    '("?" . meow-cheatsheet)
-   ;; To execute the originally e in MOTION state, use SPC e.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
    '("3" . meow-digit-argument)
@@ -23,22 +25,7 @@
    '("7" . meow-digit-argument)
    '("8" . meow-digit-argument)
    '("9" . meow-digit-argument)
-   '("0" . meow-digit-argument)
-   '("C" . org-capture)
-   '("J" . eat-project)
-   '("G" . magit)
-   '("o" . ace-window)
-   '("p" . projectile-command-map)
-   '("z" . popper-toggle-latest)
-   '("Z" . popper-cycle)
-   '("[" . tab-previous)
-   '("]" . tab-next)
-   '("," . bury-buffer)
-   '("." . unbury-buffer)
-   '("/" . embark-act)
-   '(";" . tab-previous)
-   '("\\" . tab-next)
-   )  
+   '("0" . meow-digit-argument))
   (meow-normal-define-key
    '("0" . meow-expand-0)
    '("1" . meow-expand-1)
@@ -56,11 +43,6 @@
    '("." . meow-bounds-of-thing)
    '("[" . meow-beginning-of-thing)
    '("]" . meow-end-of-thing)
-   '("{" . tab-previous)
-   '("}" . tab-next)
-   '("<" . projectile-previous-project-buffer)
-   '(">" . projectile-next-project-buffer)
-   '(";" . embark-act)
    '("/" . meow-visit)
    '("a" . meow-append)
    '("A" . meow-open-below)
@@ -82,7 +64,6 @@
    '("k" . meow-insert)
    '("K" . meow-open-above)
    '("l" . meow-line)
-   '("L" . consult-goto-line)
    '("m" . meow-mark-word)
    '("M" . meow-mark-symbol)
    '("n" . meow-next)
@@ -96,7 +77,6 @@
    '("R" . meow-swap-grab)
    '("S" . save-buffer)
    '("t" . meow-till)
-   '("T" . dirvish-side)
    '("u" . undo-only)
    '("U" . undo-redo)
    '("v" . meow-search)
@@ -107,37 +87,8 @@
    '("Y" . meow-yank-pop)
    '("z" . meow-pop-selection)
    '("'" . repeat)
-   '("<escape>" . ignore))
-  (dolist
-      (state
-       '(
-         (telega-root-mode . motion)
-         (telega-chat-mode . normal)
-         (calibredb-search-mode . motion)
-         (blink-search-mode . insert)
-         (rcirc-mode . normal)
-         (comint-mode . normal)         ; IELM
-         (reb-mode . normal)            ; re-builder
-         (elfeed-search-mode . motion)
-         (elfeed-show-mode . motion)
-         (fundamental-mode . normal)
-         (message-mode . normal)
-         (emacs-lisp-mode . normal)
-         (eshell-mode . insert)
-         (shell-mode . insert)
-         (term-mode . insert)
-         (help-mode . normal)
-         (helpful-mode . normal)
-         (subed-mode . motion)
-         (vundo-mode . motion)
-         (autoscratch-mode . insert)
-         (lsp-bridge-ref-mode . motion)
-         ))
-    (add-to-list 'meow-mode-state-list state))
-  )
+   '("<escape>" . ignore)))
 
-(use-package meow-tree-sitter
-  :config (meow-tree-sitter-register-defaults))
+(provide 'lan-meow)
 
-
-(provide 'init-meow)
+;;; lan-meow.el ends here

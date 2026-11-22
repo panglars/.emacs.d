@@ -1,35 +1,26 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 
-;;; Code:
+;;; Feature switches
+
+(defvar lan/init-modules
+  '((init-editing     . t)
+    (init-ui          . t)
+    (init-completion  . t)
+    (init-project     . t)
+    (init-org         . t)
+    (init-prog        . t)
+    (init-integration . t))
+  "Configuration modules in startup order.  Set an entry to nil to skip it.")
+
+;;; Load configuration
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (setq load-prefer-newer t)
-
-;;;; Load core config
-
 (require 'init-base)
-(require 'init-core)
 
-(require 'init-meow)
-(require 'init-chinese)
-
-(require 'init-ui) ;; window, buffer and frame
-
-;; Completion
-(require 'init-completion)
-
-;; IDE
-(require 'init-project)
-(require 'init-linting)
-
-;; Lang
-(require 'init-org)
-(require 'init-cxx)
-(require 'init-prog)
-(require 'init-lsp)
-
-;; Misc
-(require 'init-intergration) ;; shell, mail, llm
+(dolist (module lan/init-modules)
+  (when (cdr module)
+    (require (car module))))
 
 ;; (server-start)
 

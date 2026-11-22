@@ -1,4 +1,6 @@
-;; -*- lexical-binding: t; -*-
+;;; init-base.el --- Package setup and editor defaults -*- lexical-binding: t; -*-
+
+;;; Startup and package management
 
 ;; Adjust garbage collection threshold for early startup (see use of gcmh below)
 (setq gc-cons-threshold (* 128 1024 1024))
@@ -49,41 +51,50 @@
   :config
   (setq gcmh-high-cons-threshold (* 128 1024 1024)))
 
-;;;; Font
-(defun font-installed-p (font-name)
-  "Check if font with FONT-NAME is available."
-  (find-font (font-spec :name font-name)))
+;;; Shared libraries and tools
 
-(cond
- ((string-equal (system-name) "SF25")
-  (cl-loop for font in '("CodeNewRoman Nerd Font 11" "Source Code Pro 11")
-           when (find-font (font-spec :name font))
-           return (set-face-attribute 'default nil
-                                      :font font)))
- ((string-equal (system-name) "sf1000")
-  (cl-loop for font in '("CodeNewRoman Nerd Font 13" "Source Code Pro 12")
-           when (find-font (font-spec :name font))
-           return (set-face-attribute 'default nil
-                                      :font font))))
+(use-package benchmark-init
+  :demand t
+  :config
+  (require 'benchmark-init-modes)
+  (if after-init-time
+      (benchmark-init/deactivate)
+    (add-hook 'after-init-hook #'benchmark-init/deactivate)))
 
-;; Specify font for all unicode characters
-(cl-loop for font in '("CMU Typewriter Text" "Apple Color Emoji" "Symbola")
-         when (font-installed-p font)
-         return(set-fontset-font t 'unicode font nil 'prepend))
-;; Specify font for Chinese characters
-(cl-loop for font in '("LXGW WenKai Screen" "WenQuanYi Micro Hei" "Microsoft Yahei")
-         when (font-installed-p font)
-         return (set-fontset-font t '(#x4e00 . #x9fff) font))
+;; pop up a frame at point
+(use-package popup)
+(use-package posframe)
+(use-package diminish)
 
-(defcustom ORG-PATH (expand-file-name "~/Documents/Org")
-  "Org files directory"
-  :type '(string))
+(use-package nerd-icons)
 
-(setq desktop-path '("~/.emacs.d/"))
+(use-package bookmark
+  :defer t
+  :straight (:type built-in))
 
-;; Transparent title bar
-(when (featurep 'ns)
-  (push '(ns-transparent-titlebar . t) default-frame-alist))
+(use-package sudo-edit)
+
+(use-package plz)
+
+;;; Files and sessions
+
+;; Disable backup, auto-save and lock files.
+(setq make-backup-files nil
+      auto-save-default nil
+      create-lockfiles nil)
+
+;; Move to trash when delete file
+(setq-default  delete-by-moving-to-trash t)
+
+(setq desktop-path (list user-emacs-directory))
+
+;; Re-read files on disk when there’s a change
+(setq auto-revert-interval 1)
+(setq auto-revert-check-vc-info t)
+;; (setq global-auto-revert-non-file-buffers t)
+(global-auto-revert-mode)
+
+;;; Editor defaults
 
 (setq use-short-answers t)
 
@@ -97,25 +108,11 @@
 (setq select-enable-clipboard t)
 (setq select-active-regions 'only)
 
-;; No backup files,No lock files 
-(setq make-backup-files nil
-      auto-save-default nil
-      create-lockfiles nil)
-
-;; Always load the newest file
-(setq load-prefer-newer t)
-
-;; Move to trash when delete file
-(setq-default  delete-by-moving-to-trash t)
-
 (global-visual-line-mode 1)
 
 (setq column-number-mode t)
 
 (setq mouse-yank-at-point t)
-
-;; No gc for font caches
-(setq inhibit-compacting-font-caches t)
 
 ;; No annoying bell
 (setq ring-bell-function 'ignore)
@@ -157,10 +154,6 @@
   (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))
         mouse-wheel-progressive-speed nil))
 
-;; Remove hscroll-margin in shells, otherwise it causes jumpiness
-(add-hook 'eshell-mode-hook (lambda() (setq hscroll-margin 0)))
-(add-hook 'term-mode-hook (lambda() (setq hscroll-margin 0)))
-
 ;; Indentation
 (setq-default tab-width 4
               fill-column 80
@@ -172,10 +165,6 @@
               truncate-lines t
               truncate-partial-width-windows nil)
 
-;; Re-read files on disk when there’s a change
-(setq auto-revert-interval 1)
-(setq auto-revert-check-vc-info t)
-;; (setq global-auto-revert-non-file-buffers t)
-(global-auto-revert-mode)
-
 (provide 'init-base)
+
+;;; init-base.el ends here

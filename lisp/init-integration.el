@@ -1,33 +1,6 @@
-;; -*- lexical-binding: t; -*- 
+;;; init-integration.el --- Terminal and external tools -*- lexical-binding: t; -*-
 
-;;;; wakatime
-(use-package wakatime-mode
-  :init (global-wakatime-mode))
-
-;; Discord rich presence
-(use-package elcord)
-
-(use-package telega
-  :disabled
-  :straight (telega :type git :host github :repo "zevlg/telega.el" :branch "master")
-  :init
-  (add-hook 'telega-load-hook
-	        (lambda ()
-	          (define-key global-map (kbd "C-c k") telega-prefix-map)))
-
-  (setq telega-emoji-use-images nil
-        telega-auto-translate-probe-language-codes nil
-        telega-translate-to-language-by-default "zh-CN"
-        telega-chat-input-markups (list "org")
-        )
-  :hook
-  (telega-load-hook . telega-notifications-mode)
-  (telega-load-hook . telega-appindicator-mode)
-  (telega-load-hook . telega-mode-line-mode))
-
-;;;; LLM agent
-
-;;;; terminal
+;;; Terminal
 
 (use-package ghostel
   :disabled
@@ -58,7 +31,7 @@
   (defun meomacs-eat-meow-setup ()
     (add-hook 'meow-normal-mode-hook 'eat-emacs-mode nil t)
     (add-hook 'meow-insert-mode-hook 'eat-char-mode nil t))
-  (with-eval-after-load "meow"
+  (with-eval-after-load 'init-editing
     (with-eval-after-load "eat"
       (keymap-set eat-char-mode-map "C-y" 'eat-yank)
       (advice-add 'eat-semi-char-mode :after 'eat-emacs-mode)
@@ -66,7 +39,45 @@
   
   )
 
-;;;; reader
+;; Remove hscroll-margin in shells, otherwise it causes jumpiness
+(add-hook 'eshell-mode-hook (lambda() (setq hscroll-margin 0)))
+(add-hook 'term-mode-hook (lambda () (setq hscroll-margin 0)))
+
+;;; Time tracking and messaging
+
+(use-package wakatime-mode
+  :init (global-wakatime-mode))
+
+;; Discord rich presence
+(use-package elcord)
+
+(use-package telega
+  :disabled
+  :straight (telega :type git :host github :repo "zevlg/telega.el" :branch "master")
+  :init
+  (add-hook 'telega-load-hook
+	        (lambda ()
+	          (define-key global-map (kbd "C-c k") telega-prefix-map)))
+
+  (setq telega-emoji-use-images nil
+        telega-auto-translate-probe-language-codes nil
+        telega-translate-to-language-by-default "zh-CN"
+        telega-chat-input-markups (list "org")
+        )
+  :hook
+  (telega-load-hook . telega-notifications-mode)
+  (telega-load-hook . telega-appindicator-mode)
+  (telega-load-hook . telega-mode-line-mode))
+
+;;; Reading
+
 (use-package emureader)
 
-(provide 'init-intergration)
+;;; Meow bindings
+
+(with-eval-after-load 'init-editing
+  (meow-leader-define-key '("J" . eat-project)))
+
+(provide 'init-integration)
+
+;;; init-integration.el ends here
