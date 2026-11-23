@@ -11,8 +11,6 @@
   (meow-leader-define-key
    '("[" . tab-previous)
    '("]" . tab-next)
-   '("," . bury-buffer)
-   '("." . unbury-buffer)
    '(";" . tab-previous)
    '("\\" . tab-next))
   (meow-normal-define-key

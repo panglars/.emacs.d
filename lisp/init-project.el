@@ -37,15 +37,19 @@
 
 ;;; Project navigation
 
-(use-package projectile
-  :bind (:map projectile-mode-map
-              ("C-c C-p" . projectile-command-map))
-  :hook (after-init . projectile-mode)
+(use-package project
+  :straight (:type built-in)
+  :bind (:map project-prefix-map
+              ("m" . magit-status)
+              ("t" . eat-project))
   :config
-  (setq projectile-mode-line-prefix ""
-        projectile-sort-order 'recentf
-        projectile-use-git-grep t)
-  )
+  (setq project-vc-extra-root-markers '(".project")
+        project-switch-commands '((project-find-file "File")
+                                  (project-find-regexp "Regexp")
+                                  (project-switch-to-buffer "Buffer")
+                                  (project-dired "Dired")
+                                  (eat-project "Eat")
+                                  (magit-status "Magit"))))
 
 ;;; File manager
 
@@ -150,12 +154,35 @@
   ;; Store all project sessions in a specific directory
   (setq tabspaces-session-project-session-store
         (expand-file-name ".cache/tabspaces-sessions/" user-emacs-directory))
-  )
+
+  (defun +tabspaces--cycle-buffer (direction)
+    "Cycle buffers belonging to the current tabspace in DIRECTION (`next' or `prev')."
+    (let* ((buffers (seq-filter (lambda (buf)
+                                  (and (buffer-live-p buf)
+                                       (not (string-prefix-p " " (buffer-name buf)))))
+                                (tabspaces-local-buffer-list)))
+           (pos (seq-position buffers (current-buffer))))
+      (when (> (length buffers) 1)
+        (let* ((len (length buffers))
+               (next-idx (if pos
+                             (mod (+ pos (if (eq direction 'next) 1 -1)) len)
+                           0)))
+          (switch-to-buffer (nth next-idx buffers))))))
+
+  (defun +tabspaces-next-buffer ()
+    "Switch to the next buffer in the current tabspace."
+    (interactive)
+    (+tabspaces--cycle-buffer 'next))
+
+  (defun +tabspaces-previous-buffer ()
+    "Switch to the previous buffer in the current tabspace."
+    (interactive)
+    (+tabspaces--cycle-buffer 'prev)))
 
 ;;; Integration with other modules
 
 (with-eval-after-load 'dashboard
-  (setq dashboard-projects-backend 'projectile))
+  (setq dashboard-projects-backend 'project-el))
 
 (with-eval-after-load 'init-completion
   (with-eval-after-load 'dirvish
@@ -163,10 +190,10 @@
 
 (with-eval-after-load 'init-editing
   (meow-leader-define-key '("G" . magit)
-                         '("p" . projectile-command-map))
-  (meow-normal-define-key '("<" . projectile-previous-project-buffer)
-                          '(">" . projectile-next-project-buffer)
-                          '("T" . dirvish-side)))
+                          '("p" . "C-x p")
+                          '("," . +tabspaces-previous-buffer)
+                          '("." . +tabspaces-next-buffer))
+  (meow-normal-define-key '("T" . dirvish-side)))
 
 (provide 'init-project)
 

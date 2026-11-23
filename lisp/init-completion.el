@@ -132,7 +132,7 @@
         ("C-c i" . consult-imenu)
         ("C-c I" . consult-imenu-multi)
         ("C-c R" . consult-bookmark)            ;; orig. bookmark-jump
-        ("C-c B" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+        ("C-c O" . consult-outline)
         ("C-x C-r" . consult-recent-file)
         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
@@ -145,7 +145,64 @@
   :init
   ;; Use Consult to select xref locations with preview
   (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref))
+        xref-show-definitions-function #'consult-xref)
+  :config
+  (setq consult-narrow-key "<")
+
+  ;; Search files in current project (or current directory) inside `consult-buffer' via `f'
+  (defvar +consult-source-fd
+    (list :name     "Find"
+          :narrow   ?f
+          :category 'file
+          :face     'consult-file
+          :history  'file-name-history
+          :action   #'consult--file-action
+          :state    #'consult--file-preview
+          :async (lambda (sink)
+                   (let* ((consult-fd-args '("fd" "--full-path" "--color=never" "--hidden" "--follow"
+                                             "--exclude=.git" "--max-results=100"))
+                          (builder (consult--fd-make-builder
+                                    (list (or (consult--project-root)
+                                              (expand-file-name default-directory))))))
+                     (funcall
+                      (consult--process-collection builder
+                        :transform (consult--async-map #'abbreviate-file-name)
+                        :highlight t
+                        :file-handler t)
+                      sink)))))
+  (add-to-list 'consult-buffer-sources '+consult-source-fd 'append)
+
+  ;; Integrate tabspaces: show current workspace buffers by default (`w'),
+  ;; while keeping all buffers accessible via narrowing with `b'.
+  (defvar consult--source-workspace
+    (list :name     "Workspace Buffers"
+          :narrow   ?w
+          :history  'buffer-name-history
+          :category 'buffer
+          :state    #'consult--buffer-state
+          :default  t
+          :items    (lambda ()
+                      (consult--buffer-query
+                       :predicate #'tabspaces--local-buffer-p
+                       :sort 'visibility
+                       :as #'buffer-name)))
+    "Set workspace buffer list for `consult-buffer'.")
+
+  (defun +consult-tabspaces-sync ()
+    "Sync `consult-buffer-sources' with `tabspaces-mode'."
+    (if (bound-and-true-p tabspaces-mode)
+        (progn
+          (plist-put consult-source-buffer :hidden t)
+          (plist-put consult-source-buffer :default nil)
+          (add-to-list 'consult-buffer-sources 'consult--source-workspace))
+      (plist-put consult-source-buffer :hidden nil)
+      (plist-put consult-source-buffer :default t)
+      (setq consult-buffer-sources
+            (remove 'consult--source-workspace consult-buffer-sources))))
+
+  (add-hook 'tabspaces-mode-hook #'+consult-tabspaces-sync)
+  (when (bound-and-true-p tabspaces-mode)
+    (+consult-tabspaces-sync)))
 
 ;; [consult-dir] Insert path quickly in minibuffer
 (use-package consult-dir

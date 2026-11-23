@@ -129,18 +129,21 @@
 (use-package tab-bar
   :straight (:type built-in)
   :hook (after-init . tab-bar-mode)
-  :bind (("C-c TAB n" . tab-new)
-         ("C-c TAB x" . tab-close)
-         ("C-c TAB 1" . tab-close-other)
-         ("C-c TAB r" . tab-rename))
+  :bind (("M-t" . tab-new)
+         ("M-q" . tab-close)
+         ("M-<tab>" . tab-next)
+         ("M-S-<tab>" . tab-previous))
   :config
   (setq tab-bar-separator " "
         tab-bar-border nil
         tab-bar-history-buttons-show nil
         tab-bar-auto-width nil
         tab-bar-close-button-show nil
+        tab-bar-new-tab-choice "*scratch*"
         tab-bar-tab-name-truncated-max 20
-        tab-bar-tab-hints t)
+        tab-bar-tab-hints t
+        tab-bar-show 0
+        tab-bar-select-tab-modifiers '(meta))
   (setq tab-bar-format '(tab-bar-format-menu-bar tab-bar-format-tabs tab-bar-separator))
   (with-eval-after-load 'init-editing
     (setq tab-bar-format '(tab-bar-format-menu-bar meow-indicator tab-bar-format-tabs tab-bar-separator)))
@@ -411,8 +414,7 @@
           "\\*rustfmt\\*$" rustic-compilation-mode rustic-cargo-clippy-mode
           rustic-cargo-outdated-mode rustic-cargo-run-mode rustic-cargo-test-mode))
   :config
-  (with-eval-after-load 'projectile
-    (setq popper-group-function #'popper-group-by-projectile))
+  (setq popper-group-function #'popper-group-by-project)
   (popper-mode 1)
   (popper-echo-mode 1)
 
@@ -432,14 +434,25 @@
 
 (use-package ibuffer
   :straight (:type built-in)
-  :hook (ibuffer-mode . nerd-icons-ibuffer-mode)
+  :hook ((ibuffer-mode . nerd-icons-ibuffer-mode)
+         (ibuffer . +ibuffer-tabspaces-group-h))
+  :bind (("C-c B" . ibuffer)
+         :map ibuffer-mode-map
+         ("o" . tabspaces-ibuffer-switch-buffer-and-tab))
   :config
   (use-package nerd-icons-ibuffer)
-  (use-package ibuffer-vc
-    :disabled
-    :commands (ibuffer-vc-set-filter-groups-by-vc-root)
-    :custom
-    (ibuffer-vc-skip-if-remote 'nil))
+  (defun +ibuffer-tabspaces-group-h ()
+    "Group ibuffer entries by tabspace when `tabspaces-mode' is active."
+    (when (bound-and-true-p tabspaces-mode)
+      (setq ibuffer-filter-groups
+            (mapcar (lambda (tab)
+                      (let ((tab-index (tab-bar--tab-index-by-name tab)))
+                        (cons tab
+                              `((predicate . (member (buffer-name)
+                                                     (mapcar #'buffer-name
+                                                             (tabspaces--buffer-list nil ,tab-index))))))))
+                    (tabspaces--list-tabspaces)))
+      (ibuffer-update nil t)))
   
   :custom
   (ibuffer-expert t)
@@ -450,8 +463,8 @@
 
 (with-eval-after-load 'init-editing
   (meow-leader-define-key '("o" . ace-window)
-                         '("z" . popper-toggle-latest)
-                         '("Z" . popper-cycle)))
+                          '("z" . popper-toggle-latest)
+                          '("Z" . popper-cycle)))
 
 (provide 'init-ui)
 
