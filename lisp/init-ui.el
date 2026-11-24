@@ -426,6 +426,7 @@
           "\\*rustfmt\\*$" rustic-compilation-mode rustic-cargo-clippy-mode
           rustic-cargo-outdated-mode rustic-cargo-run-mode rustic-cargo-test-mode))
   :config
+  (require 'project)
   (setq popper-group-function #'popper-group-by-project)
   (popper-mode 1)
   (popper-echo-mode 1)
