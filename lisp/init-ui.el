@@ -133,17 +133,23 @@
          ("M-q" . tab-close)
          ("M-<tab>" . tab-next)
          ("M-S-<tab>" . tab-previous))
+  :custom
+  (tab-bar-show t)
+  (tab-bar-select-tab-modifiers '(meta))
   :config
+  (defun +tab-bar-new-tab-dired ()
+    "Open a Dired buffer for the default directory in a new tab."
+    (dired-noselect (if (file-directory-p "~/Codes/Project/")
+                        "~/Codes/Project/"
+                      "~/")))
   (setq tab-bar-separator " "
         tab-bar-border nil
         tab-bar-history-buttons-show nil
         tab-bar-auto-width nil
         tab-bar-close-button-show nil
-        tab-bar-new-tab-choice "*scratch*"
+        tab-bar-new-tab-choice #'+tab-bar-new-tab-dired
         tab-bar-tab-name-truncated-max 20
-        tab-bar-tab-hints t
-        tab-bar-show 0
-        tab-bar-select-tab-modifiers '(meta))
+        tab-bar-tab-hints t)
   (setq tab-bar-format '(tab-bar-format-menu-bar tab-bar-format-tabs tab-bar-separator))
   (with-eval-after-load 'init-editing
     (setq tab-bar-format '(tab-bar-format-menu-bar meow-indicator tab-bar-format-tabs tab-bar-separator)))
@@ -154,7 +160,13 @@
              (propertize " " 'face face)
              (propertize (number-to-string i) 'face `(:inherit ,face :weight ultra-bold :underline t))
              (propertize (concat " " (alist-get 'name tab) " ") 'face face)))))
-  )
+  (defun +refresh-tab-bar (&rest _)
+    (when tab-bar-mode
+      (tab-bar--update-tab-bar-lines)
+      (force-mode-line-update)))
+  (add-hook 'server-after-make-frame-hook #'+refresh-tab-bar)
+  (add-hook 'window-setup-hook #'+refresh-tab-bar)
+  (+refresh-tab-bar))
 
 (use-package tab-line
   :disabled

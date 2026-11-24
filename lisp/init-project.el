@@ -141,19 +141,25 @@
   (tabspaces-use-filtered-buffers-as-default t)
   (tabspaces-default-tab "Default")
   (tabspaces-remove-to-default t)
+  (tabspaces-include-buffers nil)
   (tabspaces-initialize-project-with-todo nil)
   (tabspaces-todo-file-name "project-todo.org")
+  (tabspaces-project-switch-opens-workspace t)
+  (tabspaces-project-switch-commands #'project-dired)
   ;; sessions
   (tabspaces-session t)
-  (tabspaces-session-auto-restore nil)
+  (tabspaces-session-auto-restore t)
+  (tabspaces-session-project-session-store
+   (expand-file-name ".cache/tabspaces-sessions/" user-emacs-directory))
   ;; additional options
   (tabspaces-fully-resolve-paths t)  ; Resolve relative project paths to absolute
   (tabspaces-exclude-buffers '("*Messages*" "*Compile-Log*"))  ; Additional buffers to exclude
+  :init
+  ;; Only auto-restore per-project sessions when switching projects,
+  ;; instead of restoring all global/non-project tabs on Emacs startup.
+  (advice-add 'tabspaces--restore-session-on-startup :override #'ignore)
+  (advice-add 'tabspaces-save-non-project-tabs :override #'ignore)
   :config
-  (setq tabspaces-project-switch-opens-workspace t)
-  ;; Store all project sessions in a specific directory
-  (setq tabspaces-session-project-session-store
-        (expand-file-name ".cache/tabspaces-sessions/" user-emacs-directory))
 
   (defun +tabspaces--cycle-buffer (direction)
     "Cycle buffers belonging to the current tabspace in DIRECTION (`next' or `prev')."
